@@ -643,37 +643,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 10, y: 2}
   m_EdgeRadius: 0
---- !u!1 &1072325787
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1072325788}
-  m_Layer: 0
-  m_Name: Check
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1072325788
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072325787}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1605501140}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1325348159
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,7 +656,7 @@ GameObject:
   - component: {fileID: 1325348160}
   m_Layer: 0
   m_Name: Box (1)
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -807,7 +776,7 @@ Transform:
   m_GameObject: {fileID: 1325348159}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.25, y: 8.51, z: 0}
+  m_LocalPosition: {x: 2.14, y: 3.97, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1102,8 +1071,7 @@ Transform:
   m_LocalPosition: {x: -4.29, y: 0.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1072325788}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1605501141
@@ -1196,14 +1164,6 @@ MonoBehaviour:
   jumpForce: 10
   Player_model: {fileID: 0}
   sp: {fileID: -2413806693520163455, guid: f6de8550f75eb2d499b9c3e185a12b84, type: 3}
-  Box_radius: 1
-  Box_Layer:
-    serializedVersion: 2
-    m_Bits: 64
-  Box_Check: {fileID: 1072325788}
-  Is_Baby: 1
-  Is_Mid_Age: 0
-  Is_Ded: 0
   collider: {fileID: 0}
 --- !u!1 &1887188847
 GameObject:
@@ -1217,7 +1177,7 @@ GameObject:
   - component: {fileID: 1887188848}
   - component: {fileID: 1887188850}
   - component: {fileID: 1887188851}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Box
   m_TagString: Box
   m_Icon: {fileID: 0}
@@ -1293,8 +1253,8 @@ Transform:
   m_GameObject: {fileID: 1887188847}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.07, y: 1, z: 0}
-  m_LocalScale: {x: 1.7, y: 1.7, z: 1}
+  m_LocalPosition: {x: 7.15, y: 1.45, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
