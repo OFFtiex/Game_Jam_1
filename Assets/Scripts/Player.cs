@@ -8,10 +8,20 @@ public class Player : MonoBehaviour
     public float Move_Speed = 3f;
     public float jumpForce = 10f;
 
+    [Header ("Sprite_Render")]
+    public SpriteRenderer Player_model;
+    public Sprite sp;
+
+
+
+    public BoxCollider2D collider;
+
 
     void Start()
     {
         Player_body = GetComponent<Rigidbody2D>();
+        collider = GetComponent<BoxCollider2D>();
+        Player_model = GetComponent<SpriteRenderer>();
     }
 
     
