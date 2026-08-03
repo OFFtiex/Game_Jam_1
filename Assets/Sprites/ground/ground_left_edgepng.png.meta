@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 495312f103ca25a4f899a987ec2b9b5b
+guid: 3d2136f75f7b255468fbe46561cff9df
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7549062133264214930
-    second: ground_lower_left_corner_0
+      213: -4837652113154283399
+    second: ground_left_edgepng_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ground_lower_left_corner_0
+      name: ground_left_edgepng_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 29be0987308a3c860800000000000000
-      internalID: 7549062133264214930
+      spriteID: 9786588b8053ddcb0800000000000000
+      internalID: -4837652113154283399
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ground_lower_left_corner_0: 7549062133264214930
+      ground_left_edgepng_0: -4837652113154283399
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
