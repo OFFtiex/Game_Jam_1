@@ -60,12 +60,13 @@
         "*.asset": "yaml",
         "*.meta": "yaml",
         "*.prefab": "yaml",
-        "*.unity": "yaml",
+        "*.unity": "yaml"
     },
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
+    "Game_Jam_3.slnx=======dotnet.defaultSolution": "Game_Jam_2.slnx>>>>>>>1fd0dde9249bc30ddef137bd5b6222c8da131be8",
     "dotnet.defaultSolution": "Game_Jam_3.slnx"
 }
