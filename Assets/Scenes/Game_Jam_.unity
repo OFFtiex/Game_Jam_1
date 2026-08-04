@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 423114642}
   - component: {fileID: 423114641}
   - component: {fileID: 423114640}
+  - component: {fileID: 423114643}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -211,6 +212,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &423114643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423114639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1 &755099728
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,7 +871,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33b73861ea809eb44a1573e42718d865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhysicalButtons
-  visibleSprite: {fileID: 0}
   standard: {fileID: 8497577790089072167, guid: dd5d115eac75ebb4abd1bd79ba443026, type: 3}
   pressed: {fileID: 8322481953827182494, guid: 712137a725df35f4f83e93f3f946b5d4, type: 3}
 --- !u!1 &1325348159
@@ -1349,6 +1393,7 @@ MonoBehaviour:
   Player_body: {fileID: 0}
   Move_Speed: 3
   jumpForce: 10
+  smoothing: 10
   Player_model: {fileID: 0}
   sp: {fileID: -2413806693520163455, guid: f6de8550f75eb2d499b9c3e185a12b84, type: 3}
   Box_radius: 1
@@ -1356,9 +1401,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   Box_Check: {fileID: 1072325788}
-  Is_Baby: 1
-  Is_Mid_Age: 0
-  Is_Ded: 0
+  CurrentAge: 0
   collider: {fileID: 0}
 --- !u!1 &1887188847
 GameObject:
