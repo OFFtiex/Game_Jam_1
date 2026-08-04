@@ -18,7 +18,7 @@ public class Boost_for_Boxes : MonoBehaviour
             // You pick up the watch and get older so You become stronger
             Player player = collision.gameObject.GetComponent<Player>();
             player.Player_body.mass = 1000f;
-            player.Is_Mid_Age = true;
+            player.CurrentAge = AgeState.MidAge;
             player.collider.size = new Vector2(player.collider.size.x , player.collider.size.y  * 1.5f);
             //player.Player_model.color = new Color(Color.red.r, Color.red.g, Color.red.g, player.Player_model.color.a);
             player.Player_model.sprite = player.sp;
