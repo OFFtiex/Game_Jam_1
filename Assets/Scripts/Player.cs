@@ -1,5 +1,11 @@
 using UnityEngine;
 
+public enum AgeState
+{
+    Baby,
+    MidAge,
+    Ded
+}
 public class Player : MonoBehaviour
 {
 
@@ -20,9 +26,7 @@ public class Player : MonoBehaviour
     private GameObject BB;
 
     [Header("Player_characteristics")]
-    public bool Is_Baby = true; // <------|
-    public bool Is_Mid_Age = false; // <--|---Player's age
-    public bool Is_Ded = false; // <------|
+    public AgeState CurrentAge;
     private bool Pull_or_not = false;
 
 
@@ -38,9 +42,9 @@ public class Player : MonoBehaviour
         collider = GetComponent<BoxCollider2D>();
         Player_model = GetComponent<SpriteRenderer>();
         BB = GameObject.FindWithTag("Box");
+        CurrentAge = AgeState.Baby;
 
-
-    }
+}
 
     
     void Update()
@@ -59,7 +63,7 @@ public class Player : MonoBehaviour
 
         
         
-        if (Is_near_to_Box  && Is_Mid_Age == true) 
+        if (Is_near_to_Box  && CurrentAge == AgeState.MidAge) 
         {
             Is_Carrying(); // checks if the player pressed the button to enter "Drag Mode"
             // "Drag Mode" is the status when you can move or pull an object"
