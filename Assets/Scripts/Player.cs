@@ -15,12 +15,12 @@ public class Player : MonoBehaviour
     [Header("Box")]
     public float Box_radius = 1f;
     public LayerMask Box_Layer;
-    private bool Is_near_to_Box;
+    public bool Is_near_to_Box;
     public Transform Box_Check;
-    private GameObject BB;
+    public GameObject BB;
 
     [Header("Player_characteristics")]
-    public bool Is_Baby = true; // <------|
+    public int Is_Baby = 0; // <------|
     public bool Is_Mid_Age = false; // <--|---Player's age
     public bool Is_Ded = false; // <------|
     private bool Pull_or_not = false;
@@ -133,19 +133,12 @@ public class Player : MonoBehaviour
 
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision) // changes current "Main" box
     {
-
-
-        //do
-        //{
-        //    Debug.Log("A");
-        //}
-        //while (collision.gameObject.tag == "Box");
-            //if (Input.GetKeyDown(KeyCode.Tab))
-            //{
-            //    Debug.Log("A");
-            //}
+        if (collision.gameObject.tag == "Box")
+        {
+            BB = collision.gameObject;
+        }
 
 
     }
