@@ -27,11 +27,15 @@ public class Player : MonoBehaviour
 
     [Header("Player_characteristics")]
 
+
     public int Is_Baby = 0; // <------|
     public bool Is_Mid_Age = false; // <--|---Player's age
     public bool Is_Ded = false; // <------|
 
     public AgeState CurrentAge;
+
+
+    
 
     private bool Pull_or_not = false;
 

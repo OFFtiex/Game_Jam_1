@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: 91dec82aaf558f54a84781c8560cadb0
+=======
+guid: 5e7e9d00647b4e649bc4b3d2e699d9ca
+>>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
 =======
 guid: 5e7e9d00647b4e649bc4b3d2e699d9ca
 >>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
@@ -42,7 +46,11 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     filterMode: 0
+=======
+    filterMode: 1
+>>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
 =======
     filterMode: 1
 >>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
@@ -55,7 +63,11 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
 <<<<<<< HEAD
+<<<<<<< HEAD
   spriteMode: 1
+=======
+  spriteMode: 2
+>>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
 =======
   spriteMode: 2
 >>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
@@ -64,7 +76,11 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
 <<<<<<< HEAD
+<<<<<<< HEAD
   spritePixelsToUnits: 16
+=======
+  spritePixelsToUnits: 100
+>>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
 =======
   spritePixelsToUnits: 100
 >>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
@@ -155,7 +171,11 @@ TextureImporter:
     physicsShape: []
     bones: []
 <<<<<<< HEAD
+<<<<<<< HEAD
     spriteID: 5e97eb03825dee720800000000000000
+=======
+    spriteID: 
+>>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
 =======
     spriteID: 
 >>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
