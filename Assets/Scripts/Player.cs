@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
 
     [Header("Player_characteristics")]
 
+    
+
     public int Is_Baby = 0; // <------|
     public bool Is_Mid_Age = false; // <--|---Player's age
     public bool Is_Ded = false; // <------|
@@ -116,10 +118,12 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab) && Pull_or_not == false && Is_near_to_Box) // if you are close to the box and pressed Tab "Pull_or_not" activates and you can move an object
         {
             Pull_or_not = true;
+            
         }
         else if (Input.GetKeyDown(KeyCode.Tab) && Pull_or_not == true && Is_near_to_Box) // press Tab next to the Box to exit "Drag Mode" and stop moving the object
         {
             Pull_or_not = false;
+            
         }
     }
     void FixedUpdate()
@@ -142,8 +146,18 @@ public class Player : MonoBehaviour
         {
             BB = collision.gameObject.transform.parent.gameObject;
         }
+        
 
 
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Damage_Pike")
+        {
+
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Game_Jam_");
+
+        }
     }
 
 
