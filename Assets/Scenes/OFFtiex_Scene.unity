@@ -132,7 +132,6 @@ GameObject:
   - component: {fileID: 480384308}
   - component: {fileID: 480384307}
   - component: {fileID: 480384306}
-  - component: {fileID: 480384311}
   m_Layer: 0
   m_Name: Square
   m_TagString: Player
@@ -313,20 +312,6 @@ Transform:
   - {fileID: 1747896495}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &480384311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 480384305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d989788c5b9ccce458bc1dced6b54642, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HasKey
-  hasKey: 0
-  color: 
 --- !u!1 &496372637
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e8aed59c03bd9440b026ae289fa70a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Key
-  keyColor: Rat
+  door: {fileID: 1763056910}
 --- !u!483693784 &496372640
 TilemapRenderer:
   serializedVersion: 2
@@ -554,7 +539,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.5777503, y: 1.460054}
+  m_Offset: {x: -0.42110813, y: 1.460054}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -564,7 +549,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.5737779, y: 0.81049275}
+  m_Size: {x: 0.47680092, y: 0.81049275}
   m_EdgeRadius: 0
 --- !u!1 &526612450
 GameObject:
@@ -977,7 +962,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorOpening
   Door_model: {fileID: 0}
-  new_sprite: {fileID: 21300000, guid: 1c9450182422e9a42926c9558d9af2e7, type: 3}
+  new_sprite: {fileID: 21300000, guid: 4f892a4f640a70242a00059103cbb2b1, type: 3}
+  boxCollider: {fileID: 0}
 --- !u!61 &1763056911
 BoxCollider2D:
   m_ObjectHideFlags: 0
