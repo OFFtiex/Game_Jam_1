@@ -143,11 +143,11 @@ public class Player : MonoBehaviour
 
 
 
-    private void OnCollisionEnter2D(Collision2D collision) // changes current "Main" box
+    private void OnTriggerEnter2D(Collider2D collision) // changes current "Main" box
     {
         if (collision.gameObject.tag == "Box")
         {
-            BB = collision.gameObject;
+            BB = collision.gameObject.transform.parent.gameObject;
         }
 
 
