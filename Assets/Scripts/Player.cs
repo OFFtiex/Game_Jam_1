@@ -97,14 +97,7 @@ public class Player : MonoBehaviour
                         BB.transform.position = new Vector2(Box_Check.transform.position.x - 1.5f, Box_Check.transform.position.y);
                     }
                 }
-                //if (move_Input > 0)
-                //{
-                //    BB.transform.position = new Vector2(Box_Check.transform.position.x - 1.5f, Box_Check.transform.position.y);
-                //}
-                //else if (move_Input < 0)
-                //{
-                //    BB.transform.position = new Vector2(Box_Check.transform.position.x + 1.5f, Box_Check.transform.position.y);
-                //}
+                
             }
             
             
