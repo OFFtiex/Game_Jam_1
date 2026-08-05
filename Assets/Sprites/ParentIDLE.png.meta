@@ -1,8 +1,15 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: 5ec3fe1a6fb4ca841b0d4e4f34dcfb12
 =======
 guid: 7e120e138f0374b40890fca846efb94d
+>>>>>>> JopaLien
+=======
+guid: 7e120e138f0374b40890fca846efb94d
+=======
+guid: 5ec3fe1a6fb4ca841b0d4e4f34dcfb12
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
 TextureImporter:
   internalIDToNameTable:
@@ -42,9 +49,16 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     filterMode: 1
 =======
     filterMode: 0
+>>>>>>> JopaLien
+=======
+    filterMode: 0
+=======
+    filterMode: 1
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
     aniso: 1
     mipBias: 0
@@ -55,18 +69,32 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
 <<<<<<< HEAD
+<<<<<<< HEAD
   spriteMode: 2
 =======
   spriteMode: 1
+>>>>>>> JopaLien
+=======
+  spriteMode: 1
+=======
+  spriteMode: 2
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
 <<<<<<< HEAD
+<<<<<<< HEAD
   spritePixelsToUnits: 100
 =======
   spritePixelsToUnits: 16
+>>>>>>> JopaLien
+=======
+  spritePixelsToUnits: 16
+=======
+  spritePixelsToUnits: 100
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -92,8 +120,11 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
 <<<<<<< HEAD
+<<<<<<< HEAD
     textureCompression: 1
 =======
+=======
+>>>>>>> JopaLien
     textureCompression: 0
 >>>>>>> JopaLien
     compressionQuality: 50
@@ -108,6 +139,11 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
+>>>>>>> JopaLien
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -119,7 +155,15 @@ TextureImporter:
 <<<<<<< HEAD
 =======
   - serializedVersion: 4
+<<<<<<< HEAD
     buildTarget: WebGL
+=======
+<<<<<<< HEAD
+    buildTarget: WebGL
+=======
+    buildTarget: Standalone
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
+>>>>>>> JopaLien
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -162,9 +206,16 @@ TextureImporter:
     physicsShape: []
     bones: []
 <<<<<<< HEAD
+<<<<<<< HEAD
     spriteID: 
 =======
     spriteID: 5e97eb03825dee720800000000000000
+>>>>>>> JopaLien
+=======
+    spriteID: 5e97eb03825dee720800000000000000
+=======
+    spriteID: 
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
     internalID: 0
     vertices: []

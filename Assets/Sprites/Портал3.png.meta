@@ -39,6 +39,11 @@ TextureImporter:
     serializedVersion: 2
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+    filterMode: 0
+=======
+>>>>>>> JopaLien
+<<<<<<< HEAD
 <<<<<<< HEAD
     filterMode: 0
 =======
@@ -47,8 +52,12 @@ TextureImporter:
 =======
     filterMode: 1
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+<<<<<<< HEAD
 =======
     filterMode: 0
+>>>>>>> JopaLien
+=======
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
     aniso: 1
     mipBias: 0
@@ -60,6 +69,11 @@ TextureImporter:
   compressionQuality: 50
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+  spriteMode: 1
+=======
+>>>>>>> JopaLien
+<<<<<<< HEAD
 <<<<<<< HEAD
   spriteMode: 1
 =======
@@ -68,8 +82,12 @@ TextureImporter:
 =======
   spriteMode: 2
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+<<<<<<< HEAD
 =======
   spriteMode: 1
+>>>>>>> JopaLien
+=======
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
   spriteExtrude: 1
   spriteMeshType: 1
@@ -77,6 +95,11 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+  spritePixelsToUnits: 16
+=======
+>>>>>>> JopaLien
+<<<<<<< HEAD
 <<<<<<< HEAD
   spritePixelsToUnits: 16
 =======
@@ -85,8 +108,12 @@ TextureImporter:
 =======
   spritePixelsToUnits: 100
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+<<<<<<< HEAD
 =======
   spritePixelsToUnits: 16
+>>>>>>> JopaLien
+=======
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -176,6 +203,11 @@ TextureImporter:
     bones: []
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+    spriteID: 5e97eb03825dee720800000000000000
+=======
+>>>>>>> JopaLien
+<<<<<<< HEAD
 <<<<<<< HEAD
     spriteID: 5e97eb03825dee720800000000000000
 =======
@@ -184,8 +216,12 @@ TextureImporter:
 =======
     spriteID: 
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+<<<<<<< HEAD
 =======
     spriteID: 5e97eb03825dee720800000000000000
+>>>>>>> JopaLien
+=======
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
     internalID: 0
     vertices: []

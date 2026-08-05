@@ -5,6 +5,10 @@ guid: 76c125c2f168d354dbc3bb1ce93e5863
 TextureImporter:
   internalIDToNameTable: []
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> JopaLien
 =======
 =======
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
@@ -18,7 +22,11 @@ TextureImporter:
 >>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
 =======
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+<<<<<<< HEAD
 =======
+>>>>>>> JopaLien
+=======
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
   externalObjects: {}
   serializedVersion: 13
@@ -67,6 +75,11 @@ TextureImporter:
     wrapV: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+    wrapW: 0
+=======
+>>>>>>> JopaLien
+<<<<<<< HEAD
 <<<<<<< HEAD
     wrapW: 0
 =======
@@ -75,8 +88,12 @@ TextureImporter:
 =======
     wrapW: 1
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+<<<<<<< HEAD
 =======
     wrapW: 0
+>>>>>>> JopaLien
+=======
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
   nPOTScale: 0
   lightmap: 0
@@ -111,6 +128,13 @@ TextureImporter:
   ignorePngGamma: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 2
+=======
+>>>>>>> JopaLien
+<<<<<<< HEAD
 <<<<<<< HEAD
   applyGammaDecoding: 1
   swizzle: 50462976
@@ -125,10 +149,14 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+<<<<<<< HEAD
 =======
   applyGammaDecoding: 1
   swizzle: 50462976
   cookieLightType: 2
+>>>>>>> JopaLien
+=======
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
   platformSettings:
   - serializedVersion: 4
@@ -138,6 +166,11 @@ TextureImporter:
     textureFormat: -1
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+    textureCompression: 0
+=======
+>>>>>>> JopaLien
+<<<<<<< HEAD
 <<<<<<< HEAD
     textureCompression: 0
 =======
@@ -146,8 +179,12 @@ TextureImporter:
 =======
     textureCompression: 1
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+<<<<<<< HEAD
 =======
     textureCompression: 0
+>>>>>>> JopaLien
+=======
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
     compressionQuality: 50
     crunchedCompression: 0
@@ -163,6 +200,11 @@ TextureImporter:
     textureFormat: -1
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+    textureCompression: 0
+=======
+>>>>>>> JopaLien
+<<<<<<< HEAD
 <<<<<<< HEAD
     textureCompression: 0
 =======
@@ -171,8 +213,12 @@ TextureImporter:
 =======
     textureCompression: 1
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+<<<<<<< HEAD
 =======
     textureCompression: 0
+>>>>>>> JopaLien
+=======
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
     compressionQuality: 50
     crunchedCompression: 0
@@ -188,6 +234,11 @@ TextureImporter:
     textureFormat: -1
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+    textureCompression: 0
+=======
+>>>>>>> JopaLien
+<<<<<<< HEAD
 <<<<<<< HEAD
     textureCompression: 0
 =======
@@ -196,8 +247,12 @@ TextureImporter:
 =======
     textureCompression: 1
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+<<<<<<< HEAD
 =======
     textureCompression: 0
+>>>>>>> JopaLien
+=======
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
     compressionQuality: 50
     crunchedCompression: 0
@@ -209,6 +264,11 @@ TextureImporter:
   spriteSheet:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    sprites: []
+=======
+>>>>>>> JopaLien
 <<<<<<< HEAD
 <<<<<<< HEAD
     sprites: []
@@ -242,8 +302,12 @@ TextureImporter:
 >>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
 =======
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+<<<<<<< HEAD
 =======
     sprites: []
+>>>>>>> JopaLien
+=======
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
     outline: []
     customData: 
@@ -260,6 +324,11 @@ TextureImporter:
       entries: []
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+    nameFileIdTable: {}
+=======
+>>>>>>> JopaLien
+<<<<<<< HEAD
 <<<<<<< HEAD
     nameFileIdTable: {}
 =======
@@ -270,8 +339,12 @@ TextureImporter:
     nameFileIdTable:
       "\u0412\u0437\u0440\u043E\u0441\u043B\u044B\u0439_0": 7157541075839837105
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+<<<<<<< HEAD
 =======
     nameFileIdTable: {}
+>>>>>>> JopaLien
+=======
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

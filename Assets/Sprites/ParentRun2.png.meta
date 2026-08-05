@@ -1,8 +1,15 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: 71858308ddada9243b46608bddf2d128
 =======
 guid: c4529c67946fef044a057fbd36542773
+>>>>>>> JopaLien
+=======
+guid: c4529c67946fef044a057fbd36542773
+=======
+guid: 71858308ddada9243b46608bddf2d128
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
 TextureImporter:
   internalIDToNameTable:
@@ -101,7 +108,10 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> JopaLien
   - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
@@ -115,6 +125,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< HEAD
+>>>>>>> JopaLien
+=======
+=======
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
   spriteSheet:
     serializedVersion: 2

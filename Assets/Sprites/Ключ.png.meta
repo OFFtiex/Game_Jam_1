@@ -86,6 +86,11 @@ TextureImporter:
     textureFormat: -1
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+    textureCompression: 0
+=======
+>>>>>>> JopaLien
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     textureCompression: 1
@@ -98,8 +103,12 @@ TextureImporter:
 =======
     textureCompression: 0
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+<<<<<<< HEAD
 =======
     textureCompression: 0
+>>>>>>> JopaLien
+=======
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
     compressionQuality: 50
     crunchedCompression: 0

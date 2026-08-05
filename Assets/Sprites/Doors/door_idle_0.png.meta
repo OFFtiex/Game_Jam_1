@@ -38,9 +38,16 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     filterMode: 0
 =======
     filterMode: 1
+>>>>>>> JopaLien
+=======
+    filterMode: 1
+=======
+    filterMode: 0
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
     aniso: 1
     mipBias: 0
@@ -51,18 +58,32 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
 <<<<<<< HEAD
+<<<<<<< HEAD
   spriteMode: 1
 =======
   spriteMode: 2
+>>>>>>> JopaLien
+=======
+  spriteMode: 2
+=======
+  spriteMode: 1
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
 <<<<<<< HEAD
+<<<<<<< HEAD
   spritePixelsToUnits: 16
 =======
   spritePixelsToUnits: 100
+>>>>>>> JopaLien
+=======
+  spritePixelsToUnits: 100
+=======
+  spritePixelsToUnits: 16
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -88,9 +109,16 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
 <<<<<<< HEAD
+<<<<<<< HEAD
     textureCompression: 0
 =======
     textureCompression: 1
+>>>>>>> JopaLien
+=======
+    textureCompression: 1
+=======
+    textureCompression: 0
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
     compressionQuality: 50
     crunchedCompression: 0
@@ -155,9 +183,16 @@ TextureImporter:
     physicsShape: []
     bones: []
 <<<<<<< HEAD
+<<<<<<< HEAD
     spriteID: 5e97eb03825dee720800000000000000
 =======
     spriteID: 
+>>>>>>> JopaLien
+=======
+    spriteID: 
+=======
+    spriteID: 5e97eb03825dee720800000000000000
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
 >>>>>>> JopaLien
     internalID: 0
     vertices: []
