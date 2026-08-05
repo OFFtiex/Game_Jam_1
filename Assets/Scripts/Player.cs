@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public enum AgeState
 {
@@ -12,7 +13,9 @@ public class Player : MonoBehaviour
     [Header("Player_Movement")]
     public Rigidbody2D Player_body;
     public float Move_Speed = 3f;
-    public float jumpForce = 10f;
+    public float jumpForce = 5f;
+    public float smoothing = 10f;
+    private float move_Input;
 
     [Header ("Sprite_Render")]
     public SpriteRenderer Player_model;
@@ -50,28 +53,27 @@ public class Player : MonoBehaviour
     void Update()
     {
         // Moving
-        float move_Input = Input.GetAxis("Horizontal");
-        Player_body.linearVelocity = new Vector2(Move_Speed  * move_Input, Player_body.linearVelocity.y);
-
-
-
-        if (Input.GetKeyDown(KeyCode.Space)) // Jumping
+        float targetInput = 0f;
+        if (Keyboard.current != null)
         {
+            if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) targetInput = 1f;
+            else if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) targetInput = -1f;
+        }
+        move_Input = Mathf.MoveTowards(move_Input, targetInput, smoothing * Time.deltaTime);//Smoothing
+        Player_body.linearVelocity = new Vector2(Move_Speed * move_Input, Player_body.linearVelocity.y);
+
+        // Jumping
+        if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame){
             Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
         }
 
 
-        
-        
         if (Is_near_to_Box  && CurrentAge == AgeState.MidAge) 
         {
             Is_Carrying(); // checks if the player pressed the button to enter "Drag Mode"
-            // "Drag Mode" is the status when you can move or pull an object"
+            // "Drag Mode" is the status when you can move or pull an object
 
-            if (Box_Check.transform.position.y > BB.transform.position.y)
-            {
-                return;
-            }
+            if (Box_Check.transform.position.y > BB.transform.position.y)   {  return;  }
 
 
             if (Pull_or_not == true)
