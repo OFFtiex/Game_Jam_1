@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: "\u041A\u043B\u044E\u0447_0"
+  m_Name: ground_right_surface_rebuilded_0
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
-  m_Sprite: {fileID: -5764957107797110283, guid: 59e9a9da1aeafb941bfe5d7ef70dffbb, type: 3}
+  m_Sprite: {fileID: 7167371687255973535, guid: 2da1c417a134e20458fe0ece146628ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
