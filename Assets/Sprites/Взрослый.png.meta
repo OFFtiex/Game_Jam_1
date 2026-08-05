@@ -1,16 +1,22 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: 76c125c2f168d354dbc3bb1ce93e5863
 TextureImporter:
   internalIDToNameTable: []
 =======
+=======
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
 guid: 75ebce885c140f64fb96e0bdcbe1c172
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: 7157541075839837105
     second: "\u0412\u0437\u0440\u043E\u0441\u043B\u044B\u0439_0"
+<<<<<<< HEAD
 >>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
+=======
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -44,19 +50,27 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     filterMode: 0
 =======
     filterMode: 1
 >>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
+=======
+    filterMode: 1
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
     aniso: 1
     mipBias: 0
     wrapU: 1
     wrapV: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
     wrapW: 0
 =======
     wrapW: 1
 >>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
+=======
+    wrapW: 1
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -66,10 +80,14 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
 <<<<<<< HEAD
+<<<<<<< HEAD
   spritePixelsToUnits: 16
 =======
   spritePixelsToUnits: 100
 >>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
+=======
+  spritePixelsToUnits: 100
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -85,6 +103,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   applyGammaDecoding: 1
   swizzle: 50462976
   cookieLightType: 2
@@ -93,6 +112,11 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
 >>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
+=======
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
@@ -100,10 +124,14 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
 <<<<<<< HEAD
+<<<<<<< HEAD
     textureCompression: 0
 =======
     textureCompression: 1
 >>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
+=======
+    textureCompression: 1
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -117,10 +145,14 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
 <<<<<<< HEAD
+<<<<<<< HEAD
     textureCompression: 0
 =======
     textureCompression: 1
 >>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
+=======
+    textureCompression: 1
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -134,10 +166,14 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
 <<<<<<< HEAD
+<<<<<<< HEAD
     textureCompression: 0
 =======
     textureCompression: 1
 >>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
+=======
+    textureCompression: 1
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -148,8 +184,11 @@ TextureImporter:
   spriteSheet:
     serializedVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
     sprites: []
 =======
+=======
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
     sprites:
     - serializedVersion: 2
       name: "\u0412\u0437\u0440\u043E\u0441\u043B\u044B\u0439_0"
@@ -173,7 +212,10 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+<<<<<<< HEAD
 >>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
+=======
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
     outline: []
     customData: 
     physicsShape: []
@@ -188,11 +230,16 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
 <<<<<<< HEAD
+<<<<<<< HEAD
     nameFileIdTable: {}
 =======
     nameFileIdTable:
       "\u0412\u0437\u0440\u043E\u0441\u043B\u044B\u0439_0": 7157541075839837105
 >>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
+=======
+    nameFileIdTable:
+      "\u0412\u0437\u0440\u043E\u0441\u043B\u044B\u0439_0": 7157541075839837105
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
