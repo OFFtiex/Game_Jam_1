@@ -4,6 +4,7 @@ fileFormatVersion: 2
 guid: 1b13264ac4b7c944a9f1b93a17b2d516
 TextureImporter:
   internalIDToNameTable: []
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
@@ -17,6 +18,8 @@ TextureImporter:
 >>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
 =======
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+=======
+>>>>>>> JopaLien
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -64,6 +67,9 @@ TextureImporter:
     wrapV: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> JopaLien
     wrapW: 0
   nPOTScale: 0
   lightmap: 0
@@ -110,6 +116,7 @@ TextureImporter:
   ignorePngGamma: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   applyGammaDecoding: 1
   swizzle: 50462976
   cookieLightType: 2
@@ -123,12 +130,18 @@ TextureImporter:
   swizzle: 50462976
   cookieLightType: 0
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+=======
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 2
+>>>>>>> JopaLien
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     textureCompression: 0
@@ -138,6 +151,9 @@ TextureImporter:
 =======
     textureCompression: 1
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+=======
+    textureCompression: 0
+>>>>>>> JopaLien
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -152,6 +168,7 @@ TextureImporter:
     textureFormat: -1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     textureCompression: 0
 =======
     textureCompression: 1
@@ -159,6 +176,9 @@ TextureImporter:
 =======
     textureCompression: 1
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+=======
+    textureCompression: 0
+>>>>>>> JopaLien
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -173,6 +193,7 @@ TextureImporter:
     textureFormat: -1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     textureCompression: 0
 =======
     textureCompression: 1
@@ -180,6 +201,9 @@ TextureImporter:
 =======
     textureCompression: 1
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+=======
+    textureCompression: 0
+>>>>>>> JopaLien
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -189,6 +213,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     sprites: []
@@ -222,6 +247,9 @@ TextureImporter:
 >>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
 =======
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+=======
+    sprites: []
+>>>>>>> JopaLien
     outline: []
     customData: 
     physicsShape: []
@@ -245,6 +273,7 @@ TextureImporter:
       entries: []
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     nameFileIdTable: {}
 =======
     nameFileIdTable:
@@ -254,6 +283,9 @@ TextureImporter:
     nameFileIdTable:
       "\u0440\u0435\u0431\u0435\u043D\u043E\u043A_0": 5570289243109271949
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+=======
+    nameFileIdTable: {}
+>>>>>>> JopaLien
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

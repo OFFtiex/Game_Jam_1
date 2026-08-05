@@ -29,7 +29,6 @@ public class Player : MonoBehaviour
     public GameObject BB;
 
     [Header("Player_characteristics")]
-<<<<<<< HEAD
 
 
     public int Is_Baby = 0; // <------|
@@ -39,11 +38,8 @@ public class Player : MonoBehaviour
     public AgeState CurrentAge;
 
 
-    
-
-=======
     public AgeState CurrentAge;
->>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+
     private bool Pull_or_not = false;
 
 
@@ -82,11 +78,7 @@ public class Player : MonoBehaviour
         }
 
 
-<<<<<<< HEAD
-        
-        
-=======
->>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+
         if (Is_near_to_Box  && CurrentAge == AgeState.MidAge) 
         {
             Is_Carrying(); // checks if the player pressed the button to enter "Drag Mode"
@@ -112,14 +104,7 @@ public class Player : MonoBehaviour
                         BB.transform.position = new Vector2(Box_Check.transform.position.x - 1.5f, Box_Check.transform.position.y);
                     }
                 }
-                //if (move_Input > 0)
-                //{
-                //    BB.transform.position = new Vector2(Box_Check.transform.position.x - 1.5f, Box_Check.transform.position.y);
-                //}
-                //else if (move_Input < 0)
-                //{
-                //    BB.transform.position = new Vector2(Box_Check.transform.position.x + 1.5f, Box_Check.transform.position.y);
-                //}
+                
             }
             
             
@@ -138,10 +123,12 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab) && Pull_or_not == false && Is_near_to_Box) // if you are close to the box and pressed Tab "Pull_or_not" activates and you can move an object
         {
             Pull_or_not = true;
+            
         }
         else if (Input.GetKeyDown(KeyCode.Tab) && Pull_or_not == true && Is_near_to_Box) // press Tab next to the Box to exit "Drag Mode" and stop moving the object
         {
             Pull_or_not = false;
+            
         }
     }
     void FixedUpdate()
@@ -158,14 +145,24 @@ public class Player : MonoBehaviour
 
 
 
-    private void OnCollisionEnter2D(Collision2D collision) // changes current "Main" box
+    private void OnTriggerEnter2D(Collider2D collision) // changes current "Main" box
     {
         if (collision.gameObject.tag == "Box")
         {
-            BB = collision.gameObject;
+            BB = collision.gameObject.transform.parent.gameObject;
         }
+        
 
 
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Damage_Pike")
+        {
+
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Game_Jam_");
+
+        }
     }
 
 

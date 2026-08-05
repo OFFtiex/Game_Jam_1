@@ -39,6 +39,7 @@ TextureImporter:
     serializedVersion: 2
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     filterMode: 0
 =======
     filterMode: 1
@@ -46,6 +47,9 @@ TextureImporter:
 =======
     filterMode: 1
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+=======
+    filterMode: 0
+>>>>>>> JopaLien
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -56,6 +60,7 @@ TextureImporter:
   compressionQuality: 50
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   spriteMode: 1
 =======
   spriteMode: 2
@@ -63,10 +68,14 @@ TextureImporter:
 =======
   spriteMode: 2
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+=======
+  spriteMode: 1
+>>>>>>> JopaLien
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   spritePixelsToUnits: 16
@@ -76,6 +85,9 @@ TextureImporter:
 =======
   spritePixelsToUnits: 100
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+=======
+  spritePixelsToUnits: 16
+>>>>>>> JopaLien
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -164,6 +176,7 @@ TextureImporter:
     bones: []
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     spriteID: 5e97eb03825dee720800000000000000
 =======
     spriteID: 
@@ -171,6 +184,9 @@ TextureImporter:
 =======
     spriteID: 
 >>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+=======
+    spriteID: 5e97eb03825dee720800000000000000
+>>>>>>> JopaLien
     internalID: 0
     vertices: []
     indices: 
