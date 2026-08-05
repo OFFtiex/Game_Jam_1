@@ -31,12 +31,7 @@ public class PhysicalButtons : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-
-    private void OnTriggerEnter2D(Collider2D collision)
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
+   
 
     private void OnCollisionEnter2D(Collision2D collision)
 
@@ -45,12 +40,7 @@ public class PhysicalButtons : MonoBehaviour
     }
 
 
-    private void OnCollisionExit2D(Collision2D collision)
-
-    private void OnTriggerExit2D(Collider2D collision)
-
-
-    private void OnTriggerExit2D(Collider2D collision)
+    
 
     private void OnCollisionExit2D(Collision2D collision)
 

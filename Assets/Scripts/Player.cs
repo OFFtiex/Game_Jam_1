@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     public AgeState CurrentAge;
 
 
-    public AgeState CurrentAge;
+   
 
     private bool Pull_or_not = false;
 
