@@ -1,7 +1,25 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD
 guid: 76c125c2f168d354dbc3bb1ce93e5863
 TextureImporter:
   internalIDToNameTable: []
+<<<<<<< HEAD
+=======
+=======
+=======
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+guid: 75ebce885c140f64fb96e0bdcbe1c172
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7157541075839837105
+    second: "\u0412\u0437\u0440\u043E\u0441\u043B\u044B\u0439_0"
+<<<<<<< HEAD
+>>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
+=======
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -34,21 +52,49 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD
     filterMode: 0
+=======
+    filterMode: 1
+>>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
+=======
+    filterMode: 1
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
     aniso: 1
     mipBias: 0
     wrapU: 1
     wrapV: 1
+<<<<<<< HEAD
     wrapW: 0
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    wrapW: 0
+=======
+    wrapW: 1
+>>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
+=======
+    wrapW: 1
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
+<<<<<<< HEAD
   spritePixelsToUnits: 16
+=======
+  spritePixelsToUnits: 100
+>>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
+=======
+  spritePixelsToUnits: 100
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -63,16 +109,46 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
+<<<<<<< HEAD
   applyGammaDecoding: 1
   swizzle: 50462976
   cookieLightType: 2
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 2
+=======
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+>>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
+=======
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
+<<<<<<< HEAD
     textureCompression: 0
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    textureCompression: 0
+=======
+    textureCompression: 1
+>>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
+=======
+    textureCompression: 1
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -85,7 +161,19 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
+<<<<<<< HEAD
     textureCompression: 0
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    textureCompression: 0
+=======
+    textureCompression: 1
+>>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
+=======
+    textureCompression: 1
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -98,7 +186,19 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
+<<<<<<< HEAD
     textureCompression: 0
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    textureCompression: 0
+=======
+    textureCompression: 1
+>>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
+=======
+    textureCompression: 1
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -108,12 +208,48 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
+<<<<<<< HEAD
     sprites: []
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    sprites: []
+=======
+=======
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+    sprites:
+    - serializedVersion: 2
+      name: "\u0412\u0437\u0440\u043E\u0441\u043B\u044B\u0439_0"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b363baafa1b45360800000000000000
+      internalID: 7157541075839837105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+<<<<<<< HEAD
+>>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
+=======
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -122,7 +258,21 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
+<<<<<<< HEAD
     nameFileIdTable: {}
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    nameFileIdTable: {}
+=======
+    nameFileIdTable:
+      "\u0412\u0437\u0440\u043E\u0441\u043B\u044B\u0439_0": 7157541075839837105
+>>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
+=======
+    nameFileIdTable:
+      "\u0412\u0437\u0440\u043E\u0441\u043B\u044B\u0439_0": 7157541075839837105
+>>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
+>>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
