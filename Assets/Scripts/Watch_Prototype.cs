@@ -9,26 +9,58 @@ using UnityEngine;
 
 
 
-public class Boost_for_Boxes : MonoBehaviour
+public class AgingWatch : MonoBehaviour
 {
+    // You touch the clock and you become older
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.CompareTag("Player"))
         {
-            // You pick up the watch and get older so You become stronger
             Player player = collision.gameObject.GetComponent<Player>();
-            player.Player_body.mass = 1000f;
+            if (player == null) return;
 
-            player.CurrentAge = AgeState.Baby;
+            if (player.CurrentAge == AgeState.Baby)
+            {
+                player.CurrentAge = AgeState.MidAge;
+            }
+            else if (player.CurrentAge == AgeState.MidAge)
+            {
+                player.CurrentAge = AgeState.Ded;
+            }
+            else if (player.CurrentAge == AgeState.Ded)
+            {
+                player.Kill("Senescence");
+            }
+            //player.Player_model.color = new Color(Color.red.r, Color.red.g, Color.red.b, player.Player_model.color.a);
+            player.Player_model.sprite = player.sp;
+            Destroy(gameObject);
+        }
+    }
+}
+public class RejuvenatingWatch : MonoBehaviour
+{
+    // You touch the clock and you become younger
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            Player player = collision.gameObject.GetComponent<Player>();
+            if (player == null) return;
 
-            player.CurrentAge = AgeState.MidAge;
+            if (player.CurrentAge == AgeState.Ded)
+            {
+                player.CurrentAge = AgeState.MidAge;
+            }
+            else if (player.CurrentAge == AgeState.MidAge)
+            {
+                player.CurrentAge = AgeState.Baby;
+            }
+            else if (player.CurrentAge == AgeState.Baby)
+            {
+                player.Kill("Chronological Regression");
+            }
 
-            player.CurrentAge = AgeState.MidAge;
-
-            player.CurrentAge = AgeState.Baby;
-
-            player.playerCollider.size = new Vector2(player.playerCollider.size.x , player.playerCollider.size.y  * 1.5f);
-            //player.Player_model.color = new Color(Color.red.r, Color.red.g, Color.red.g, player.Player_model.color.a);
+            //player.Player_model.color = new Color(Color.red.r, Color.red.g, Color.red.b, player.Player_model.color.a);
             player.Player_model.sprite = player.sp;
             Destroy(gameObject);
         }

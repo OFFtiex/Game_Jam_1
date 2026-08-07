@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
             Is_Carrying(); // checks if the player pressed the button to enter "Drag Mode"
             // "Drag Mode" is the status when you can move or pull an object
 
-            if (Box_Check.transform.position.y > BB.transform.position.y)   {  return;  }
+            if (Box_Check.transform.position.y > BB.transform.position.y)  return;
 
 
             if (Pull_or_not == true)
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
         }
         if (transform.position.y < -20) // If you are low enough, you "die"
         {
-            Kill("Fell out of bounds");
+            Kill("Fell Through the World");
         }
     }
 
@@ -143,7 +143,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Kill(string cause)
+    public void Kill(string cause = "Curiosity")
     {
         if (isDead) return;
 
