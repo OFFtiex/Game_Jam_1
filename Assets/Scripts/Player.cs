@@ -1,12 +1,8 @@
-using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine;
 
-public enum AgeState
-{
-    Baby,
-    MidAge,
-    Ded
-}
+public enum AgeState    {   Baby, MidAge, Ded   }
+
 public class Player : MonoBehaviour
 {
 
@@ -47,15 +43,9 @@ public class Player : MonoBehaviour
     public GameObject BB;
 
     [Header("Player_additional")]
-    //private AgeState Age { get; set; } = AgeState.Baby;
-
     public AgeState CurrentAge = AgeState.Baby;
-
-
-    private bool Pull_or_not = false;
-
     public BoxCollider2D playerCollider;
-
+    private bool Pull_or_not = false;
 
     void Start()
     {
@@ -66,27 +56,9 @@ public class Player : MonoBehaviour
         CurrentAge = AgeState.Baby;
 
 }
-
     
     void Update()
     {
-        // Moving
-        float targetInput = 0f;
-        if (Keyboard.current != null)
-        {
-            if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) targetInput = 1f;
-            else if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) targetInput = -1f;
-        }
-        smoothedInput = Mathf.MoveTowards(smoothedInput, targetInput, smoothing * Time.deltaTime);//Smoothing
-        Player_body.linearVelocity = new Vector2(maxSpeed * smoothedInput, Player_body.linearVelocity.y);
-
-        // Jumping
-        if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame){
-            Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
-        }
-
-
-
         if (Is_near_to_Box  && CurrentAge == AgeState.MidAge) 
         {
             Is_Carrying(); // checks if the player pressed the button to enter "Drag Mode"
@@ -114,12 +86,10 @@ public class Player : MonoBehaviour
                 }
             } 
         }
-
         if (transform.position.y < -20) // If you are low enough, you "die"
         {
             Debug.Log("Death");
         }
-        
     }
 
 
@@ -139,16 +109,22 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         Is_near_to_Box = Physics2D.OverlapCircle(Box_Check.position, Box_radius, Box_Layer);
+        // Moving
+        float targetInput = 0f;
+        if (Keyboard.current != null)
+        {
+            if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) targetInput = 1f;
+            else if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) targetInput = -1f;
+        }
+        smoothedInput = Mathf.MoveTowards(smoothedInput, targetInput, smoothing * Time.deltaTime);//Smoothing
+        Player_body.linearVelocity = new Vector2(maxSpeed * smoothedInput, Player_body.linearVelocity.y);
+
+        // Jumping
+        if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
+        }
     }
-
-
-
-
-
-
-
-
-
 
     private void OnTriggerEnter2D(Collider2D collision) // changes current "Main" box
     {
@@ -156,9 +132,6 @@ public class Player : MonoBehaviour
         {
             BB = collision.gameObject.transform.parent.gameObject;
         }
-        
-
-
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -166,9 +139,6 @@ public class Player : MonoBehaviour
         {
 
             UnityEngine.SceneManagement.SceneManager.LoadScene("Game_Jam_");
-
         }
     }
-
-
 }
