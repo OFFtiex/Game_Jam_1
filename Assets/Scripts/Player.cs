@@ -13,21 +13,21 @@ public class Player : MonoBehaviour
         AgeState.Baby => 3.0f,
         AgeState.MidAge => 5.0f,
         AgeState.Ded => 1.5f,
-        _ => 5.0f
+        _ => 3.0f
     };
     public float jumpForce => CurrentAge switch
     {
         AgeState.Baby => 2f,
         AgeState.MidAge => 3.5f,
         AgeState.Ded => 0.3f,
-        _ => 5.0f
+        _ => 2.0f
     };
     public float smoothing => CurrentAge switch
     {
         AgeState.Baby => 2.0f,
         AgeState.MidAge => 10.0f,
         AgeState.Ded => 4f,
-        _ => 5.0f
+        _ => 2.0f
     };
     private float smoothedInput;
 
@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
     public AgeState CurrentAge = AgeState.Baby;
     public BoxCollider2D playerCollider;
     private bool Pull_or_not = false;
+    bool isDead = false;
 
     void Start()
     {
@@ -56,7 +57,7 @@ public class Player : MonoBehaviour
         CurrentAge = AgeState.Baby;
 
 }
-    
+    //                                              Unity functions
     void Update()
     {
         if (Is_near_to_Box  && CurrentAge == AgeState.MidAge) 
@@ -88,24 +89,10 @@ public class Player : MonoBehaviour
         }
         if (transform.position.y < -20) // If you are low enough, you "die"
         {
-            Debug.Log("Death");
+            Kill("Fell out of bounds");
         }
     }
 
-
-    private void Is_Carrying()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab) && Pull_or_not == false && Is_near_to_Box) // if you are close to the box and pressed Tab "Pull_or_not" activates and you can move an object
-        {
-            Pull_or_not = true;
-            
-        }
-        else if (Input.GetKeyDown(KeyCode.Tab) && Pull_or_not == true && Is_near_to_Box) // press Tab next to the Box to exit "Drag Mode" and stop moving the object
-        {
-            Pull_or_not = false;
-            
-        }
-    }
     void FixedUpdate()
     {
         Is_near_to_Box = Physics2D.OverlapCircle(Box_Check.position, Box_radius, Box_Layer);
@@ -125,7 +112,6 @@ public class Player : MonoBehaviour
             Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
         }
     }
-
     private void OnTriggerEnter2D(Collider2D collision) // changes current "Main" box
     {
         if (collision.gameObject.tag == "Box")
@@ -137,8 +123,37 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Damage_Pike")
         {
-
             UnityEngine.SceneManagement.SceneManager.LoadScene("Game_Jam_");
         }
+    }
+
+    //                                              Custom functions
+
+    private void Is_Carrying()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab) && Pull_or_not == false && Is_near_to_Box) // if you are close to the box and pressed Tab "Pull_or_not" activates and you can move an object
+        {
+            Pull_or_not = true;
+            
+        }
+        else if (Input.GetKeyDown(KeyCode.Tab) && Pull_or_not == true && Is_near_to_Box) // press Tab next to the Box to exit "Drag Mode" and stop moving the object
+        {
+            Pull_or_not = false;
+            
+        }
+    }
+
+    public void Kill(string cause)
+    {
+        if (isDead) return;
+
+        Debug.Log($"Entity was killed by: {cause}");
+        Die();
+    }
+
+    private void Die()
+    {
+        isDead = true;
+        // Coming Soon: анимация, выключение управления, респавн, ......
     }
 }
