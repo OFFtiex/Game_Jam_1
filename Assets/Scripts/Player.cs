@@ -12,10 +12,28 @@ public class Player : MonoBehaviour
 
     [Header("Player_Movement")]
     public Rigidbody2D Player_body;
-    public float Move_Speed = 3f;
-    public float jumpForce = 5f;
-    public float smoothing = 10f;
-    private float move_Input;
+    public float maxSpeed => CurrentAge switch
+    {
+        AgeState.Baby => 3.0f,
+        AgeState.MidAge => 5.0f,
+        AgeState.Ded => 1.5f,
+        _ => 5.0f
+    };
+    public float jumpForce => CurrentAge switch
+    {
+        AgeState.Baby => 2f,
+        AgeState.MidAge => 3.5f,
+        AgeState.Ded => 0.3f,
+        _ => 5.0f
+    };
+    public float smoothing => CurrentAge switch
+    {
+        AgeState.Baby => 2.0f,
+        AgeState.MidAge => 10.0f,
+        AgeState.Ded => 4f,
+        _ => 5.0f
+    };
+    private float smoothedInput;
 
     [Header ("Sprite_Render")]
     public SpriteRenderer Player_model;
@@ -28,31 +46,21 @@ public class Player : MonoBehaviour
     public Transform Box_Check;
     public GameObject BB;
 
-    [Header("Player_characteristics")]
+    [Header("Player_additional")]
+    //private AgeState Age { get; set; } = AgeState.Baby;
 
+    public AgeState CurrentAge = AgeState.Baby;
 
-    public int Is_Baby = 0; // <------|
-    public bool Is_Mid_Age = false; // <--|---Player's age
-    public bool Is_Ded = false; // <------|
-
-    public AgeState CurrentAge;
-
-
-   
 
     private bool Pull_or_not = false;
 
-
-
-
-
-    public BoxCollider2D collider;
+    public BoxCollider2D playerCollider;
 
 
     void Start()
     {
         Player_body = GetComponent<Rigidbody2D>();
-        collider = GetComponent<BoxCollider2D>();
+        playerCollider = GetComponent<BoxCollider2D>();
         Player_model = GetComponent<SpriteRenderer>();
         BB = GameObject.FindWithTag("Box");
         CurrentAge = AgeState.Baby;
@@ -69,8 +77,8 @@ public class Player : MonoBehaviour
             if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) targetInput = 1f;
             else if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) targetInput = -1f;
         }
-        move_Input = Mathf.MoveTowards(move_Input, targetInput, smoothing * Time.deltaTime);//Smoothing
-        Player_body.linearVelocity = new Vector2(Move_Speed * move_Input, Player_body.linearVelocity.y);
+        smoothedInput = Mathf.MoveTowards(smoothedInput, targetInput, smoothing * Time.deltaTime);//Smoothing
+        Player_body.linearVelocity = new Vector2(maxSpeed * smoothedInput, Player_body.linearVelocity.y);
 
         // Jumping
         if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame){
@@ -92,22 +100,19 @@ public class Player : MonoBehaviour
                 if (Box_Check.transform.position.x < BB.transform.position.x)
                 {
 
-                    if (move_Input < 0)
+                    if (smoothedInput < 0)
                     {
                         BB.transform.position = new Vector2(Box_Check.transform.position.x + 1.5f, Box_Check.transform.position.y);
                     }
                 }
                 else if (Box_Check.transform.position.x > BB.transform.position.x)
                 {
-                    if (move_Input > 0)
+                    if (smoothedInput > 0)
                     {
                         BB.transform.position = new Vector2(Box_Check.transform.position.x - 1.5f, Box_Check.transform.position.y);
                     }
                 }
-                
-            }
-            
-            
+            } 
         }
 
         if (transform.position.y < -20) // If you are low enough, you "die"

@@ -27,7 +27,7 @@ public class Boost_for_Boxes : MonoBehaviour
 
             player.CurrentAge = AgeState.Baby;
 
-            player.collider.size = new Vector2(player.collider.size.x , player.collider.size.y  * 1.5f);
+            player.playerCollider.size = new Vector2(player.playerCollider.size.x , player.playerCollider.size.y  * 1.5f);
             //player.Player_model.color = new Color(Color.red.r, Color.red.g, Color.red.g, player.Player_model.color.a);
             player.Player_model.sprite = player.sp;
             Destroy(gameObject);
