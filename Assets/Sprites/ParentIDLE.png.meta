@@ -1,21 +1,7 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-<<<<<<< HEAD
 guid: 5ec3fe1a6fb4ca841b0d4e4f34dcfb12
-=======
-guid: 7e120e138f0374b40890fca846efb94d
->>>>>>> JopaLien
-=======
-guid: 7e120e138f0374b40890fca846efb94d
-=======
-guid: 5ec3fe1a6fb4ca841b0d4e4f34dcfb12
->>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
->>>>>>> JopaLien
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -6042266788136427508
-    second: ParentIDLE_0
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,54 +34,21 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-<<<<<<< HEAD
-<<<<<<< HEAD
-    filterMode: 1
-=======
     filterMode: 0
->>>>>>> JopaLien
-=======
-    filterMode: 0
-=======
-    filterMode: 1
->>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
->>>>>>> JopaLien
     aniso: 1
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-<<<<<<< HEAD
-<<<<<<< HEAD
-  spriteMode: 2
-=======
   spriteMode: 1
->>>>>>> JopaLien
-=======
-  spriteMode: 1
-=======
-  spriteMode: 2
->>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
->>>>>>> JopaLien
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
-<<<<<<< HEAD
-  spritePixelsToUnits: 100
-=======
   spritePixelsToUnits: 16
->>>>>>> JopaLien
-=======
-  spritePixelsToUnits: 16
-=======
-  spritePixelsToUnits: 100
->>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
->>>>>>> JopaLien
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,23 +63,16 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 0
+  applyGammaDecoding: 1
   swizzle: 50462976
-  cookieLightType: 0
+  cookieLightType: 2
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-<<<<<<< HEAD
-<<<<<<< HEAD
-    textureCompression: 1
-=======
-=======
->>>>>>> JopaLien
     textureCompression: 0
->>>>>>> JopaLien
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -139,12 +85,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
->>>>>>> JopaLien
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -152,22 +93,12 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< HEAD
-=======
   - serializedVersion: 4
-<<<<<<< HEAD
     buildTarget: WebGL
-=======
-<<<<<<< HEAD
-    buildTarget: WebGL
-=======
-    buildTarget: Standalone
->>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
->>>>>>> JopaLien
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -175,48 +106,14 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
->>>>>>> JopaLien
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: ParentIDLE_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 16
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c00ecf69e5e852ca0800000000000000
-      internalID: -6042266788136427508
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-<<<<<<< HEAD
-<<<<<<< HEAD
-    spriteID: 
-=======
     spriteID: 5e97eb03825dee720800000000000000
->>>>>>> JopaLien
-=======
-    spriteID: 5e97eb03825dee720800000000000000
-=======
-    spriteID: 
->>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
->>>>>>> JopaLien
     internalID: 0
     vertices: []
     indices: 
@@ -225,8 +122,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      ParentIDLE_0: -6042266788136427508
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

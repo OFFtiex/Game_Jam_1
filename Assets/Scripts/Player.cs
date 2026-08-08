@@ -28,9 +28,17 @@ public class Player : MonoBehaviour
     public Transform Box_Check;
     public GameObject BB;
 
+    [Header("Ground")]
+    public float Ground_radius = 0.2f;
+    public LayerMask Ground_Layer;
+    public bool Is_Grounded;
+    public Transform Ground_Check;
+
+
     [Header("Player_characteristics")]
-
-
+    private Animator animator;
+    public int ExtraJumpValue = 1;
+    public int ExtraJump;
     public int Is_Baby = 0; // <------|
     public bool Is_Mid_Age = false; // <--|---Player's age
     public bool Is_Ded = false; // <------|
@@ -38,24 +46,29 @@ public class Player : MonoBehaviour
     public AgeState CurrentAge;
 
 
-   
-
-    private bool Pull_or_not = false;
+    [SerializeField] private ParticleSystem walking_particles;
+    private ParticleSystem walking_particles_Instance;
+    public bool Pull_or_not = false;
 
 
 
 
 
     public BoxCollider2D collider;
+    public Vector2 original_Collider_Offset;
+
 
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         Player_body = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
         Player_model = GetComponent<SpriteRenderer>();
+        ExtraJump = ExtraJumpValue;
         BB = GameObject.FindWithTag("Box");
         CurrentAge = AgeState.Baby;
+        original_Collider_Offset = collider.offset;
 
 }
 
@@ -66,40 +79,73 @@ public class Player : MonoBehaviour
         float targetInput = 0f;
         if (Keyboard.current != null)
         {
-            if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) targetInput = 1f;
-            else if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) targetInput = -1f;
+            if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
+            {
+                targetInput = 1f;
+                //Spawn_Particles();
+            }
+            else if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
+            {
+                targetInput = -1f;
+                //Spawn_Particles();
+            }
         }
         move_Input = Mathf.MoveTowards(move_Input, targetInput, smoothing * Time.deltaTime);//Smoothing
         Player_body.linearVelocity = new Vector2(Move_Speed * move_Input, Player_body.linearVelocity.y);
 
         // Jumping
-        if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame){
-            Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
+        if (Is_Grounded)
+        {
+            ExtraJump = ExtraJumpValue;
+            if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+            {
+                Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
+            }
         }
+        if ((ExtraJump != 0) && (Is_Grounded == false))
+        {
+            if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+            {
+                Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
+                ExtraJump -= 1;
+            }
+        }
+        SetAnimation(targetInput);
 
+
+        // Fliping the sprite
+        if (targetInput < 0f)
+        {
+            Player_model.flipX = true;
+        }
+        else
+        {
+            Player_model.flipX = false;
+        }
 
 
         if (Is_near_to_Box  && CurrentAge == AgeState.MidAge) 
         {
-            Is_Carrying(); // checks if the player pressed the button to enter "Drag Mode"
+            //Is_Carrying(); // checks if the player pressed the button to enter "Drag Mode"
             // "Drag Mode" is the status when you can move or pull an object
 
-            if (Box_Check.transform.position.y > BB.transform.position.y)   {  return;  }
+            //if (Box_Check.transform.position.y > BB.transform.position.y) { return; }
 
 
-            if (Pull_or_not == true)
+            if ((Keyboard.current.eKey.isPressed))
             {
+                
                 if (Box_Check.transform.position.x < BB.transform.position.x)
                 {
 
-                    if (move_Input < 0)
+                    if (targetInput < 0)
                     {
                         BB.transform.position = new Vector2(Box_Check.transform.position.x + 1.5f, Box_Check.transform.position.y);
                     }
                 }
                 else if (Box_Check.transform.position.x > BB.transform.position.x)
                 {
-                    if (move_Input > 0)
+                    if (targetInput > 0)
                     {
                         BB.transform.position = new Vector2(Box_Check.transform.position.x - 1.5f, Box_Check.transform.position.y);
                     }
@@ -118,25 +164,67 @@ public class Player : MonoBehaviour
     }
 
 
-    private void Is_Carrying()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab) && Pull_or_not == false && Is_near_to_Box) // if you are close to the box and pressed Tab "Pull_or_not" activates and you can move an object
-        {
-            Pull_or_not = true;
-            
-        }
-        else if (Input.GetKeyDown(KeyCode.Tab) && Pull_or_not == true && Is_near_to_Box) // press Tab next to the Box to exit "Drag Mode" and stop moving the object
-        {
-            Pull_or_not = false;
-            
-        }
-    }
+
     void FixedUpdate()
     {
         Is_near_to_Box = Physics2D.OverlapCircle(Box_Check.position, Box_radius, Box_Layer);
+        Is_Grounded = Physics2D.OverlapCircle(Ground_Check.position, Ground_radius, Ground_Layer);
     }
 
-
+    private void SetAnimation(float targetInput)
+    {
+        if (Is_Grounded)
+        {
+            if (targetInput == 0)
+            {
+                if (CurrentAge == AgeState.Baby)
+                {
+                    animator.Play("Kid_Idle0_Animation");
+                }
+                else if (CurrentAge == AgeState.MidAge)
+                {
+                    animator.Play("Parent_Idle0_Animation");
+                }
+                
+            }
+            else
+            {
+                if (CurrentAge == AgeState.Baby)
+                {
+                    animator.Play("Kid_Run_Animation");
+                }
+                else if (CurrentAge == AgeState.MidAge)
+                {
+                    animator.Play("Parent_Run_Animation");
+                }
+            }
+        }
+        else 
+        {
+            if (Player_body.linearVelocityY > 0)
+            {
+                if (CurrentAge == AgeState.Baby)
+                {
+                    animator.Play("Kid_Jump_Animation");
+                }
+                else if (CurrentAge == AgeState.MidAge)
+                {
+                    animator.Play("Parent_Jump_Animation");
+                }
+            }
+            else 
+            {
+                if (CurrentAge == AgeState.Baby)
+                {
+                    animator.Play("Kid_Fall_Animation");
+                }
+                else if (CurrentAge == AgeState.MidAge)
+                {
+                    animator.Play("Parent_Fall_Animation");
+                }
+            }
+        }
+    }
 
 
 
@@ -164,6 +252,9 @@ public class Player : MonoBehaviour
 
         }
     }
-
+    private void Spawn_Particles()
+    {
+        walking_particles_Instance = Instantiate(walking_particles, transform.position, Quaternion.identity);
+    }
 
 }
