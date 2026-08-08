@@ -1,5 +1,6 @@
-using UnityEngine.InputSystem;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public enum AgeState    {   Baby, MidAge, Ded   }
 
@@ -112,7 +113,7 @@ public class Player : MonoBehaviour
         }
 
 
-        if (Is_near_to_Box  && CurrentAge == AgeState.MidAge) 
+        if (Is_near_to_Box  && CurrentAge == AgeState.MidAge && BB != null && Box_Check != null) 
         {
             //Is_Carrying(); // checks if the player pressed the button to enter "Drag Mode"
             // "Drag Mode" is the status when you can move or pull an object
@@ -120,7 +121,7 @@ public class Player : MonoBehaviour
             //if (Box_Check.transform.position.y > BB.transform.position.y) { return; }
 
 
-            if ((Keyboard.current.eKey.isPressed))
+            if ((Keyboard.current != null && Keyboard.current.eKey.isPressed))
             {
                 
                 if (Box_Check.transform.position.x < BB.transform.position.x)
@@ -140,7 +141,7 @@ public class Player : MonoBehaviour
                 }
             } 
         }
-        if (transform.position.y < -20) // If you are low enough, you "die"
+        if (transform.position.y < -20)
         {
             Kill("Fell Through the World");
         }
@@ -148,7 +149,9 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        Is_Grounded = Physics2D.OverlapCircle(Ground_Check.position, Ground_radius, Ground_Layer);
         Is_near_to_Box = Physics2D.OverlapCircle(Box_Check.position, Box_radius, Box_Layer);
+
         // Moving
         targetInput = 0f;
         if (Keyboard.current != null)
@@ -157,7 +160,7 @@ public class Player : MonoBehaviour
             else if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)    targetInput = -1f;  //Spawn_Particles();
         }
         SetAnimation(targetInput);
-        smoothedInput = Mathf.MoveTowards(smoothedInput, targetInput, smoothing * Time.deltaTime);//Smoothing
+        smoothedInput = Mathf.MoveTowards(smoothedInput, targetInput, smoothing * Time.deltaTime);
         Player_body.linearVelocity = new Vector2(maxSpeed * smoothedInput, Player_body.linearVelocity.y);
 
         // Jumping
@@ -177,8 +180,6 @@ public class Player : MonoBehaviour
                 ExtraJump -= 1;
             }
         }
-        Is_near_to_Box = Physics2D.OverlapCircle(Box_Check.position, Box_radius, Box_Layer);
-        Is_Grounded = Physics2D.OverlapCircle(Ground_Check.position, Ground_radius, Ground_Layer);
     }
 
     private void OnTriggerEnter2D(Collider2D other) // changes current "Main" box
@@ -190,65 +191,22 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Damage_Pike"))
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Game_Jam_");
-        }
+        if (collision.gameObject.CompareTag("Damage_Pike"))     LoadScene("Game_Jam_");
     }
 
     private void SetAnimation(float targetInput)
     {
-        if (Is_Grounded)
+        string age = CurrentAge == AgeState.Baby ? "Kid" : "Parent";
+
+        string animName = (Is_Grounded, targetInput == 0, Player_body.linearVelocityY > 0) switch
         {
-            if (targetInput == 0)
-            {
-                if (CurrentAge == AgeState.Baby)
-                {
-                    animator.Play("Kid_Idle0_Animation");
-                }
-                else if (CurrentAge == AgeState.MidAge)
-                {
-                    animator.Play("Parent_Idle0_Animation");
-                }
-                
-            }
-            else
-            {
-                if (CurrentAge == AgeState.Baby)
-                {
-                    animator.Play("Kid_Run_Animation");
-                }
-                else if (CurrentAge == AgeState.MidAge)
-                {
-                    animator.Play("Parent_Run_Animation");
-                }
-            }
-        }
-        else 
-        {
-            if (Player_body.linearVelocityY > 0)
-            {
-                if (CurrentAge == AgeState.Baby)
-                {
-                    animator.Play("Kid_Jump_Animation");
-                }
-                else if (CurrentAge == AgeState.MidAge)
-                {
-                    animator.Play("Parent_Jump_Animation");
-                }
-            }
-            else 
-            {
-                if (CurrentAge == AgeState.Baby)
-                {
-                    animator.Play("Kid_Fall_Animation");
-                }
-                else if (CurrentAge == AgeState.MidAge)
-                {
-                    animator.Play("Parent_Fall_Animation");
-                }
-            }
-        }
+            (true, true, _)   => $"{age}_Idle0_Animation",
+            (false, _, true)  => $"{age}_Jump_Animation",
+            (true, false, _)  => $"{age}_Run_Animation",
+            (false, _, false) => $"{age}_Fall_Animation"
+        };
+
+        animator.Play(animName);
     }
 
     //                                              Custom functions
@@ -295,5 +253,16 @@ public class Player : MonoBehaviour
     {
         isDead = true;
         // Coming Soon: анимация, выключение управления, респавн, ......
+    }
+    public void LoadScene(string sceneName)
+    {
+        if (Application.CanStreamedLevelBeLoaded(sceneName))
+        {
+            SceneManager.LoadScene(sceneName);
+        }
+        else
+        {
+            Debug.LogError($"Error: Scene '{sceneName}' isn't found! Add it to Build Settings..");
+        }
     }
 }
