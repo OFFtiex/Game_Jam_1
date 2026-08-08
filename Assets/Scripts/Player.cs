@@ -34,7 +34,9 @@ public class Player : MonoBehaviour
 
     [Header ("Sprite_Render")]
     public SpriteRenderer Player_model;
-    public Sprite sp; // current sprite (can change between Baby, Mid_Age and Ded sprites )
+    public Sprite babySprite;
+    public Sprite midAgeSprite;
+    public Sprite dedSprite;
 
     [Header("Box")]
     private bool Pull_or_not = false;
@@ -71,6 +73,7 @@ public class Player : MonoBehaviour
             if (ageState == value) return;
             ageState = value;
             UpdateColliderParameters();
+            UpdatePlayerVisual();
         }
     }
     private bool isDead = false;
@@ -112,18 +115,10 @@ public class Player : MonoBehaviour
             Player_model.flipX = false;
         }
 
-
         if (Is_near_to_Box  && CurrentAge == AgeState.MidAge && BB != null && Box_Check != null) 
         {
-            //Is_Carrying(); // checks if the player pressed the button to enter "Drag Mode"
-            // "Drag Mode" is the status when you can move or pull an object
-
-            //if (Box_Check.transform.position.y > BB.transform.position.y) { return; }
-
-
             if ((Keyboard.current != null && Keyboard.current.eKey.isPressed))
             {
-                
                 if (Box_Check.transform.position.x < BB.transform.position.x)
                 {
 
@@ -264,5 +259,16 @@ public class Player : MonoBehaviour
         {
             Debug.LogError($"Error: Scene '{sceneName}' isn't found! Add it to Build Settings..");
         }
+    }
+    private void UpdatePlayerVisual()
+    {
+        
+        Player_model.sprite = ageState switch
+        {
+            AgeState.Baby => babySprite,
+            AgeState.MidAge => midAgeSprite,
+            AgeState.Ded => dedSprite,
+            _ => Player_model.sprite
+        };
     }
 }
