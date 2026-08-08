@@ -3,12 +3,7 @@ using UnityEngine;
 public class PhysicalButtons : MonoBehaviour
 {
 
-    //public GameObject[] dependentObjects;//потом сделать обращения
-
-    
-
-    //public GameObject[] dependentObjects;//потом сделать обращения
-
+    //public GameObject[] dependentObjects;//last
 
     [Header("Sprite_Render")]
     private SpriteRenderer visibleSprite;
@@ -17,13 +12,6 @@ public class PhysicalButtons : MonoBehaviour
 
     private void Start()
     {
-
-        // Если поле пустое, скрипт сам найдет SpriteRenderer на этом объекте
-
-
-        // Если поле пустое, скрипт сам найдет SpriteRenderer на этом объекте
-
-
         if (visibleSprite == null)
         {
             visibleSprite = GetComponent<SpriteRenderer>();
@@ -31,16 +19,11 @@ public class PhysicalButtons : MonoBehaviour
         }
     }
 
-   
-
     private void OnCollisionEnter2D(Collision2D collision)
 
     {
         visibleSprite.sprite = pressed;
     }
-
-
-    
 
     private void OnCollisionExit2D(Collision2D collision)
 
