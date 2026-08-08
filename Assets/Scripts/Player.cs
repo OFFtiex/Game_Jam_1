@@ -5,7 +5,6 @@ public enum AgeState    {   Baby, MidAge, Ded   }
 
 public class Player : MonoBehaviour
 {
-
     [Header("Player_Movement")]
     public Rigidbody2D Player_body;
     public float maxSpeed => CurrentAge switch
@@ -43,24 +42,46 @@ public class Player : MonoBehaviour
     public GameObject BB;
 
     [Header("Player_additional")]
-    public AgeState CurrentAge = AgeState.Baby;
-    public BoxCollider2D playerCollider;
+    [SerializeField] private AgeState ageState;
+    public AgeState CurrentAge
+    {
+        get => ageState;
+        set
+        {
+            if (ageState == value) return;
+            ageState = value;
+            UpdateColliderParameters();
+        }
+    }
     private bool Pull_or_not = false;
-    bool isDead = false;
+    private bool isDead = false;
+
+    [Header("Colliders")]
+    public BoxCollider2D playerCollider => cachedCollider;
+    private BoxCollider2D cachedCollider;
+    private Vector2 babyOffset;
+    private Vector2 babySize;
+
+    //                                              Unity functions
 
     void Start()
     {
         Player_body = GetComponent<Rigidbody2D>();
-        playerCollider = GetComponent<BoxCollider2D>();
         Player_model = GetComponent<SpriteRenderer>();
         BB = GameObject.FindWithTag("Box");
-        CurrentAge = AgeState.Baby;
 
-}
-    //                                              Unity functions
+        cachedCollider = GetComponent<BoxCollider2D>();
+        if (cachedCollider != null)
+        {
+            babySize = cachedCollider.size;
+            babyOffset = cachedCollider.offset;
+
+            UpdateColliderParameters();
+        }
+    }
     void Update()
     {
-        if (Is_near_to_Box  && CurrentAge == AgeState.MidAge) 
+        if (Is_near_to_Box && CurrentAge == AgeState.MidAge && BB != null && Box_Check != null) 
         {
             Is_Carrying(); // checks if the player pressed the button to enter "Drag Mode"
             // "Drag Mode" is the status when you can move or pull an object
@@ -112,16 +133,16 @@ public class Player : MonoBehaviour
             Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision) // changes current "Main" box
+    private void OnTriggerEnter2D(Collider2D other) // changes current "Main" box
     {
-        if (collision.gameObject.tag == "Box")
+        if (other.CompareTag("Box"))
         {
-            BB = collision.gameObject.transform.parent.gameObject;
+            BB = other.transform.parent.gameObject;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Damage_Pike")
+        if (collision.gameObject.CompareTag("Damage_Pike"))
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("Game_Jam_");
         }
@@ -131,18 +152,42 @@ public class Player : MonoBehaviour
 
     private void Is_Carrying()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && Pull_or_not == false && Is_near_to_Box) // if you are close to the box and pressed Tab "Pull_or_not" activates and you can move an object
-        {
-            Pull_or_not = true;
-            
-        }
-        else if (Input.GetKeyDown(KeyCode.Tab) && Pull_or_not == true && Is_near_to_Box) // press Tab next to the Box to exit "Drag Mode" and stop moving the object
-        {
-            Pull_or_not = false;
-            
-        }
+        if (Keyboard.current != null){
+            if (Keyboard.current.tabKey.wasPressedThisFrame && Pull_or_not == false && Is_near_to_Box) // if you are close to the box and pressed Tab "Pull_or_not" activates and you can move an object
+            {
+                Pull_or_not = true;
+            }
+            else if (Keyboard.current.tabKey.wasPressedThisFrame && Pull_or_not == true && Is_near_to_Box) // press Tab next to the Box to exit "Drag Mode" and stop moving the object
+            {
+                Pull_or_not = false;
+            }
+        } 
     }
 
+    private void UpdateColliderParameters()
+    {
+        if (cachedCollider == null) return;
+
+        switch (ageState)
+        {
+            case AgeState.Baby:
+                cachedCollider.size = babySize;
+                cachedCollider.offset = babyOffset;
+                break;
+
+            case AgeState.MidAge:
+                float midHeight = babySize.y * 1.5f;
+                cachedCollider.size = new Vector2(babySize.x, midHeight);
+                cachedCollider.offset = new Vector2(babyOffset.x, babyOffset.y + (midHeight - babySize.y) / 2f);
+                break;
+
+            case AgeState.Ded:
+                float dedHeight = babySize.y * 1.2f;
+                cachedCollider.size = new Vector2(babySize.x, dedHeight);
+                cachedCollider.offset = new Vector2(babyOffset.x, babyOffset.y + (dedHeight - babySize.y) / 2f);
+                break;
+        }
+    }
     public void Kill(string cause = "Curiosity")
     {
         if (isDead) return;
