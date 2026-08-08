@@ -38,15 +38,17 @@ public class Player : MonoBehaviour
     public AgeState CurrentAge;
 
 
-    public AgeState CurrentAge;
+   
 
-    private bool Pull_or_not = false;
+    public bool Pull_or_not = false;
 
 
 
 
 
     public BoxCollider2D collider;
+    public Vector2 original_Collider_Offset;
+
 
 
     void Start()
@@ -56,6 +58,7 @@ public class Player : MonoBehaviour
         Player_model = GetComponent<SpriteRenderer>();
         BB = GameObject.FindWithTag("Box");
         CurrentAge = AgeState.Baby;
+        original_Collider_Offset = collider.offset;
 
 }
 
@@ -78,28 +81,39 @@ public class Player : MonoBehaviour
         }
 
 
+        // Fliping the sprite
+        if (targetInput < 0f)
+        {
+            Player_model.flipX = true;
+        }
+        else
+        {
+            Player_model.flipX = false;
+        }
+
 
         if (Is_near_to_Box  && CurrentAge == AgeState.MidAge) 
         {
-            Is_Carrying(); // checks if the player pressed the button to enter "Drag Mode"
+            //Is_Carrying(); // checks if the player pressed the button to enter "Drag Mode"
             // "Drag Mode" is the status when you can move or pull an object
 
-            if (Box_Check.transform.position.y > BB.transform.position.y)   {  return;  }
+            //if (Box_Check.transform.position.y > BB.transform.position.y) { return; }
 
 
-            if (Pull_or_not == true)
+            if ((Keyboard.current.eKey.isPressed))
             {
+                
                 if (Box_Check.transform.position.x < BB.transform.position.x)
                 {
 
-                    if (move_Input < 0)
+                    if (targetInput < 0)
                     {
                         BB.transform.position = new Vector2(Box_Check.transform.position.x + 1.5f, Box_Check.transform.position.y);
                     }
                 }
                 else if (Box_Check.transform.position.x > BB.transform.position.x)
                 {
-                    if (move_Input > 0)
+                    if (targetInput > 0)
                     {
                         BB.transform.position = new Vector2(Box_Check.transform.position.x - 1.5f, Box_Check.transform.position.y);
                     }
@@ -120,15 +134,18 @@ public class Player : MonoBehaviour
 
     private void Is_Carrying()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && Pull_or_not == false && Is_near_to_Box) // if you are close to the box and pressed Tab "Pull_or_not" activates and you can move an object
+        if ((Keyboard.current.eKey.isPressed) && Pull_or_not == false && Is_near_to_Box) // if you are close to the box and pressed Tab "Pull_or_not" activates and you can move an object
         {
             Pull_or_not = true;
             
+
+
         }
-        else if (Input.GetKeyDown(KeyCode.Tab) && Pull_or_not == true && Is_near_to_Box) // press Tab next to the Box to exit "Drag Mode" and stop moving the object
+        else if ((Keyboard.current.eKey.isPressed) && Pull_or_not == true && Is_near_to_Box) // press Tab next to the Box to exit "Drag Mode" and stop moving the object
         {
             Pull_or_not = false;
             
+
         }
     }
     void FixedUpdate()
