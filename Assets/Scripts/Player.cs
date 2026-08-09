@@ -39,7 +39,6 @@ public class Player : MonoBehaviour
     public Sprite dedSprite;
 
     [Header("Box")]
-    private bool Pull_or_not = false;
     public float Box_radius = 1f;
     public LayerMask Box_Layer;
     public bool Is_near_to_Box;
@@ -52,14 +51,11 @@ public class Player : MonoBehaviour
     public bool Is_Grounded;
     public Transform Ground_Check;
 
-
     [Header("Player_characteristics")]
     private Animator animator;
     public int ExtraJumpValue = 1;
     public int ExtraJump;
-
-    public BoxCollider2D collider;
-    public Vector2 original_Collider_Offset;
+    private bool isDead = false;
 
     [Header("Player_additional")]
     private ParticleSystem walking_particles_Instance;
@@ -76,7 +72,6 @@ public class Player : MonoBehaviour
             UpdatePlayerVisual();
         }
     }
-    private bool isDead = false;
 
     [Header("Colliders")]
     public BoxCollider2D playerCollider => cachedCollider;
@@ -85,6 +80,8 @@ public class Player : MonoBehaviour
     private Vector2 babySize;
 
     //                                              Unity functions
+
+    private void Awake() { Resume(); }
 
     void Start()
     {
@@ -136,10 +133,6 @@ public class Player : MonoBehaviour
                 }
             } 
         }
-        if (transform.position.y < -20)
-        {
-            Kill("Fell Through the World");
-        }
     }
 
     void FixedUpdate()
@@ -175,19 +168,27 @@ public class Player : MonoBehaviour
                 ExtraJump -= 1;
             }
         }
+        if (transform.position.y < -20)
+        {
+            Kill("Fell Through the World");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) // changes current "Main" box
     {
-        if (other.CompareTag("Box"))
+        if (other.CompareTag("Box") && other.transform.parent != null)
         {
             BB = other.transform.parent.gameObject;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Damage_Pike"))     LoadScene("Game_Jam_");
+        if (collision.gameObject.CompareTag("Damage_Pike"))         Kill("Was Pierced by Thorns");
     }
+
+
+    //                                              Custom functions
+
 
     private void SetAnimation(float targetInput)
     {
@@ -203,8 +204,6 @@ public class Player : MonoBehaviour
 
         animator.Play(animName);
     }
-
-    //                                              Custom functions
 
     private void UpdateColliderParameters() 
     {
@@ -247,18 +246,35 @@ public class Player : MonoBehaviour
     private void Die()
     {
         isDead = true;
-        // Coming Soon: анимация, выключение управления, респавн, ......
+        LoadScene("Game_Jam_");
+        // Coming Soon: death animation
     }
-    public void LoadScene(string sceneName)
+    public void LoadScene(string sceneName = null)
     {
-        if (Application.CanStreamedLevelBeLoaded(sceneName))
+        if (string.IsNullOrEmpty(sceneName))
         {
-            SceneManager.LoadScene(sceneName);
+            sceneName = SceneManager.GetActiveScene().name;
         }
-        else
+
+        if (!Application.CanStreamedLevelBeLoaded(sceneName))
         {
             Debug.LogError($"Error: Scene '{sceneName}' isn't found! Add it to Build Settings..");
+            return;
         }
+
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+        // Coming Soon: turn off sounds
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+        // Coming Soon: turn on sounds
     }
     private void UpdatePlayerVisual()
     {
