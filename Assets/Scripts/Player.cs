@@ -96,7 +96,7 @@ public class Player : MonoBehaviour
         {
             babySize = cachedCollider.size;
             babyOffset = cachedCollider.offset;
-
+    
             UpdateColliderParameters();
         }
     }
@@ -117,6 +117,7 @@ public class Player : MonoBehaviour
             Player_body.mass = 1000f;
             if ((Keyboard.current != null && Keyboard.current.eKey.isPressed))
             {
+                
                 if (Box_Check.transform.position.x < BB.transform.position.x)
                 {
 
