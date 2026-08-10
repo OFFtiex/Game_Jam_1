@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     };
     public float jumpForce => CurrentAge switch
     {
-        AgeState.Baby => 2f,
+        AgeState.Baby => 5f,
         AgeState.MidAge => 3.5f,
         AgeState.Ded => 0.3f,
         _ => 2.0f
@@ -56,6 +56,7 @@ public class Player : MonoBehaviour
     public int ExtraJumpValue = 1;
     public int ExtraJump;
     private bool isDead = false;
+    private bool isUmbrella = false;
 
     [Header("Player_additional")]
     private ParticleSystem walking_particles_Instance;
@@ -111,7 +112,36 @@ public class Player : MonoBehaviour
         {
             Player_model.flipX = false;
         }
-
+        if ((CurrentAge == AgeState.Ded))
+        {
+            if (Keyboard.current != null && Keyboard.current.tabKey.wasPressedThisFrame && isUmbrella == false)
+            {
+                Player_body.gravityScale = 0.1f;
+                isUmbrella = true;
+            }
+            else if ((Keyboard.current != null && Keyboard.current.tabKey.wasPressedThisFrame && isUmbrella == true))
+            {
+                Player_body.gravityScale = 1f;
+                isUmbrella = false;
+            }
+        }
+        if (Is_Grounded)
+        {
+            ExtraJump = ExtraJumpValue;
+            if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+            {
+                Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
+            }
+        }
+        if ((ExtraJump != 0) && (Is_Grounded == false))
+        {
+            Debug.Log("fff");
+            if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+            {
+                Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
+                ExtraJump -= 1;
+            }
+        }
         if (Is_near_to_Box  && CurrentAge == AgeState.MidAge) 
         {
             Player_body.mass = 1000f;
@@ -146,30 +176,48 @@ public class Player : MonoBehaviour
         targetInput = 0f;
         if (Keyboard.current != null)
         {
-            if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)        targetInput =  1f;  //Spawn_Particles();
-            else if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)    targetInput = -1f;  //Spawn_Particles();
+            if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
+
+            {
+                targetInput = 1f;
+                Spawn_Particles();
+            }
+            else if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
+            {
+                targetInput = -1f;  
+                Spawn_Particles();
+            } 
         }
         SetAnimation(targetInput);
         smoothedInput = Mathf.MoveTowards(smoothedInput, targetInput, smoothing * Time.deltaTime);
         Player_body.linearVelocity = new Vector2(maxSpeed * smoothedInput, Player_body.linearVelocity.y);
 
         // Jumping
-        if (Is_Grounded)
-        {
-            ExtraJump = ExtraJumpValue;
-            if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
-            {
-                Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
-            }
-        }
-        if ((ExtraJump != 0) && (Is_Grounded == false))
-        {
-            if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
-            {
-                Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
-                ExtraJump -= 1;
-            }
-        }
+        //if (Is_Grounded)
+        //{
+        //    ExtraJump = ExtraJumpValue;
+        //    if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+        //    {
+        //        Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
+        //    }
+        //}
+        //if ((ExtraJump != 0) && (Is_Grounded == false))
+        //{
+        //    Debug.Log("fff");
+        //    if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+        //    {
+        //        Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
+        //        ExtraJump -= 1;
+        //    }
+        //}
+
+        // Umbrella
+        
+        
+
+
+
+        
         if (transform.position.y < -20)
         {
             Kill("Fell Through the World");
@@ -234,7 +282,7 @@ public class Player : MonoBehaviour
 
     private void Spawn_Particles()
     {
-        walking_particles_Instance = Instantiate(walking_particles, transform.position, Quaternion.identity);
+        walking_particles_Instance = Instantiate(walking_particles, Ground_Check.transform.position, Quaternion.identity);
     }
 
     public void Kill(string cause = "Curiosity")
