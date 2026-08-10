@@ -2,14 +2,6 @@ using UnityEngine;
 
 public class PhysicalButtons : MonoBehaviour
 {
-
-    //public GameObject[] dependentObjects;//����� ������� ���������
-
-    
-
-    //public GameObject[] dependentObjects;//����� ������� ���������
-
-
     [Header("Sprite_Render")]
     private SpriteRenderer visibleSprite;
     public Sprite standard;
@@ -17,13 +9,6 @@ public class PhysicalButtons : MonoBehaviour
 
     private void Start()
     {
-
-        // ���� ���� ������, ������ ��� ������ SpriteRenderer �� ���� �������
-
-
-        // ���� ���� ������, ������ ��� ������ SpriteRenderer �� ���� �������
-
-
         if (visibleSprite == null)
         {
             visibleSprite = GetComponent<SpriteRenderer>();

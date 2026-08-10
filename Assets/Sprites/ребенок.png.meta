@@ -1,33 +1,7 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-<<<<<<< HEAD
 guid: 1b13264ac4b7c944a9f1b93a17b2d516
 TextureImporter:
   internalIDToNameTable: []
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> JopaLien
-=======
-=======
->>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
-guid: c0a5436a2ab96144fb1b9c7b1292078a
-TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 5570289243109271949
-    second: "\u0440\u0435\u0431\u0435\u043D\u043E\u043A_0"
-<<<<<<< HEAD
->>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
-=======
->>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
-<<<<<<< HEAD
-=======
->>>>>>> JopaLien
-=======
->>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
->>>>>>> JopaLien
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,62 +34,21 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-<<<<<<< HEAD
-<<<<<<< HEAD
     filterMode: 0
-=======
-    filterMode: 1
->>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
-=======
-    filterMode: 1
->>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
     aniso: 1
     mipBias: 0
     wrapU: 1
     wrapV: 1
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> JopaLien
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
->>>>>>> JopaLien
     wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
   spriteMode: 1
-=======
-=======
->>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
-    wrapW: 1
-  nPOTScale: 0
-  lightmap: 0
-  compressionQuality: 50
-  spriteMode: 2
-<<<<<<< HEAD
->>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
-=======
->>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
-<<<<<<< HEAD
   spritePixelsToUnits: 16
-=======
-  spritePixelsToUnits: 100
->>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
-=======
-  spritePixelsToUnits: 100
->>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -130,66 +63,16 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
   applyGammaDecoding: 1
   swizzle: 50462976
   cookieLightType: 2
-=======
->>>>>>> JopaLien
-<<<<<<< HEAD
-<<<<<<< HEAD
-  applyGammaDecoding: 1
-  swizzle: 50462976
-  cookieLightType: 2
-=======
-  applyGammaDecoding: 0
-  swizzle: 50462976
-  cookieLightType: 0
->>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
-=======
-  applyGammaDecoding: 0
-  swizzle: 50462976
-  cookieLightType: 0
->>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
-<<<<<<< HEAD
-=======
-  applyGammaDecoding: 1
-  swizzle: 50462976
-  cookieLightType: 2
->>>>>>> JopaLien
-=======
->>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
->>>>>>> JopaLien
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     textureCompression: 0
-=======
->>>>>>> JopaLien
-<<<<<<< HEAD
-<<<<<<< HEAD
-    textureCompression: 0
-=======
-    textureCompression: 1
->>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
-=======
-    textureCompression: 1
->>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
-<<<<<<< HEAD
-=======
-    textureCompression: 0
->>>>>>> JopaLien
-=======
->>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
->>>>>>> JopaLien
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -202,28 +85,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     textureCompression: 0
-=======
->>>>>>> JopaLien
-<<<<<<< HEAD
-<<<<<<< HEAD
-    textureCompression: 0
-=======
-    textureCompression: 1
->>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
-=======
-    textureCompression: 1
->>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
-<<<<<<< HEAD
-=======
-    textureCompression: 0
->>>>>>> JopaLien
-=======
->>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
->>>>>>> JopaLien
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -236,28 +98,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     textureCompression: 0
-=======
->>>>>>> JopaLien
-<<<<<<< HEAD
-<<<<<<< HEAD
-    textureCompression: 0
-=======
-    textureCompression: 1
->>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
-=======
-    textureCompression: 1
->>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
-<<<<<<< HEAD
-=======
-    textureCompression: 0
->>>>>>> JopaLien
-=======
->>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
->>>>>>> JopaLien
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -267,65 +108,12 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     sprites: []
-=======
->>>>>>> JopaLien
-<<<<<<< HEAD
-<<<<<<< HEAD
-    sprites: []
-=======
-=======
->>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
-    sprites:
-    - serializedVersion: 2
-      name: "\u0440\u0435\u0431\u0435\u043D\u043E\u043A_0"
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 14
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d8925bfcd84ad4d40800000000000000
-      internalID: 5570289243109271949
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-<<<<<<< HEAD
->>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
-=======
->>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
-<<<<<<< HEAD
-=======
-    sprites: []
->>>>>>> JopaLien
-=======
->>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
->>>>>>> JopaLien
     outline: []
     customData: 
     physicsShape: []
     bones: []
-<<<<<<< HEAD
-<<<<<<< HEAD
     spriteID: 5e97eb03825dee720800000000000000
-=======
-    spriteID: 
->>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
-=======
-    spriteID: 
->>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
     internalID: 0
     vertices: []
     indices: 
@@ -334,30 +122,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     nameFileIdTable: {}
-=======
->>>>>>> JopaLien
-<<<<<<< HEAD
-<<<<<<< HEAD
-    nameFileIdTable: {}
-=======
-    nameFileIdTable:
-      "\u0440\u0435\u0431\u0435\u043D\u043E\u043A_0": 5570289243109271949
->>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
-=======
-    nameFileIdTable:
-      "\u0440\u0435\u0431\u0435\u043D\u043E\u043A_0": 5570289243109271949
->>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
-<<<<<<< HEAD
-=======
-    nameFileIdTable: {}
->>>>>>> JopaLien
-=======
->>>>>>> 2d415ea64c6e6ff81ec9c6cc3e129016b8c609fa
->>>>>>> JopaLien
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

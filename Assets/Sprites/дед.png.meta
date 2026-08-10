@@ -1,17 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 guid: 0c7875721942b6548ab42991f5871be2
-=======
-guid: 2f6772d1674f66b458210cb314666723
->>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
-=======
-guid: 2f6772d1674f66b458210cb314666723
->>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
-=======
-guid: 2f6772d1674f66b458210cb314666723
->>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -46,19 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     filterMode: 0
-=======
-    filterMode: 1
->>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
-=======
-    filterMode: 1
->>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
-=======
-    filterMode: 1
->>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -67,36 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   spriteMode: 1
-=======
-  spriteMode: 2
->>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
-=======
-  spriteMode: 2
->>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
-=======
-  spriteMode: 2
->>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   spritePixelsToUnits: 16
-=======
-  spritePixelsToUnits: 100
->>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
-=======
-  spritePixelsToUnits: 100
->>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
-=======
-  spritePixelsToUnits: 100
->>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -161,19 +113,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     spriteID: 5e97eb03825dee720800000000000000
-=======
-    spriteID: 
->>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
-=======
-    spriteID: 
->>>>>>> 52e032ba8dc5a818e0006ba398e402edd6261c0a
-=======
-    spriteID: 
->>>>>>> 00caa2a4ae7801f66650e53a837fefc0b8ca6353
     internalID: 0
     vertices: []
     indices: 

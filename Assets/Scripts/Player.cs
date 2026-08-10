@@ -1,25 +1,42 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
-public enum AgeState
-{
-    Baby,
-    MidAge,
-    Ded
-}
+public enum AgeState    {   Baby, MidAge, Ded   }
+
 public class Player : MonoBehaviour
 {
-
     [Header("Player_Movement")]
     public Rigidbody2D Player_body;
-    public float Move_Speed = 3f;
-    public float jumpForce = 5f;
-    public float smoothing = 10f;
-    private float move_Input;
+    public float maxSpeed => CurrentAge switch
+    {
+        AgeState.Baby => 3.0f,
+        AgeState.MidAge => 5.0f,
+        AgeState.Ded => 1.5f,
+        _ => 3.0f
+    };
+    public float jumpForce => CurrentAge switch
+    {
+        AgeState.Baby => 2f,
+        AgeState.MidAge => 3.5f,
+        AgeState.Ded => 0.3f,
+        _ => 2.0f
+    };
+    public float smoothing => CurrentAge switch
+    {
+        AgeState.Baby => 2.0f,
+        AgeState.MidAge => 10.0f,
+        AgeState.Ded => 4f,
+        _ => 2.0f
+    };
+    private float smoothedInput;
+    float targetInput = 0f;
 
     [Header ("Sprite_Render")]
     public SpriteRenderer Player_model;
-    public Sprite sp; // current sprite (can change between Baby, Mid_Age and Ded sprites )
+    public Sprite babySprite;
+    public Sprite midAgeSprite;
+    public Sprite dedSprite;
 
     [Header("Box")]
     public float Box_radius = 1f;
@@ -28,59 +45,63 @@ public class Player : MonoBehaviour
     public Transform Box_Check;
     public GameObject BB;
 
+    [Header("Ground")]
+    public float Ground_radius = 0.2f;
+    public LayerMask Ground_Layer;
+    public bool Is_Grounded;
+    public Transform Ground_Check;
+
     [Header("Player_characteristics")]
+    private Animator animator;
+    public int ExtraJumpValue = 1;
+    public int ExtraJump;
+    private bool isDead = false;
 
+    [Header("Player_additional")]
+    private ParticleSystem walking_particles_Instance;
+    [SerializeField] private ParticleSystem walking_particles;
+    [SerializeField] private AgeState ageState;
+    public AgeState CurrentAge
+    {
+        get => ageState;
+        set
+        {
+            if (ageState == value) return;
+            ageState = value;
+            UpdateColliderParameters();
+            UpdatePlayerVisual();
+        }
+    }
 
-    public int Is_Baby = 0; // <------|
-    public bool Is_Mid_Age = false; // <--|---Player's age
-    public bool Is_Ded = false; // <------|
+    [Header("Colliders")]
+    public BoxCollider2D playerCollider => cachedCollider;
+    private BoxCollider2D cachedCollider;
+    private Vector2 babyOffset;
+    private Vector2 babySize;
 
-    public AgeState CurrentAge;
+    //                                              Unity functions
 
-
-   
-
-    public bool Pull_or_not = false;
-
-
-
-
-
-    public BoxCollider2D collider;
-    public Vector2 original_Collider_Offset;
-
-
+    private void Awake() { Resume(); }
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         Player_body = GetComponent<Rigidbody2D>();
-        collider = GetComponent<BoxCollider2D>();
         Player_model = GetComponent<SpriteRenderer>();
+        ExtraJump = ExtraJumpValue;
         BB = GameObject.FindWithTag("Box");
-        CurrentAge = AgeState.Baby;
-        original_Collider_Offset = collider.offset;
 
-}
-
+        cachedCollider = GetComponent<BoxCollider2D>();
+        if (cachedCollider != null)
+        {
+            babySize = cachedCollider.size;
+            babyOffset = cachedCollider.offset;
     
+            UpdateColliderParameters();
+        }
+    }
     void Update()
     {
-        // Moving
-        float targetInput = 0f;
-        if (Keyboard.current != null)
-        {
-            if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) targetInput = 1f;
-            else if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) targetInput = -1f;
-        }
-        move_Input = Mathf.MoveTowards(move_Input, targetInput, smoothing * Time.deltaTime);//Smoothing
-        Player_body.linearVelocity = new Vector2(Move_Speed * move_Input, Player_body.linearVelocity.y);
-
-        // Jumping
-        if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame){
-            Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
-        }
-
-
         // Fliping the sprite
         if (targetInput < 0f)
         {
@@ -91,96 +112,180 @@ public class Player : MonoBehaviour
             Player_model.flipX = false;
         }
 
-
-        if (Is_near_to_Box  && CurrentAge == AgeState.MidAge) 
+        if (Is_near_to_Box  && CurrentAge == AgeState.MidAge && BB != null && Box_Check != null) 
         {
-            //Is_Carrying(); // checks if the player pressed the button to enter "Drag Mode"
-            // "Drag Mode" is the status when you can move or pull an object
-
-            //if (Box_Check.transform.position.y > BB.transform.position.y) { return; }
-
-
-            if ((Keyboard.current.eKey.isPressed))
+            if ((Keyboard.current != null && Keyboard.current.eKey.isPressed))
             {
                 
                 if (Box_Check.transform.position.x < BB.transform.position.x)
                 {
 
-                    if (targetInput < 0)
+                    if (smoothedInput < 0)
                     {
                         BB.transform.position = new Vector2(Box_Check.transform.position.x + 1.5f, Box_Check.transform.position.y);
                     }
                 }
                 else if (Box_Check.transform.position.x > BB.transform.position.x)
                 {
-                    if (targetInput > 0)
+                    if (smoothedInput > 0)
                     {
                         BB.transform.position = new Vector2(Box_Check.transform.position.x - 1.5f, Box_Check.transform.position.y);
                     }
                 }
-                
-            }
-            
-            
-        }
-
-        if (transform.position.y < -20) // If you are low enough, you "die"
-        {
-            Debug.Log("Death");
-        }
-        
-    }
-
-
-    private void Is_Carrying()
-    {
-        if ((Keyboard.current.eKey.isPressed) && Pull_or_not == false && Is_near_to_Box) // if you are close to the box and pressed Tab "Pull_or_not" activates and you can move an object
-        {
-            Pull_or_not = true;
-            
-
-
-        }
-        else if ((Keyboard.current.eKey.isPressed) && Pull_or_not == true && Is_near_to_Box) // press Tab next to the Box to exit "Drag Mode" and stop moving the object
-        {
-            Pull_or_not = false;
-            
-
+            } 
         }
     }
+
     void FixedUpdate()
     {
+        Is_Grounded = Physics2D.OverlapCircle(Ground_Check.position, Ground_radius, Ground_Layer);
         Is_near_to_Box = Physics2D.OverlapCircle(Box_Check.position, Box_radius, Box_Layer);
+
+        // Moving
+        targetInput = 0f;
+        if (Keyboard.current != null)
+        {
+            if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)        targetInput =  1f;  //Spawn_Particles();
+            else if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)    targetInput = -1f;  //Spawn_Particles();
+        }
+        SetAnimation(targetInput);
+        smoothedInput = Mathf.MoveTowards(smoothedInput, targetInput, smoothing * Time.deltaTime);
+        Player_body.linearVelocity = new Vector2(maxSpeed * smoothedInput, Player_body.linearVelocity.y);
+
+        // Jumping
+        if (Is_Grounded)
+        {
+            ExtraJump = ExtraJumpValue;
+            if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+            {
+                Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
+            }
+        }
+        if ((ExtraJump != 0) && (Is_Grounded == false))
+        {
+            if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+            {
+                Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
+                ExtraJump -= 1;
+            }
+        }
+        if (transform.position.y < -20)
+        {
+            Kill("Fell Through the World");
+        }
     }
 
-
-
-
-
-
-
-
-
-
-    private void OnTriggerEnter2D(Collider2D collision) // changes current "Main" box
+    private void OnTriggerEnter2D(Collider2D other) // changes current "Main" box
     {
-        if (collision.gameObject.tag == "Box")
+        if (other.CompareTag("Box") && other.transform.parent != null)
         {
-            BB = collision.gameObject.transform.parent.gameObject;
+            BB = other.transform.parent.gameObject;
         }
-        
-
-
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Damage_Pike")
-        {
-
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Game_Jam_");
-
-        }
+        if (collision.gameObject.CompareTag("Damage_Pike"))         Kill("Was Pierced by Thorns");
     }
 
 
+    //                                              Custom functions
+
+
+    private void SetAnimation(float targetInput)
+    {
+        string age = CurrentAge == AgeState.Baby ? "Kid" : "Parent";
+
+        string animName = (Is_Grounded, targetInput == 0, Player_body.linearVelocityY > 0) switch
+        {
+            (true, true, _)   => $"{age}_Idle0_Animation",
+            (false, _, true)  => $"{age}_Jump_Animation",
+            (true, false, _)  => $"{age}_Run_Animation",
+            (false, _, false) => $"{age}_Fall_Animation"
+        };
+
+        animator.Play(animName);
+    }
+
+    private void UpdateColliderParameters() 
+    {
+        if (cachedCollider == null) return;
+
+        switch (ageState)
+        {
+            case AgeState.Baby:
+                cachedCollider.size = babySize;
+                cachedCollider.offset = babyOffset;
+                break;
+
+            case AgeState.MidAge:
+                float midHeight = babySize.y * 1.5f;
+                cachedCollider.size = new Vector2(babySize.x, midHeight);
+                cachedCollider.offset = new Vector2(babyOffset.x, babyOffset.y + (midHeight - babySize.y) / 2f);
+                break;
+
+            case AgeState.Ded:
+                float dedHeight = babySize.y * 1.2f;
+                cachedCollider.size = new Vector2(babySize.x, dedHeight);
+                cachedCollider.offset = new Vector2(babyOffset.x, babyOffset.y + (dedHeight - babySize.y) / 2f);
+                break;
+        }
+    }
+
+    private void Spawn_Particles()
+    {
+        walking_particles_Instance = Instantiate(walking_particles, transform.position, Quaternion.identity);
+    }
+
+    public void Kill(string cause = "Curiosity")
+    {
+        if (isDead) return;
+
+        Debug.Log($"Entity was killed by: {cause}");
+        Die();
+    }
+
+    private void Die()
+    {
+        isDead = true;
+        LoadScene("Game_Jam_");
+        // Coming Soon: death animation
+    }
+    public void LoadScene(string sceneName = null)
+    {
+        if (string.IsNullOrEmpty(sceneName))
+        {
+            sceneName = SceneManager.GetActiveScene().name;
+        }
+
+        if (!Application.CanStreamedLevelBeLoaded(sceneName))
+        {
+            Debug.LogError($"Error: Scene '{sceneName}' isn't found! Add it to Build Settings..");
+            return;
+        }
+
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+        // Coming Soon: turn off sounds
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+        // Coming Soon: turn on sounds
+    }
+    private void UpdatePlayerVisual()
+    {
+        
+        Player_model.sprite = ageState switch
+        {
+            AgeState.Baby => babySprite,
+            AgeState.MidAge => midAgeSprite,
+            AgeState.Ded => dedSprite,
+            _ => Player_model.sprite
+        };
+    }
 }
