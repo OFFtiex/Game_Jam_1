@@ -112,8 +112,9 @@ public class Player : MonoBehaviour
             Player_model.flipX = false;
         }
 
-        if (Is_near_to_Box  && CurrentAge == AgeState.MidAge && BB != null && Box_Check != null) 
+        if (Is_near_to_Box  && CurrentAge == AgeState.MidAge) 
         {
+            Player_body.mass = 1000f;
             if ((Keyboard.current != null && Keyboard.current.eKey.isPressed))
             {
                 if (Box_Check.transform.position.x < BB.transform.position.x)
@@ -219,7 +220,7 @@ public class Player : MonoBehaviour
             case AgeState.MidAge:
                 float midHeight = babySize.y * 1.5f;
                 cachedCollider.size = new Vector2(babySize.x, midHeight);
-                cachedCollider.offset = new Vector2(babyOffset.x, babyOffset.y + (midHeight - babySize.y) / 2f);
+                cachedCollider.offset = new Vector2(babyOffset.x, babyOffset.y - (midHeight - babySize.y) / 2f);
                 break;
 
             case AgeState.Ded:
