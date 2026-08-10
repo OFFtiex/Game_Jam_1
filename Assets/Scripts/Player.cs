@@ -103,6 +103,25 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
+        // Moving
+        targetInput = 0f;
+        if (Keyboard.current != null)
+        {
+            if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
+
+            {
+                targetInput = 1f;
+                Spawn_Particles();
+            }
+            else if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
+            {
+                targetInput = -1f;
+                Spawn_Particles();
+            }
+        }
+        SetAnimation(targetInput);
+        smoothedInput = Mathf.MoveTowards(smoothedInput, targetInput, smoothing * Time.deltaTime);
+        Player_body.linearVelocity = new Vector2(maxSpeed * smoothedInput, Player_body.linearVelocity.y);
         // Fliping the sprite
         if (targetInput < 0f)
         {
@@ -117,6 +136,7 @@ public class Player : MonoBehaviour
             if (Keyboard.current != null && Keyboard.current.tabKey.wasPressedThisFrame && isUmbrella == false)
             {
                 Player_body.gravityScale = 0.1f;
+                Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, 0.3f);
                 isUmbrella = true;
             }
             else if ((Keyboard.current != null && Keyboard.current.tabKey.wasPressedThisFrame && isUmbrella == true))
@@ -135,7 +155,7 @@ public class Player : MonoBehaviour
         }
         if ((ExtraJump != 0) && (Is_Grounded == false))
         {
-            Debug.Log("fff");
+            //Debug.Log("fff");
             if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
             {
                 Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
@@ -172,25 +192,7 @@ public class Player : MonoBehaviour
         Is_Grounded = Physics2D.OverlapCircle(Ground_Check.position, Ground_radius, Ground_Layer);
         Is_near_to_Box = Physics2D.OverlapCircle(Box_Check.position, Box_radius, Box_Layer);
 
-        // Moving
-        targetInput = 0f;
-        if (Keyboard.current != null)
-        {
-            if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
-
-            {
-                targetInput = 1f;
-                Spawn_Particles();
-            }
-            else if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
-            {
-                targetInput = -1f;  
-                Spawn_Particles();
-            } 
-        }
-        SetAnimation(targetInput);
-        smoothedInput = Mathf.MoveTowards(smoothedInput, targetInput, smoothing * Time.deltaTime);
-        Player_body.linearVelocity = new Vector2(maxSpeed * smoothedInput, Player_body.linearVelocity.y);
+        
 
         // Jumping
         //if (Is_Grounded)
