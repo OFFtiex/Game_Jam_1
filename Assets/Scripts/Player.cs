@@ -56,12 +56,15 @@ public class Player : MonoBehaviour
     private Animator animator;
     public int ExtraJumpValue = 1;
     public int ExtraJump;
-    private bool isDead = false;
+    [SerializeField] private bool isDead = false;
     private bool isUmbrella = false;
 
     [Header("Player_additional")]
     private ParticleSystem walking_particles_Instance;
     [SerializeField] private ParticleSystem walking_particles;
+    private ParticleSystem Death_particles_Instance;
+    [SerializeField] private ParticleSystem Death_particles;
+
     [SerializeField] private AgeState ageState;
     public AgeState CurrentAge
     {
@@ -262,6 +265,8 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Damage_Pike"))
         {
             isDead = true;
+            Death_particles_Instance = Instantiate(Death_particles, Ground_Check.transform.position, Quaternion.identity);
+            //Destroy(gameObject);
         }//Kill("Was Pierced by Thorns");
     }
 
@@ -312,6 +317,7 @@ public class Player : MonoBehaviour
     private void Spawn_Particles()
     {
         walking_particles_Instance = Instantiate(walking_particles, Ground_Check.transform.position, Quaternion.identity);
+        
     }
 
     public void Kill(string cause = "Curiosity")
