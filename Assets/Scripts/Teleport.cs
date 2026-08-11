@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 public class Teleport : MonoBehaviour
 {
     private static float nextTeleportTime;
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+    private static void ResetGlobalCooldown() { nextTeleportTime = 0f; }
+
 
     [SerializeReference]
     private ITeleportLogic logic;
@@ -16,7 +19,6 @@ public class Teleport : MonoBehaviour
         if (other.CompareTag("Player") && logic != null && Time.time >= nextTeleportTime)
         {
             nextTeleportTime = Time.time + 0.5f;
-
             logic.Execute(other.gameObject);
         }
     }
