@@ -6,20 +6,20 @@ using UnityEngine.SceneManagement;
 
 public class Teleport : MonoBehaviour
 {
-    private static float nextTeleportTime;
+    private static float s_nextTeleportTime;
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-    private static void ResetGlobalCooldown() { nextTeleportTime = 0f; }
+    private static void ResetGlobalCooldown() { s_nextTeleportTime = 0f; }
 
 
     [SerializeReference]
-    private ITeleportLogic logic;
+    private ITeleportLogic _logic;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && logic != null && Time.time >= nextTeleportTime)
+        if (other.CompareTag("Player") && _logic != null && Time.time >= s_nextTeleportTime)
         {
-            nextTeleportTime = Time.time + 0.5f;
-            logic.Execute(other.gameObject);
+            s_nextTeleportTime = Time.time + 0.5f;
+            _logic.Execute(other.gameObject);
         }
     }
 }
@@ -32,11 +32,11 @@ public interface ITeleportLogic
 [Serializable]
 public class LocalTeleport : ITeleportLogic
 {
-    public GameObject targetTeleport;
+    public Teleport TargetTeleport;
 
     public void Execute(GameObject player)
     {
-        if (targetTeleport != null) player.transform.position = targetTeleport.transform.position;
+        if (TargetTeleport != null) player.transform.position = TargetTeleport.transform.position;
     }
 }
 
@@ -67,7 +67,7 @@ public class TeleportEditor : Editor
     {
         serializedObject.Update();
 
-        SerializedProperty logicProperty = serializedObject.FindProperty("logic");
+        SerializedProperty logicProperty = serializedObject.FindProperty("_logic");
 
         int currentIndex = logicProperty.managedReferenceValue switch
         {

@@ -4,9 +4,9 @@ public class Lever : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Lever_Check")
+        if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("A");
+            //
         }
     }
 }
