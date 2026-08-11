@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum AgeState    {   Baby, MidAge, Ded   }
 
@@ -32,7 +33,7 @@ public class Player : MonoBehaviour
     private float smoothedInput;
     float targetInput = 0f;
 
-    [Header ("Sprite_Render")]
+    [Header("Sprite_Render")]
     public SpriteRenderer Player_model;
     public Sprite babySprite;
     public Sprite midAgeSprite;
@@ -80,6 +81,12 @@ public class Player : MonoBehaviour
     private Vector2 babyOffset;
     private Vector2 babySize;
 
+    [Header ("UI_Elements")]
+    [SerializeField] private Image F_Image;
+    [SerializeField] private float Current_Alpha_Value = 1;
+
+
+
     //                                              Unity functions
 
     private void Awake() { Resume(); }
@@ -87,9 +94,11 @@ public class Player : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        F_Image = GameObject.FindWithTag("Fading_Screen").GetComponent<Image>();
         Player_body = GetComponent<Rigidbody2D>();
         Player_model = GetComponent<SpriteRenderer>();
         ExtraJump = ExtraJumpValue;
+        F_Image.color = new Color(0, 0, 0, 1);
         BB = GameObject.FindWithTag("Box");
 
         cachedCollider = GetComponent<BoxCollider2D>();
@@ -104,6 +113,8 @@ public class Player : MonoBehaviour
     void Update()
     {
         // Moving
+        
+        
         targetInput = 0f;
         if (Keyboard.current != null)
         {
@@ -165,6 +176,10 @@ public class Player : MonoBehaviour
         if (Is_near_to_Box  && CurrentAge == AgeState.MidAge) 
         {
             Player_body.mass = 1000f;
+            if ((Box_Check.transform.position.y > BB.transform.position.y + 1))
+            {
+                return;
+            }
             if ((Keyboard.current != null && Keyboard.current.eKey.isPressed))
             {
                 
@@ -191,7 +206,16 @@ public class Player : MonoBehaviour
     {
         Is_Grounded = Physics2D.OverlapCircle(Ground_Check.position, Ground_radius, Ground_Layer);
         Is_near_to_Box = Physics2D.OverlapCircle(Box_Check.position, Box_radius, Box_Layer);
-
+        if (F_Image.color.a != 0 && isDead == false)
+        {
+            Current_Alpha_Value -= Time.deltaTime;
+            F_Image.color = new Color(0, 0, 0, Current_Alpha_Value);
+        }
+        else if (isDead == true)
+        {
+            Current_Alpha_Value += Time.deltaTime;
+            F_Image.color = new Color(0, 0, 0, Current_Alpha_Value);
+        }
         
 
         // Jumping
@@ -235,7 +259,10 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Damage_Pike"))         Kill("Was Pierced by Thorns");
+        if (collision.gameObject.CompareTag("Damage_Pike"))
+        {
+            isDead = true;
+        }//Kill("Was Pierced by Thorns");
     }
 
 
