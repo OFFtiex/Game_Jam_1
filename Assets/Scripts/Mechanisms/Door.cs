@@ -3,8 +3,8 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     [SerializeField] private Animator _doorAnimator;
-    [SerializeField] private BoxCollider2D _boxCollider;
 
+    private BoxCollider2D _boxCollider;
     private bool _isFullyOpen = false;
 
     private void Start()
