@@ -90,8 +90,8 @@ public class Player : MonoBehaviour
     }
 
     [Header("Colliders")]
-    public BoxCollider2D playerCollider => cachedCollider;
-    private BoxCollider2D cachedCollider;
+    public CapsuleCollider2D playerCollider => cachedCollider;
+    private CapsuleCollider2D cachedCollider;
     private Vector2 babyOffset;
     private Vector2 babySize;
 
@@ -116,7 +116,7 @@ public class Player : MonoBehaviour
         BB = GameObject.FindWithTag("Box");
         LL = GameObject.FindWithTag("Lever");
 
-        cachedCollider = GetComponent<BoxCollider2D>();
+        cachedCollider = GetComponent<CapsuleCollider2D>();
         if (cachedCollider != null)
         {
             babySize = cachedCollider.size;
