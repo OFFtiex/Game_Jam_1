@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class PhysicalButtons : MonoBehaviour
 {
-    [Header("Sprite_Render")]
-    private SpriteRenderer _visibleSprite;
-
+    [Header("Sprites")]
     public Sprite Standard;
     public Sprite Pressed;
+
+    private SpriteRenderer _visibleSprite;
     private Door _Door;
     private void Start()
     {

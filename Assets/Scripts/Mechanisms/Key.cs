@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Key : MonoBehaviour
 {
-    private Door _Door;
+    [SerializeField] private Door _Door;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
