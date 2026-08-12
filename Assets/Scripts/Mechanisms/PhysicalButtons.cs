@@ -7,7 +7,7 @@ public class PhysicalButtons : MonoBehaviour
 
     public Sprite Standard;
     public Sprite Pressed;
-
+    private Door _Door;
     private void Start()
     {
         if (_visibleSprite == null)
@@ -25,6 +25,7 @@ public class PhysicalButtons : MonoBehaviour
     {
         if (_visibleSprite != null && Pressed != null)
         {
+            _Door.Open();
             _visibleSprite.sprite = Pressed;
         }
     }
@@ -33,6 +34,7 @@ public class PhysicalButtons : MonoBehaviour
     {
         if (_visibleSprite != null && Standard != null)
         {
+            _Door.Close();
             _visibleSprite.sprite = Standard;
         }
     }

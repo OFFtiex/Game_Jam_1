@@ -4,7 +4,7 @@ public class Door : MonoBehaviour
 {
     public Animator DoorAnimator;
     public BoxCollider2D BoxCollider;
-    bool isFoolOpen = false;
+    private bool _isFoolOpen = false;
     private void Start()
     {
         BoxCollider = GetComponent<BoxCollider2D>();
@@ -17,12 +17,12 @@ public class Door : MonoBehaviour
     }
     public void FullOpen() 
     { 
-        isFoolOpen=true;
+        _isFoolOpen=true;
         Open();
     }
     public void Close()
     {
-        if (isFoolOpen) { 
+        if (_isFoolOpen) { 
             Debug.Log("The door is stuck open!"); 
             return; 
         }
