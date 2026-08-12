@@ -57,6 +57,8 @@ public class Player : MonoBehaviour
     public int ExtraJumpValue = 1;
     public int ExtraJump;
     [SerializeField] private bool isDead = false;
+    
+    
     private bool isUmbrella = false;
 
     [Header("Player_additional")]
@@ -64,6 +66,15 @@ public class Player : MonoBehaviour
     [SerializeField] private ParticleSystem walking_particles;
     private ParticleSystem Death_particles_Instance;
     [SerializeField] private ParticleSystem Death_particles;
+
+
+    [Header("Lever")]
+    public float Lever_radius = 2f;
+    public bool Is_near_to_Lever = false;
+    public LayerMask Lever_Layer;
+    public Transform Lever_Check;
+    public GameObject LL;
+    public Transform[] children;
 
     [SerializeField] private AgeState ageState;
     public AgeState CurrentAge
@@ -103,6 +114,7 @@ public class Player : MonoBehaviour
         ExtraJump = ExtraJumpValue;
         F_Image.color = new Color(0, 0, 0, 1);
         BB = GameObject.FindWithTag("Box");
+        LL = GameObject.FindWithTag("Lever");
 
         cachedCollider = GetComponent<BoxCollider2D>();
         if (cachedCollider != null)
@@ -145,7 +157,7 @@ public class Player : MonoBehaviour
         {
             Player_model.flipX = false;
         }
-        if ((CurrentAge == AgeState.Ded))
+        if ((CurrentAge == AgeState.Ded)) // Umbrella_falling_and_Lever_activating
         {
             if (Keyboard.current != null && Keyboard.current.tabKey.wasPressedThisFrame && isUmbrella == false)
             {
@@ -158,6 +170,17 @@ public class Player : MonoBehaviour
                 Player_body.gravityScale = 1f;
                 isUmbrella = false;
             }
+            if (Is_near_to_Lever == true && (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame))
+            {
+                
+                if (children[2] != null)
+                {
+                    Destroy(LL.GetComponent<Transform>().GetChild(1).gameObject);
+                    Debug.Log("ff");
+                }
+                
+            }
+            
         }
         if (Is_Grounded)
         {
@@ -209,6 +232,8 @@ public class Player : MonoBehaviour
     {
         Is_Grounded = Physics2D.OverlapCircle(Ground_Check.position, Ground_radius, Ground_Layer);
         Is_near_to_Box = Physics2D.OverlapCircle(Box_Check.position, Box_radius, Box_Layer);
+        Is_near_to_Lever = Physics2D.OverlapCircle(Box_Check.position, Lever_radius, Lever_Layer);
+
         if (F_Image.color.a != 0 && isDead == false)
         {
             Current_Alpha_Value -= Time.deltaTime;
@@ -218,6 +243,7 @@ public class Player : MonoBehaviour
         {
             Current_Alpha_Value += Time.deltaTime;
             F_Image.color = new Color(0, 0, 0, Current_Alpha_Value);
+            //Destroy(gameObject);
         }
         
 
@@ -259,7 +285,15 @@ public class Player : MonoBehaviour
         {
             BB = other.transform.parent.gameObject;
         }
+        if (other.gameObject.tag == "Lever" && other.transform.parent != null)
+        {
+            LL = other.transform.parent.gameObject;
+            children = LL.GetComponentsInChildren<Transform>();
+        }
+        
     }
+
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Damage_Pike"))

@@ -1,16 +1,17 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class Lever : MonoBehaviour
+public class Door : MonoBehaviour
 {
     private SpriteRenderer visibleSprite;
     public Sprite standard;
     public Sprite moved;
-    
-    public bool Is_Near_lever;
-    public Transform secondChild;
+    public GameObject DD;
+    public BoxCollider2D collider;
+
     private void Start()
     {
-        Transform secondChild = transform.GetChild(1);
+        DD = GameObject.FindWithTag("SILENTCHECK");
+        collider = GetComponent<BoxCollider2D>();
         if (visibleSprite == null)
         {
             visibleSprite = GetComponent<SpriteRenderer>();
@@ -20,19 +21,13 @@ public class Lever : MonoBehaviour
 
     public void Update()
     {
-        if (secondChild == null)
+        if (DD == null)
         {
             visibleSprite.sprite = moved;
+            collider.size = new Vector2(0, 0);
         }
     }
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
 
-    //    if (collision.gameObject.tag == "Player")
-    //    {
-    //        Debug.Log("A");
-
-
-    //    }
-    //}
+    // Door_model.sprite = new_sprite;
+    // boxCollider.size = new Vector2(0,0);
 }

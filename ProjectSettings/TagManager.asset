@@ -8,6 +8,8 @@ TagManager:
   - Damage_Pike
   - Lever_Check
   - Fading_Screen
+  - Lever
+  - SILENTCHECK
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - UI
   - Box_Layer
   - Ground_Layer
-  - 
+  - Lever_Layer
   - 
   - 
   - 
