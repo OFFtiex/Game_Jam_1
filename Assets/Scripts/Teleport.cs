@@ -100,7 +100,7 @@ public class TeleportEditor : Editor
             EditorUtility.SetDirty(target);
         }
 
-        if (newIndex > 0 && logicProperty.managedReferenceValue != null)
+        if (newIndex == 1)
         {
             EditorGUILayout.Space(5);
             EditorGUILayout.LabelField("Teleport Settings", EditorStyles.boldLabel);
