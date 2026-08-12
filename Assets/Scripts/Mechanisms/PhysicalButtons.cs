@@ -3,39 +3,40 @@ using UnityEngine;
 public class PhysicalButtons : MonoBehaviour
 {
     [Header("Sprites")]
-    public Sprite Standard;
-    public Sprite Pressed;
+    [SerializeField] private Sprite standard;
+    [SerializeField] private Sprite pressed;
 
     private SpriteRenderer _visibleSprite;
-    private Door _Door;
+    private Door _door;
+
     private void Start()
     {
         if (_visibleSprite == null)
         {
             _visibleSprite = GetComponent<SpriteRenderer>();
 
-            if (Standard != null)
+            if (standard != null)
             {
-                _visibleSprite.sprite = Standard;
+                _visibleSprite.sprite = standard;
             }
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (_visibleSprite != null && Pressed != null)
+        if (_visibleSprite != null && pressed != null && _door != null)
         {
-            _Door.Open();
-            _visibleSprite.sprite = Pressed;
+            _door.Open();
+            _visibleSprite.sprite = pressed;
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (_visibleSprite != null && Standard != null)
+        if (_visibleSprite != null && standard != null && _door != null)
         {
-            _Door.Close();
-            _visibleSprite.sprite = Standard;
+            _door.Close();
+            _visibleSprite.sprite = standard;
         }
     }
 }

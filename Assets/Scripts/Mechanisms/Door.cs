@@ -2,33 +2,38 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public Animator DoorAnimator;
-    public BoxCollider2D BoxCollider;
-    private bool _isFoolOpen = false;
+    [SerializeField] private Animator _doorAnimator;
+    [SerializeField] private BoxCollider2D _boxCollider;
+
+    private bool _isFullyOpen = false;
+
     private void Start()
     {
-        BoxCollider = GetComponent<BoxCollider2D>();
+        if (_doorAnimator == null) _doorAnimator = GetComponent<Animator>();
+        if (_boxCollider == null) _boxCollider = GetComponent<BoxCollider2D>();
     }
+
     public void Open()
     {
-        if (DoorAnimator != null) { DoorAnimator.SetTrigger("Open"); }
-
-        if (BoxCollider != null)  { BoxCollider.isTrigger = true;    }
+        if (_doorAnimator != null) _doorAnimator.SetTrigger("Open");
+        if (_boxCollider != null) _boxCollider.isTrigger = true;
     }
-    public void FullOpen() 
-    { 
-        _isFoolOpen=true;
+
+    public void FullOpen()
+    {
+        _isFullyOpen = true;
         Open();
     }
+
     public void Close()
     {
-        if (_isFoolOpen) { 
-            Debug.Log("The door is stuck open!"); 
-            return; 
+        if (_isFullyOpen)
+        {
+            Debug.Log("The door is stuck open!");
+            return;
         }
 
-        if (DoorAnimator != null) { DoorAnimator.SetTrigger("Close"); }
-
-        if (BoxCollider != null)  { BoxCollider.isTrigger = false;    }
+        if (_doorAnimator != null) _doorAnimator.SetTrigger("Close");
+        if (_boxCollider != null) _boxCollider.isTrigger = false;
     }
 }

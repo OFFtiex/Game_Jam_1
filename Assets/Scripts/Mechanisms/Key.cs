@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Key : MonoBehaviour
 {
-    [SerializeField] private Door _Door;
+    [SerializeField] private Door _door;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            _Door.FullOpen();
+            _door.FullOpen();
             Destroy(gameObject);
         }
     }

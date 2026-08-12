@@ -571,14 +571,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Teleport
   _logic:
-    rid: 5248751012804034664
+    rid: 5248751034242433105
   references:
     version: 2
     RefIds:
-    - rid: 5248751012804034664
+    - rid: 5248751034242433105
       type: {class: LocalTeleport, ns: , asm: Assembly-CSharp}
       data:
-        TargetTeleport: {fileID: 1371488337}
+        TargetTeleport: {fileID: 0}
 --- !u!212 &464436073
 SpriteRenderer:
   serializedVersion: 3

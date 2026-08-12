@@ -2,26 +2,29 @@ using UnityEngine;
 
 public class PhysicalLever : MonoBehaviour
 {
-    [SerializeField] private Door _Door;
+    private enum LeverState { Left, Right, Neutral }
+
+    [SerializeField] private Door _door;
 
     [Header("Спрайты состояний")]
-    [SerializeField] private Sprite _LeftSprite;
-    [SerializeField] private Sprite _RightSprite;
+    [SerializeField] private Sprite _leftSprite;
+    [SerializeField] private Sprite _rightSprite;
 
-    private SpriteRenderer spriteRenderer;
-    private enum LeverState { Left, Right, Neutral }
-    private LeverState _CurrentState = LeverState.Neutral;
+    private SpriteRenderer _spriteRenderer;
+    private LeverState _currentState = LeverState.Neutral;
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Player")) return;
+        if (!collision.CompareTag("Player") || collision.attachedRigidbody == null) return;
 
-        if (collision.transform.position.x < transform.position.x)
+        float playerX = collision.attachedRigidbody.position.x;
+
+        if (playerX < transform.position.x)
         {
             SwitchRight();
         }
@@ -33,27 +36,21 @@ public class PhysicalLever : MonoBehaviour
 
     private void SwitchLeft()
     {
-        if (_CurrentState == LeverState.Left) return;
+        if (_currentState == LeverState.Left) return;
 
-        _CurrentState = LeverState.Left;
-        spriteRenderer.sprite = _LeftSprite;
+        _currentState = LeverState.Left;
 
-        if (_Door != null)
-        {
-            _Door.Close();
-        }
+        if (_spriteRenderer != null) _spriteRenderer.sprite = _leftSprite;
+        if (_door != null) _door.Close();
     }
 
     private void SwitchRight()
     {
-        if (_CurrentState == LeverState.Right) return;
+        if (_currentState == LeverState.Right) return;
 
-        _CurrentState = LeverState.Right;
-        spriteRenderer.sprite = _RightSprite;
+        _currentState = LeverState.Right;
 
-        if (_Door != null)
-        {
-            _Door.Open();
-        }
+        if (_spriteRenderer != null) _spriteRenderer.sprite = _rightSprite;
+        if (_door != null) _door.Open();
     }
 }
