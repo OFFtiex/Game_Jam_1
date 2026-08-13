@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public enum AgeState    {   Baby, MidAge, Ded   }
 
@@ -386,7 +387,7 @@ public class Player : MonoBehaviour
         
         Death_particles_Instance = Instantiate(Death_particles, Ground_Check.transform.position, Quaternion.identity);
         
-        Invoke("LoadSceneDelay", 3f);
+        Invoke("LoadSceneDelay", 1f);
 
         Player_model.enabled = false;
         cachedCollider.enabled = false;
@@ -395,7 +396,7 @@ public class Player : MonoBehaviour
     }
     private void LoadSceneDelay()
     {
-        LoadScene("Lvl1");
+        LoadScene("");
     }
     public void LoadScene(string sceneName = null)
     {
