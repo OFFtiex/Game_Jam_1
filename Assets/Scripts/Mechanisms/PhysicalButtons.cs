@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class PhysicalButtons : MonoBehaviour
 {
-    [SerializeField] private Door _door;
+    [SerializeField] private Door[] _doors;
 
     [Header("Sprites")]
-    [SerializeField] private Sprite standard;
-    [SerializeField] private Sprite pressed;
+    [SerializeField] private Sprite _standard;
+    [SerializeField] private Sprite _pressed;
 
     private SpriteRenderer _visibleSprite;
 
@@ -16,28 +16,40 @@ public class PhysicalButtons : MonoBehaviour
         {
             _visibleSprite = GetComponent<SpriteRenderer>();
 
-            if (standard != null)
+            if (_standard != null)
             {
-                _visibleSprite.sprite = standard;
+                _visibleSprite.sprite = _standard;
             }
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (_visibleSprite != null && pressed != null && _door != null)
+        if (_visibleSprite != null && _pressed != null && _doors != null)
         {
-            _door.Open();
-            _visibleSprite.sprite = pressed;
+            foreach (Door door in _doors)
+            {
+                if (door != null) 
+                {
+                    door.Open();
+                }
+            }
+            _visibleSprite.sprite = _pressed;
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (_visibleSprite != null && standard != null && _door != null)
+        if (_visibleSprite != null && _standard != null && _doors != null)
         {
-            _door.Close();
-            _visibleSprite.sprite = standard;
+            foreach (Door door in _doors)
+            {
+                if (door != null)
+                {
+                    door.Close();
+                }
+            }
+            _visibleSprite.sprite = _standard;
         }
     }
 }
