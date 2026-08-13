@@ -11,15 +11,15 @@ public class Player : MonoBehaviour
     public Rigidbody2D Player_body;
     public float maxSpeed => CurrentAge switch
     {
-        AgeState.Baby => 3.0f,
+        AgeState.Baby => 5.0f,
         AgeState.MidAge => 5.0f,
         AgeState.Ded => 1.5f,
         _ => 3.0f
     };
     public float jumpForce => CurrentAge switch
     {
-        AgeState.Baby => 5f,
-        AgeState.MidAge => 3.5f,
+        AgeState.Baby => 6.8f,
+        AgeState.MidAge => 8f,
         AgeState.Ded => 0.3f,
         _ => 2.0f
     };
@@ -182,6 +182,10 @@ public class Player : MonoBehaviour
             }
             
         }
+        if ((CurrentAge == AgeState.MidAge))
+        {
+            ExtraJump = 0;
+        }    
         if (Is_Grounded)
         {
             ExtraJump = ExtraJumpValue;
@@ -232,16 +236,17 @@ public class Player : MonoBehaviour
     {
         Is_Grounded = Physics2D.OverlapCircle(Ground_Check.position, Ground_radius, Ground_Layer);
         Is_near_to_Box = Physics2D.OverlapCircle(Box_Check.position, Box_radius, Box_Layer);
-        Is_near_to_Lever = Physics2D.OverlapCircle(Box_Check.position, Lever_radius, Lever_Layer);
+        Is_near_to_Lever = Physics2D.OverlapCircle(Lever_Check.position, Lever_radius, Lever_Layer);
 
         if (F_Image.color.a != 0 && isDead == false)
         {
-            Current_Alpha_Value -= Time.deltaTime;
+            Current_Alpha_Value -=  Time.deltaTime;
             F_Image.color = new Color(0, 0, 0, Current_Alpha_Value);
         }
-        else if (isDead == true)
+        else if (isDead == true )
         {
-            Current_Alpha_Value += Time.deltaTime;
+            Debug.Log("ff");
+            Current_Alpha_Value += Time.deltaTime *10f;
             F_Image.color = new Color(0, 0, 0, Current_Alpha_Value);
             //Destroy(gameObject);
         }
@@ -298,8 +303,8 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Damage_Pike"))
         {
-            isDead = true;
-            Death_particles_Instance = Instantiate(Death_particles, Ground_Check.transform.position, Quaternion.identity);
+            Die();
+            //Death_particles_Instance = Instantiate(Death_particles, Ground_Check.transform.position, Quaternion.identity);
             //Destroy(gameObject);
         }//Kill("Was Pierced by Thorns");
     }
@@ -310,7 +315,12 @@ public class Player : MonoBehaviour
 
     private void SetAnimation(float targetInput)
     {
-        string age = CurrentAge == AgeState.Baby ? "Kid" : "Parent";
+        string age = CurrentAge switch
+        {
+            AgeState.Baby => "Kid",
+            AgeState.Ded => "Ded",
+            _ => "Parent"
+        };
 
         string animName = (Is_Grounded, targetInput == 0, Player_body.linearVelocityY > 0) switch
         {
@@ -335,15 +345,15 @@ public class Player : MonoBehaviour
                 break;
 
             case AgeState.MidAge:
-                float midHeight = babySize.y * 1.5f;
+                float midHeight = babySize.y * 1.2f;
                 cachedCollider.size = new Vector2(babySize.x, midHeight);
-                cachedCollider.offset = new Vector2(babyOffset.x, babyOffset.y - (midHeight - babySize.y) / 2f);
+                cachedCollider.offset = new Vector2(babyOffset.x, babyOffset.y -0.30f );
                 break;
 
             case AgeState.Ded:
                 float dedHeight = babySize.y * 1.2f;
                 cachedCollider.size = new Vector2(babySize.x, dedHeight);
-                cachedCollider.offset = new Vector2(babyOffset.x, babyOffset.y + (dedHeight - babySize.y) / 2f);
+                cachedCollider.offset = new Vector2(babyOffset.x, babyOffset.y - (dedHeight - babySize.y) / 2f);
                 break;
         }
     }
@@ -365,8 +375,11 @@ public class Player : MonoBehaviour
     private void Die()
     {
         isDead = true;
-        LoadScene("Game_Jam_");
-        // Coming Soon: death animation
+        
+        Death_particles_Instance = Instantiate(Death_particles, Ground_Check.transform.position, Quaternion.identity);
+        
+        Invoke("LoadSceneDelay", 3f);
+        
     }
     public void LoadScene(string sceneName = null)
     {
