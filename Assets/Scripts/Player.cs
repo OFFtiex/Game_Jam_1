@@ -162,9 +162,14 @@ public class Player : MonoBehaviour
             if (Keyboard.current != null && Keyboard.current.tabKey.wasPressedThisFrame && isUmbrella == false)
             {
                 Player_body.gravityScale = 0.1f;
+                
                 Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, 0.3f);
                 isUmbrella = true;
             }
+            //if (isUmbrella == true)
+            //{
+            //    animator.Play("Ded_Umbrella_Animation");
+            //}
             else if ((Keyboard.current != null && Keyboard.current.tabKey.wasPressedThisFrame && isUmbrella == true))
             {
                 Player_body.gravityScale = 1f;
@@ -176,7 +181,7 @@ public class Player : MonoBehaviour
                 if (children[2] != null)
                 {
                     Destroy(LL.GetComponent<Transform>().GetChild(1).gameObject);
-                    Debug.Log("ff");
+                    
                 }
                 
             }
@@ -303,7 +308,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Damage_Pike"))
         {
-            Die();
+            Kill();
             //Death_particles_Instance = Instantiate(Death_particles, Ground_Check.transform.position, Quaternion.identity);
             //Destroy(gameObject);
         }//Kill("Was Pierced by Thorns");
@@ -322,12 +327,15 @@ public class Player : MonoBehaviour
             _ => "Parent"
         };
 
-        string animName = (Is_Grounded, targetInput == 0, Player_body.linearVelocityY > 0) switch
+        string animName = (Is_Grounded, targetInput == 0, Player_body.linearVelocityY > 0, isUmbrella) switch
         {
-            (true, true, _)   => $"{age}_Idle0_Animation",
-            (false, _, true)  => $"{age}_Jump_Animation",
-            (true, false, _)  => $"{age}_Run_Animation",
-            (false, _, false) => $"{age}_Fall_Animation"
+            (true, true, _, false)   => $"{age}_Idle0_Animation",
+            (false, _, true, false)  => $"{age}_Jump_Animation",
+            (true, false, _, false)  => $"{age}_Run_Animation",
+            (false, _, false, false) => $"{age}_Fall_Animation",
+            (false, _, false, true) => $"{age}_Umbrella_Animation",
+            _ => $"{age}_Idle0_Animation",
+
         };
 
         animator.Play(animName);
@@ -379,7 +387,15 @@ public class Player : MonoBehaviour
         Death_particles_Instance = Instantiate(Death_particles, Ground_Check.transform.position, Quaternion.identity);
         
         Invoke("LoadSceneDelay", 3f);
-        
+
+        Player_model.enabled = false;
+        cachedCollider.enabled = false;
+        if (TryGetComponent<Rigidbody2D>(out var rb)) rb.simulated = false;
+
+    }
+    private void LoadSceneDelay()
+    {
+        LoadScene("Lvl1");
     }
     public void LoadScene(string sceneName = null)
     {
