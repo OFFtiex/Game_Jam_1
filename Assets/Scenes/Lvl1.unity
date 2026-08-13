@@ -2476,6 +2476,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: young_watch
       objectReference: {fileID: 0}
+    - target: {fileID: 8870788949795663235, guid: 746a44f43aa09144ab7a9b0b91d35e2a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3427,7 +3431,7 @@ Transform:
   m_GameObject: {fileID: 1123819892}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.062484, y: 2.6199987, z: -10}
+  m_LocalPosition: {x: 8.951369, y: 2.6199987, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7963,6 +7967,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3258778799349459268, guid: 5cebe7ee2e6b19243a9a913699a05264, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258778799349459268, guid: 5cebe7ee2e6b19243a9a913699a05264, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6412915106129493203, guid: 5cebe7ee2e6b19243a9a913699a05264, type: 3}
       propertyPath: m_Name
       value: CanvasW

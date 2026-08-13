@@ -224,6 +224,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1015326808693933804, guid: 092afa7e25d0f4a4ebc8778f8f8c39d2, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7133126670753994224, guid: 092afa7e25d0f4a4ebc8778f8f8c39d2, type: 3}
       propertyPath: m_Name
       value: Box 1 (2)
@@ -234,11 +238,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8843490816412384513, guid: 092afa7e25d0f4a4ebc8778f8f8c39d2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.11
+      value: -9.3
       objectReference: {fileID: 0}
     - target: {fileID: 8843490816412384513, guid: 092afa7e25d0f4a4ebc8778f8f8c39d2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.89
+      value: -4.95
       objectReference: {fileID: 0}
     - target: {fileID: 8843490816412384513, guid: 092afa7e25d0f4a4ebc8778f8f8c39d2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1990,6 +1994,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2282545436159812367, guid: 153f306d81c18124595290dd4f9c806d, type: 3}
+      propertyPath: _door
+      value: 
+      objectReference: {fileID: 1765211606}
+    - target: {fileID: 2282545436159812367, guid: 153f306d81c18124595290dd4f9c806d, type: 3}
+      propertyPath: pressed
+      value: 
+      objectReference: {fileID: 21300000, guid: 712137a725df35f4f83e93f3f946b5d4, type: 3}
+    - target: {fileID: 2282545436159812367, guid: 153f306d81c18124595290dd4f9c806d, type: 3}
+      propertyPath: standard
+      value: 
+      objectReference: {fileID: 21300000, guid: dd5d115eac75ebb4abd1bd79ba443026, type: 3}
     - target: {fileID: 2522371881690632186, guid: 153f306d81c18124595290dd4f9c806d, type: 3}
       propertyPath: m_Name
       value: PhysicalButton
@@ -2004,11 +2020,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2866154157601715258, guid: 153f306d81c18124595290dd4f9c806d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.15
+      value: 4.03
       objectReference: {fileID: 0}
     - target: {fileID: 2866154157601715258, guid: 153f306d81c18124595290dd4f9c806d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.33
+      value: -5.26
       objectReference: {fileID: 0}
     - target: {fileID: 2866154157601715258, guid: 153f306d81c18124595290dd4f9c806d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3918,8 +3934,9 @@ GameObject:
   - component: {fileID: 1765211607}
   - component: {fileID: 1765211606}
   - component: {fileID: 1765211605}
+  - component: {fileID: 1765211609}
   m_Layer: 0
-  m_Name: DoorCloseR
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3935,7 +3952,7 @@ Animator:
   m_GameObject: {fileID: 1765211604}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 055f1e13d94a92b4f863d69ea75cd8b5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4009,7 +4026,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: a5f8bcdbf8c86ac42a753829b0f649ea, type: 3}
+  m_Sprite: {fileID: 21300000, guid: edae72c1e1658394b82148db86188210, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4035,6 +4052,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1765211609
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765211604}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 2}
+  m_EdgeRadius: 0
 --- !u!1 &1771220465
 GameObject:
   m_ObjectHideFlags: 0

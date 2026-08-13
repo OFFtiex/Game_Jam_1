@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class PhysicalButtons : MonoBehaviour
 {
+    [SerializeField] private Door _door;
+
     [Header("Sprites")]
     [SerializeField] private Sprite standard;
     [SerializeField] private Sprite pressed;
 
     private SpriteRenderer _visibleSprite;
-    private Door _door;
 
     private void Start()
     {
