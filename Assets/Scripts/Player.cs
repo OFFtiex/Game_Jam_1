@@ -101,10 +101,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float Current_Alpha_Value = 1;
 
 
-
     //                                              Unity functions
 
-    private void Awake() { Resume(); }
+
+    private void Awake() { Resume(); this.enabled = true; }
 
     void Start()
     {
@@ -202,7 +202,6 @@ public class Player : MonoBehaviour
         }
         if ((ExtraJump != 0) && (Is_Grounded == false))
         {
-            //Debug.Log("fff");
             if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
             {
                 Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
