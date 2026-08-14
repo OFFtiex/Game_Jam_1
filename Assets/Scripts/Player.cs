@@ -194,7 +194,7 @@ public class Player : MonoBehaviour
             }
             
         }
-        if ((CurrentAge == AgeState.MidAge))
+        if ((CurrentAge == AgeState.MidAge) || (CurrentAge == AgeState.Ded))
         {
             ExtraJump = 0;
         }    

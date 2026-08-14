@@ -1614,7 +1614,7 @@ GameObject:
   - component: {fileID: 398077002}
   - component: {fileID: 398077001}
   - component: {fileID: 398077000}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1646,7 +1646,7 @@ TilemapCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 675e91513f56f124dac15ff0ea297a9d, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
