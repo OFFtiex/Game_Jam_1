@@ -72,7 +72,8 @@ public class Player : MonoBehaviour
     [Header("SFX")]
     private AudioSource audio_source;
     public AudioClip Jump_Clip;
-    public AudioClip Death_Clip;
+    public AudioClip Death_Clip_Young;
+    public AudioClip Death_Clip_Old;
 
     [Header("Lever")]
     public float Lever_radius = 2f;
@@ -166,6 +167,7 @@ public class Player : MonoBehaviour
         }
         if ((CurrentAge == AgeState.Ded)) // Umbrella_falling_and_Lever_activating
         {
+            Player_body.mass = 1f;
             if (Keyboard.current != null && Keyboard.current.tabKey.wasPressedThisFrame && isUmbrella == false)
             {
                 Player_body.gravityScale = 0.1f;
@@ -315,7 +317,8 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Damage_Pike"))
         {
-            PlaySFX(Death_Clip);
+
+            DeathSound();
             Kill();
             //Death_particles_Instance = Instantiate(Death_particles, Ground_Check.transform.position, Quaternion.identity);
             //Destroy(gameObject);
@@ -378,6 +381,17 @@ public class Player : MonoBehaviour
     {
         walking_particles_Instance = Instantiate(walking_particles, Ground_Check.transform.position, Quaternion.identity);
         
+    }
+    public void DeathSound()
+    {
+        if ((CurrentAge == AgeState.MidAge) || (CurrentAge == AgeState.Ded))
+        {
+            PlaySFX(Death_Clip_Old);
+        }
+        else
+        {
+            PlaySFX(Death_Clip_Young);
+        }
     }
 
     public void Kill(string cause = "Curiosity")

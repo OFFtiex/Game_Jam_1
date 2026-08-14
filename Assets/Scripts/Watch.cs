@@ -54,6 +54,7 @@ public class Watch : MonoBehaviour
     private AgeState HandleDeath(Player player, string reason)
     {
         player.Kill(reason);
+        player.DeathSound();
         return player.CurrentAge;
     }
 }
