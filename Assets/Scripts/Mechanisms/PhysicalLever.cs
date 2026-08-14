@@ -4,7 +4,7 @@ public class PhysicalLever : MonoBehaviour
 {
     private enum LeverState { Left, Right, Neutral }
 
-    [SerializeField] private Door _door;
+    [SerializeField] private Door[] _doors;
 
     [Header("Sprites")]
     [SerializeField] private Sprite _leftSprite;
@@ -41,7 +41,14 @@ public class PhysicalLever : MonoBehaviour
         _currentState = LeverState.Left;
 
         if (_spriteRenderer != null) _spriteRenderer.sprite = _leftSprite;
-        if (_door != null) _door.Close();
+        if (_doors == null) return;
+        foreach (Door door in _doors)
+        {
+            if (door != null)
+            {
+                door.Close();
+            }
+        }
     }
 
     private void SwitchRight()
@@ -51,6 +58,13 @@ public class PhysicalLever : MonoBehaviour
         _currentState = LeverState.Right;
 
         if (_spriteRenderer != null) _spriteRenderer.sprite = _rightSprite;
-        if (_door != null) _door.Open();
+        if (_doors == null) return;
+        foreach (Door door in _doors)
+        {
+            if (door != null)
+            {
+                door.Open();
+            }
+        }
     }
 }

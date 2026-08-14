@@ -9,6 +9,10 @@ public class WinUI : MonoBehaviour
         if (collision.gameObject.CompareTag("Player")){
             PlayerPrefs.SetInt("ReachedLevelValue", nextLvlValue);
             Time.timeScale = 0;
+            if (collision.gameObject.TryGetComponent<Player>(out Player player))
+            {
+                player.enabled = false;
+            }
             winUI.SetActive(true);
         }
     }

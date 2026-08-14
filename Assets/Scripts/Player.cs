@@ -69,6 +69,10 @@ public class Player : MonoBehaviour
     [SerializeField] private ParticleSystem Death_particles;
 
 
+    [Header("SFX")]
+    private AudioSource audio_source;
+    public AudioClip Jump_Clip;
+
     [Header("Lever")]
     public float Lever_radius = 2f;
     public bool Is_near_to_Lever = false;
@@ -101,13 +105,14 @@ public class Player : MonoBehaviour
     [SerializeField] private float Current_Alpha_Value = 1;
 
 
-
     //                                              Unity functions
 
-    private void Awake() { Resume(); }
+
+    private void Awake() { Resume(); this.enabled = true; }
 
     void Start()
     {
+        audio_source = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         F_Image = GameObject.FindWithTag("Fading_Screen").GetComponent<Image>();
         Player_body = GetComponent<Rigidbody2D>();
@@ -198,11 +203,11 @@ public class Player : MonoBehaviour
             if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
             {
                 Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
+                PlaySFX(Jump_Clip);
             }
         }
         if ((ExtraJump != 0) && (Is_Grounded == false))
         {
-            //Debug.Log("fff");
             if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
             {
                 Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
@@ -251,7 +256,7 @@ public class Player : MonoBehaviour
         }
         else if (isDead == true )
         {
-            Debug.Log("ff");
+            
             Current_Alpha_Value += Time.deltaTime *10f;
             F_Image.color = new Color(0, 0, 0, Current_Alpha_Value);
             //Destroy(gameObject);
@@ -413,6 +418,14 @@ public class Player : MonoBehaviour
 
         SceneManager.LoadScene(sceneName);
     }
+
+    public void PlaySFX(AudioClip audioClip)
+    {
+        audio_source.clip = audioClip;
+        audio_source.Play();
+    }
+
+
 
     public void Pause()
     {
