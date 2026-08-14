@@ -572,7 +572,7 @@ TargetJoint2D:
   m_AutoConfigureTarget: 1
   m_MaxForce: 10000
   m_DampingRatio: 1
-  m_Frequency: 1000
+  m_Frequency: 10000
 --- !u!50 &56642896
 Rigidbody2D:
   serializedVersion: 5
@@ -3473,7 +3473,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1015326808693933804, guid: 092afa7e25d0f4a4ebc8778f8f8c39d2, type: 3}
       propertyPath: m_Mass
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7133126670753994224, guid: 092afa7e25d0f4a4ebc8778f8f8c39d2, type: 3}
       propertyPath: m_Name
