@@ -116,9 +116,9 @@ TextureImporter:
       name: lever_off_lower_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 5
         y: 0
-        width: 11
+        width: 10
         height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
