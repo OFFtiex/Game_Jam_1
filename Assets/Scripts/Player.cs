@@ -14,14 +14,14 @@ public class Player : MonoBehaviour
     {
         AgeState.Baby => 5.0f,
         AgeState.MidAge => 5.0f,
-        AgeState.Ded => 1.5f,
+        AgeState.Ded => 3f,
         _ => 3.0f
     };
     public float jumpForce => CurrentAge switch
     {
         AgeState.Baby => 6.8f,
         AgeState.MidAge => 8f,
-        AgeState.Ded => 0.3f,
+        AgeState.Ded => 3f,
         _ => 2.0f
     };
     public float smoothing => CurrentAge switch
@@ -72,6 +72,7 @@ public class Player : MonoBehaviour
     [Header("SFX")]
     private AudioSource audio_source;
     public AudioClip Jump_Clip;
+    public AudioClip Death_Clip;
 
     [Header("Lever")]
     public float Lever_radius = 2f;
@@ -121,7 +122,7 @@ public class Player : MonoBehaviour
         F_Image.color = new Color(0, 0, 0, 1);
         BB = GameObject.FindWithTag("Box");
         LL = GameObject.FindWithTag("Lever");
-
+        
         cachedCollider = GetComponent<CapsuleCollider2D>();
         if (cachedCollider != null)
         {
@@ -135,7 +136,7 @@ public class Player : MonoBehaviour
     {
         // Moving
         
-        
+
         targetInput = 0f;
         if (Keyboard.current != null)
         {
@@ -314,6 +315,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Damage_Pike"))
         {
+            PlaySFX(Death_Clip);
             Kill();
             //Death_particles_Instance = Instantiate(Death_particles, Ground_Check.transform.position, Quaternion.identity);
             //Destroy(gameObject);
@@ -403,6 +405,7 @@ public class Player : MonoBehaviour
     {
         LoadScene("");
     }
+    
     public void LoadScene(string sceneName = null)
     {
         if (string.IsNullOrEmpty(sceneName))
