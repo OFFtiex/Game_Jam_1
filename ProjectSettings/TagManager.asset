@@ -11,6 +11,7 @@ TagManager:
   - Lever
   - SILENTCHECK
   - Box1
+  - Particles_Walk
   layers:
   - Default
   - TransparentFX

@@ -107,6 +107,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float Current_Alpha_Value = 1;
 
 
+    public GameObject PP;
+
     //                                              Unity functions
 
 
@@ -123,7 +125,9 @@ public class Player : MonoBehaviour
         F_Image.color = new Color(0, 0, 0, 1);
         BB = GameObject.FindWithTag("Box");
         LL = GameObject.FindWithTag("Lever");
-        
+        PP = GameObject.FindWithTag("Particles_Walk");
+
+
         cachedCollider = GetComponent<CapsuleCollider2D>();
         if (cachedCollider != null)
         {
@@ -145,18 +149,18 @@ public class Player : MonoBehaviour
 
             {
                 targetInput = 1f;
-                if (Is_Grounded)
-                {
-                    Spawn_Particles();
-                }
+                //if (Is_Grounded)
+                //{
+                //    Spawn_Particles();
+                //}
             }
             else if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
             {
                 targetInput = -1f;
-                if (Is_Grounded)
-                {
-                    Spawn_Particles();
-                }
+                //if (Is_Grounded)
+                //{
+                //    Spawn_Particles();
+                //}
                 
             }
         }
@@ -222,12 +226,17 @@ public class Player : MonoBehaviour
         }
         if (Is_Grounded)
         {
+            PP.SetActive(true);
             ExtraJump = ExtraJumpValue;
             if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
             {
                 Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
                 PlaySFX(Jump_Clip);
             }
+        }
+        else 
+        {
+            PP.SetActive(false);
         }
         if ((ExtraJump != 0) && (Is_Grounded == false))
         {
