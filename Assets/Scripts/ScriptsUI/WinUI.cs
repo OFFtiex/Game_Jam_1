@@ -7,7 +7,7 @@ public class WinUI : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision){
         if (collision.gameObject.CompareTag("Player")){
-            PlayerPrefs.SetInt("ReachedLevelValue", nextLvlValue - 1);
+            PlayerPrefs.SetInt("ReachedLevelValue", nextLvlValue);
             Time.timeScale = 0;
             if (collision.gameObject.TryGetComponent<Player>(out Player player))
             {

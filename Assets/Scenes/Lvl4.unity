@@ -2694,7 +2694,7 @@ GameObject:
   - component: {fileID: 755296607}
   - component: {fileID: 755296606}
   - component: {fileID: 755296609}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 1_Door2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4101,7 +4101,7 @@ GameObject:
   - component: {fileID: 1083475806}
   - component: {fileID: 1083475805}
   - component: {fileID: 1083475808}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 2_Door2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4331,7 +4331,7 @@ Transform:
   m_GameObject: {fileID: 1123819892}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.06524, y: -3.9946513, z: -15.121789}
+  m_LocalPosition: {x: -10.056084, y: -3.9946513, z: -15.121789}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
