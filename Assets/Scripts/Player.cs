@@ -73,6 +73,7 @@ public class Player : MonoBehaviour
     [Header("SFX")]
     private AudioSource audio_source;
     public AudioClip Jump_Clip;
+    public AudioClip Watch_Clip;
     public AudioClip Death_Clip_Young;
     public AudioClip Death_Clip_Old;
 
@@ -358,7 +359,11 @@ public class Player : MonoBehaviour
             LL = other.transform.parent.gameObject;
             children = LL.GetComponentsInChildren<Transform>();
         }
-        
+        if (other.CompareTag("Watch"))
+        {
+            PlaySFX(Watch_Clip);
+        }
+
     }
 
     
@@ -434,6 +439,11 @@ public class Player : MonoBehaviour
         walking_particles_Instance = Instantiate(walking_particles, Ground_Check.transform.position, Quaternion.identity);
         
     }
+
+    //public void TimeSound()
+    //{
+        
+    //}
     public void DeathSound()
     {
         if ((CurrentAge == AgeState.MidAge) || (CurrentAge == AgeState.Ded))

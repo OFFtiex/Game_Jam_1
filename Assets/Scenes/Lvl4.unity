@@ -511,6 +511,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 739399556}
     m_Modifications:
+    - target: {fileID: 1662115196949138761, guid: 092afa7e25d0f4a4ebc8778f8f8c39d2, type: 3}
+      propertyPath: m_Size.x
+      value: 1.7354968
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662115196949138761, guid: 092afa7e25d0f4a4ebc8778f8f8c39d2, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.005035639
+      objectReference: {fileID: 0}
     - target: {fileID: 7133126670753994224, guid: 092afa7e25d0f4a4ebc8778f8f8c39d2, type: 3}
       propertyPath: m_Name
       value: Box 3
@@ -6040,6 +6048,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2866154157601715258, guid: 153f306d81c18124595290dd4f9c806d, type: 3}
   m_PrefabInstance: {fileID: 896759413}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1481785625 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 268915828095397137, guid: 39a1f7de0bcd69a4685c567226f1ef77, type: 3}
+  m_PrefabInstance: {fileID: 1195610766}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1527088389
 GameObject:
   m_ObjectHideFlags: 0
@@ -6536,11 +6549,11 @@ PrefabInstance:
       objectReference: {fileID: 551604512}
     - target: {fileID: 6352163650412328852, guid: c1cd8b8197c070044a6bc75d35aafca6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.235991
+      value: -10.325991
       objectReference: {fileID: 0}
     - target: {fileID: 6352163650412328852, guid: c1cd8b8197c070044a6bc75d35aafca6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.61203
+      value: -6.98203
       objectReference: {fileID: 0}
     - target: {fileID: 6352163650412328852, guid: c1cd8b8197c070044a6bc75d35aafca6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10642,11 +10655,11 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 33906a299f24d18429707d121ab61a0f, type: 3}
     - target: {fileID: 6334117529691171547, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.38
+      value: -10.47
       objectReference: {fileID: 0}
     - target: {fileID: 6334117529691171547, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.52
+      value: -6.89
       objectReference: {fileID: 0}
     - target: {fileID: 6334117529691171547, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10806,7 +10819,7 @@ PrefabInstance:
     - target: {fileID: 886812329084486873, guid: 54593e604a95a1b438a76dfd226848aa, type: 3}
       propertyPath: winUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1481785625}
     - target: {fileID: 886812329084486873, guid: 54593e604a95a1b438a76dfd226848aa, type: 3}
       propertyPath: nextLvlValue
       value: 5
