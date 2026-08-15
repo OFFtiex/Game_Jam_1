@@ -12,6 +12,7 @@ TagManager:
   - SILENTCHECK
   - Box1
   - Particles_Walk
+  - Watch
   layers:
   - Default
   - TransparentFX

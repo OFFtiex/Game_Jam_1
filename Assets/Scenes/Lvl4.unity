@@ -5475,7 +5475,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: young_watch
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7281067502638443712, guid: 746a44f43aa09144ab7a9b0b91d35e2a, type: 3}
+      propertyPath: m_TagString
+      value: Watch
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2789295257355489790, guid: 746a44f43aa09144ab7a9b0b91d35e2a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6549,11 +6554,11 @@ PrefabInstance:
       objectReference: {fileID: 551604512}
     - target: {fileID: 6352163650412328852, guid: c1cd8b8197c070044a6bc75d35aafca6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.325991
+      value: -10.96599
       objectReference: {fileID: 0}
     - target: {fileID: 6352163650412328852, guid: c1cd8b8197c070044a6bc75d35aafca6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.98203
+      value: -7.09203
       objectReference: {fileID: 0}
     - target: {fileID: 6352163650412328852, guid: c1cd8b8197c070044a6bc75d35aafca6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10634,6 +10639,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: a7f47de85fdc8ec4691b9de0656fc091, type: 3}
     - target: {fileID: 3841979385954766950, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
+      propertyPath: Watch_Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: c0ec27c6b451f5c41a0d1363f843435c, type: 3}
+    - target: {fileID: 3841979385954766950, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
       propertyPath: Player_body
       value: 
       objectReference: {fileID: 179077950}
@@ -10655,11 +10664,11 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 33906a299f24d18429707d121ab61a0f, type: 3}
     - target: {fileID: 6334117529691171547, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.47
+      value: -11.11
       objectReference: {fileID: 0}
     - target: {fileID: 6334117529691171547, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.89
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 6334117529691171547, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
       propertyPath: m_LocalPosition.z

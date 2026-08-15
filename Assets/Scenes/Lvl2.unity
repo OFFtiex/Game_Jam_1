@@ -5604,6 +5604,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: a7f47de85fdc8ec4691b9de0656fc091, type: 3}
     - target: {fileID: 3841979385954766950, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
+      propertyPath: Watch_Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: c0ec27c6b451f5c41a0d1363f843435c, type: 3}
+    - target: {fileID: 3841979385954766950, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
       propertyPath: Player_body
       value: 
       objectReference: {fileID: 591981619}
