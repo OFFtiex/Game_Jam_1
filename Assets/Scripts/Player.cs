@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
     public Sprite babySprite;
     public Sprite midAgeSprite;
     public Sprite dedSprite;
+    
 
     [Header("Box")]
     public float Box_radius = 1f;
@@ -58,7 +59,7 @@ public class Player : MonoBehaviour
     public int ExtraJumpValue = 1;
     public int ExtraJump;
     [SerializeField] private bool isDead = false;
-    
+    public bool isFlip = false; 
     
     public bool isUmbrella = false;
 
@@ -82,6 +83,7 @@ public class Player : MonoBehaviour
     public Transform Lever_Check;
     public GameObject LL;
     public Transform[] children;
+    public bool e_pressed = false;
 
     [SerializeField] private AgeState ageState;
     public AgeState CurrentAge
@@ -116,6 +118,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        
+        
         audio_source = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         F_Image = GameObject.FindWithTag("Fading_Screen").GetComponent<Image>();
@@ -205,6 +209,8 @@ public class Player : MonoBehaviour
             }
             if (Is_near_to_Lever == true && (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame))
             {
+                e_pressed = true;
+
                 
                 if (children[2] != null)
                 {
@@ -212,6 +218,11 @@ public class Player : MonoBehaviour
                     
                 }
                 
+            }
+            if (Is_near_to_Lever == false)
+            {
+                e_pressed = false;
+                Player_model.flipX = false;
             }
             
         }
@@ -282,6 +293,14 @@ public class Player : MonoBehaviour
         Is_near_to_Box = Physics2D.OverlapCircle(Box_Check.position, Box_radius, Box_Layer);
         Is_near_to_Lever = Physics2D.OverlapCircle(Lever_Check.position, Lever_radius, Lever_Layer);
 
+        //if (sceneName == "Lvl3")
+        //{
+        //    isFlip = true;
+        //}
+        //else 
+        //{
+        //    isFlip = false;
+        //}
         if (F_Image.color.a != 0 && isDead == false)
         {
             Current_Alpha_Value -=  Time.deltaTime;
@@ -368,13 +387,16 @@ public class Player : MonoBehaviour
             _ => "Parent"
         };
 
-        string animName = (Is_Grounded, targetInput == 0, Player_body.linearVelocityY > 0, isUmbrella) switch
+        string animName = (Is_Grounded, targetInput == 0, Player_body.linearVelocityY > 0, isUmbrella, e_pressed) switch
         {
-            (true, true, _, false)   => $"{age}_Idle0_Animation",
-            (false, _, true, false)  => $"{age}_Jump_Animation",
-            (true, false, _, false)  => $"{age}_Run_Animation",
-            (false, _, false, false) => $"{age}_Fall_Animation",
-            (false, _, false, true) => $"{age}_Umbrella_Animation",
+            (true, true, _, false, false )   => $"{age}_Idle0_Animation",
+            (false, _, true, false, false)  => $"{age}_Jump_Animation",
+            (true, false, _, false, false)  => $"{age}_Run_Animation",
+            (false, _, false, false, false) => $"{age}_Fall_Animation",
+            (false, _, false, true, false) => $"{age}_Umbrella_Animation",
+            (true, _, false, false, true) => $"{age}_Int_Animation",
+            
+            
             _ => $"{age}_Idle0_Animation",
 
         };

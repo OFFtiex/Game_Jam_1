@@ -4,9 +4,15 @@ public class Watch : MonoBehaviour
 {
     public enum WatchType { Aging, Rejuvenating }
 
-    [Header("Настройки часов")]
+    private AudioSource audio_source;
+    public AudioClip Y_Clip;
+    public AudioClip Old_Clip;
     [SerializeField] private WatchType typeOfWatch;
-
+    void Start()
+    {
+        audio_source = GetComponent<AudioSource>();
+        
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player")) return;
@@ -18,10 +24,12 @@ public class Watch : MonoBehaviour
         if (typeOfWatch == WatchType.Aging)
         {
             ApplyAging(player);
+            
         }
         else
         {
             ApplyRejuvenation(player);
+            
         }
 
         Destroy(gameObject);
@@ -30,6 +38,8 @@ public class Watch : MonoBehaviour
     private void ApplyAging(Player player)
     {
         // You touch the clock and you become older
+        
+        PlaySFX(Old_Clip);
         player.CurrentAge = player.CurrentAge switch
         {
             AgeState.Baby   => AgeState.MidAge,
@@ -42,6 +52,7 @@ public class Watch : MonoBehaviour
     private void ApplyRejuvenation(Player player)
     {
         // You touch the clock and you become younger
+        PlaySFX(Y_Clip);
         player.CurrentAge = player.CurrentAge switch
         {
             AgeState.Ded    => AgeState.MidAge,
@@ -56,5 +67,10 @@ public class Watch : MonoBehaviour
         player.Kill(reason);
         player.DeathSound();
         return player.CurrentAge;
+    }
+    public void PlaySFX(AudioClip audioClip)
+    {
+        audio_source.clip = audioClip;
+        audio_source.Play();
     }
 }
