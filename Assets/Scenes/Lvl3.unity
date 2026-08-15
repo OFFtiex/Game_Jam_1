@@ -200,7 +200,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1452278
 RectTransform:
@@ -1602,6 +1602,85 @@ PolygonCollider2D:
       - {x: 3.0429807, y: 4.027304}
       - {x: 2.0051303, y: 5.0291314}
   m_UseDelaunayMesh: 1
+--- !u!1 &307450412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 307450415}
+  - component: {fileID: 307450414}
+  - component: {fileID: 307450413}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &307450413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307450412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.UI.InputSystemUIInputModule
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
+  m_ScrollDeltaPerTick: 6
+--- !u!114 &307450414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307450412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventSystem
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &307450415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307450412}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &398076998
 GameObject:
   m_ObjectHideFlags: 0
@@ -3371,6 +3450,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 282332547998657773, guid: 11502bfce3c2b634ebe75be397813846, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 491234190694688009, guid: 11502bfce3c2b634ebe75be397813846, type: 3}
       propertyPath: m_Name
       value: Canvas (1)
@@ -3725,7 +3808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
   pauseMenu: {fileID: 1970329678}
-  currentScene: Lvl1_Test
+  currentScene: Lvl3
 --- !u!1 &688031604
 GameObject:
   m_ObjectHideFlags: 0
@@ -4290,7 +4373,7 @@ PrefabInstance:
     - target: {fileID: 3841979385954766950, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
       propertyPath: Jump_Clip
       value: 
-      objectReference: {fileID: 8300000, guid: 5deb9c19708f3484f90c72e04c086a42, type: 3}
+      objectReference: {fileID: 8300000, guid: a7f47de85fdc8ec4691b9de0656fc091, type: 3}
     - target: {fileID: 3841979385954766950, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
       propertyPath: Player_body
       value: 
@@ -8587,21 +8670,11 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 0, y: -1, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 15
-      m_TileSpriteIndex: 15
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 1, y: -1, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 23
-      m_TileSpriteIndex: 3
+      m_TileIndex: 18
+      m_TileSpriteIndex: 7
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -8805,7 +8878,7 @@ Tilemap:
     m_RefCount: 5
     m_Data: {fileID: 11400000, guid: e2c54e910236d7347b282547fcfa72aa, type: 2}
   - serializedVersion: 2
-    m_RefCount: 5
+    m_RefCount: 4
     m_Data: {fileID: 11400000, guid: 68ff17750af978841b8cf50e3fcc6b4f, type: 2}
   - serializedVersion: 2
     m_RefCount: 5
@@ -8814,7 +8887,7 @@ Tilemap:
     m_RefCount: 2
     m_Data: {fileID: 11400000, guid: d1a022779d2c4504f938673618fb4eb7, type: 2}
   - serializedVersion: 2
-    m_RefCount: 1
+    m_RefCount: 2
     m_Data: {fileID: 11400000, guid: fc8421eb82266f44fa0e64c0d9ee60a0, type: 2}
   - serializedVersion: 2
     m_RefCount: 1
@@ -8829,7 +8902,7 @@ Tilemap:
     m_RefCount: 3
     m_Data: {fileID: 11400000, guid: 464a3c2532d68204a97f5dfc903e028d, type: 2}
   - serializedVersion: 2
-    m_RefCount: 29
+    m_RefCount: 28
     m_Data: {fileID: 11400000, guid: 6c543ae43b7707147b7ff2e651d51f87, type: 2}
   - serializedVersion: 2
     m_RefCount: 1
@@ -8845,7 +8918,7 @@ Tilemap:
     m_RefCount: 20
     m_Data: {fileID: 21300000, guid: 44afdb7bea1ba684ba61d1c74f27c8fa, type: 3}
   - serializedVersion: 2
-    m_RefCount: 29
+    m_RefCount: 28
     m_Data: {fileID: 21300000, guid: aae8ba69019d9874c8f264179ea1d169, type: 3}
   - serializedVersion: 2
     m_RefCount: 2
@@ -8857,7 +8930,7 @@ Tilemap:
     m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 23e008a0b5c51ac4abcf9e9660779bd3, type: 3}
   - serializedVersion: 2
-    m_RefCount: 1
+    m_RefCount: 2
     m_Data: {fileID: 21300000, guid: a4e6d6cfcfd1a7349a98a16d8452f3da, type: 3}
   - serializedVersion: 2
     m_RefCount: 1
@@ -8881,7 +8954,7 @@ Tilemap:
     m_RefCount: 5
     m_Data: {fileID: 21300000, guid: 283d9796dc8ff9a4bb3256da0f33ecc0, type: 3}
   - serializedVersion: 2
-    m_RefCount: 5
+    m_RefCount: 4
     m_Data: {fileID: 21300000, guid: 3d2136f75f7b255468fbe46561cff9df, type: 3}
   - serializedVersion: 2
     m_RefCount: 1
@@ -8912,7 +8985,7 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: c27ba16f8b468e54785563757612b116, type: 3}
   m_TileMatrixArray:
   - serializedVersion: 2
-    m_RefCount: 90
+    m_RefCount: 89
     m_Data:
       e00: 1
       e01: 0
@@ -8932,7 +9005,7 @@ Tilemap:
       e33: 1
   m_TileColorArray:
   - serializedVersion: 2
-    m_RefCount: 90
+    m_RefCount: 89
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - serializedVersion: 2
     m_RefCount: 0
@@ -9664,3 +9737,4 @@ SceneRoots:
   - {fileID: 56642893}
   - {fileID: 1415675678091518214}
   - {fileID: 923451087}
+  - {fileID: 307450415}
