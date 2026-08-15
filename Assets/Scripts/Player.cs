@@ -238,7 +238,7 @@ public class Player : MonoBehaviour
         }
         if (Is_Grounded)
         {
-            PP.SetActive(true);
+            if (PP != null) { PP.SetActive(true); }
             ExtraJump = ExtraJumpValue;
             if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
             {
@@ -248,7 +248,7 @@ public class Player : MonoBehaviour
         }
         else 
         {
-            PP.SetActive(false);
+            if (PP != null) { PP.SetActive(false); }
         }
         if ((ExtraJump != 0) && (Is_Grounded == false))
         {
