@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool isDead = false;
     
     
-    private bool isUmbrella = false;
+    public bool isUmbrella = false;
 
     [Header("Player_additional")]
     private ParticleSystem walking_particles_Instance;
@@ -145,12 +145,19 @@ public class Player : MonoBehaviour
 
             {
                 targetInput = 1f;
-                Spawn_Particles();
+                if (Is_Grounded)
+                {
+                    Spawn_Particles();
+                }
             }
             else if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
             {
                 targetInput = -1f;
-                Spawn_Particles();
+                if (Is_Grounded)
+                {
+                    Spawn_Particles();
+                }
+                
             }
         }
         SetAnimation(targetInput);
@@ -165,21 +172,29 @@ public class Player : MonoBehaviour
         {
             Player_model.flipX = false;
         }
-        if ((CurrentAge == AgeState.Ded)) // Umbrella_falling_and_Lever_activating
+        if ((CurrentAge == AgeState.Ded)  ) // Umbrella_falling_and_Lever_activating
         {
+            if ((Is_Grounded == true))
+            {
+
+                Player_body.gravityScale = 1f;
+                isUmbrella = false;
+            }
             Player_body.mass = 1f;
-            if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame && isUmbrella == false)
+            if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame && isUmbrella == false && (Is_Grounded == false))
             {
                 Player_body.gravityScale = 0.1f;
-                
+                //cachedCollider.offset = new Vector2(babyOffset.x, babyOffset.y - 0.5f);
+                //Ground_Check.transform.position = new Vector2(Ground_Check.transform.position.x, Ground_Check.transform.position.y - 0.4f);
                 Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, 0.3f);
                 isUmbrella = true;
             }
+            
             //if (isUmbrella == true)
             //{
             //    animator.Play("Ded_Umbrella_Animation");
             //}
-            else if ((Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame && isUmbrella == true))
+            else if ((Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame && isUmbrella == true) && (Is_Grounded == false))
             {
                 Player_body.gravityScale = 1f;
                 isUmbrella = false;
@@ -199,6 +214,7 @@ public class Player : MonoBehaviour
         if ((CurrentAge == AgeState.MidAge) || (CurrentAge == AgeState.Ded))
         {
             ExtraJump = 0;
+            
         }
         if ((CurrentAge == AgeState.Baby))
         {
