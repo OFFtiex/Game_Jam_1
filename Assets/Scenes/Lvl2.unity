@@ -2495,6 +2495,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 267888822891672863, guid: 153f306d81c18124595290dd4f9c806d, type: 3}
+      propertyPath: m_Size.y
+      value: 0.27768964
+      objectReference: {fileID: 0}
+    - target: {fileID: 267888822891672863, guid: 153f306d81c18124595290dd4f9c806d, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.8782784
+      objectReference: {fileID: 0}
     - target: {fileID: 2282545436159812367, guid: 153f306d81c18124595290dd4f9c806d, type: 3}
       propertyPath: _door
       value: 

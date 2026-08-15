@@ -181,7 +181,7 @@ public class Player : MonoBehaviour
                 isUmbrella = false;
             }
             Player_body.mass = 1f;
-            if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame && isUmbrella == false && (Is_Grounded == false))
+            if (Keyboard.current != null && Keyboard.current.rKey.wasPressedThisFrame && isUmbrella == false && (Is_Grounded == false))
             {
                 Player_body.gravityScale = 0.1f;
                 //cachedCollider.offset = new Vector2(babyOffset.x, babyOffset.y - 0.5f);
@@ -194,7 +194,7 @@ public class Player : MonoBehaviour
             //{
             //    animator.Play("Ded_Umbrella_Animation");
             //}
-            else if ((Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame && isUmbrella == true) && (Is_Grounded == false))
+            else if ((Keyboard.current != null && Keyboard.current.rKey.wasPressedThisFrame && isUmbrella == true) && (Is_Grounded == false))
             {
                 Player_body.gravityScale = 1f;
                 isUmbrella = false;
