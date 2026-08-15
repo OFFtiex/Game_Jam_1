@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEditor;
 
 public class MainMenu : MonoBehaviour
 {   
@@ -29,7 +28,6 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame(){
         PlayerPrefs.DeleteKey("DoOnce");
-        EditorApplication.ExitPlaymode();
         Application.Quit();
     }
 }   
