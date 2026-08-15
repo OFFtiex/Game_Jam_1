@@ -974,6 +974,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: a7f47de85fdc8ec4691b9de0656fc091, type: 3}
     - target: {fileID: 3841979385954766950, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
+      propertyPath: Watch_Clip
+      value: 
+      objectReference: {fileID: 8300000, guid: c0ec27c6b451f5c41a0d1363f843435c, type: 3}
+    - target: {fileID: 3841979385954766950, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
       propertyPath: Player_body
       value: 
       objectReference: {fileID: 1662991404}
@@ -982,9 +986,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1662991406}
     - target: {fileID: 3841979385954766950, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
+      propertyPath: Death_Clip_Old
+      value: 
+      objectReference: {fileID: 8300000, guid: a105a9392699fad47b0822eb29b98a98, type: 3}
+    - target: {fileID: 3841979385954766950, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
       propertyPath: Death_particles
       value: 
       objectReference: {fileID: 5614229002121985567, guid: 384042fdc0a017f4c8217a32cdd9761c, type: 3}
+    - target: {fileID: 3841979385954766950, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
+      propertyPath: Death_Clip_Young
+      value: 
+      objectReference: {fileID: 8300000, guid: 33906a299f24d18429707d121ab61a0f, type: 3}
     - target: {fileID: 6334117529691171547, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.72
