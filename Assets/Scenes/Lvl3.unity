@@ -3457,10 +3457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5900504991478741654, guid: 11502bfce3c2b634ebe75be397813846, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1632932873}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11502bfce3c2b634ebe75be397813846, type: 3}
 --- !u!1001 &584256686
@@ -4280,7 +4277,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1042394848}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3841979385954766950, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
       propertyPath: LL
@@ -4303,6 +4300,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1632932872}
     - target: {fileID: 3841979385954766950, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
+      propertyPath: Death_Clip_Old
+      value: 
+      objectReference: {fileID: 8300000, guid: a105a9392699fad47b0822eb29b98a98, type: 3}
+    - target: {fileID: 3841979385954766950, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
       propertyPath: MainMusic_Clip
       value: 
       objectReference: {fileID: 8300000, guid: 9b0a0eb75327d48489211f30f3f7b4e4, type: 3}
@@ -4311,16 +4312,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5614229002121985567, guid: 384042fdc0a017f4c8217a32cdd9761c, type: 3}
     - target: {fileID: 3841979385954766950, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
+      propertyPath: Death_Clip_Young
+      value: 
+      objectReference: {fileID: 8300000, guid: 33906a299f24d18429707d121ab61a0f, type: 3}
+    - target: {fileID: 3841979385954766950, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
       propertyPath: children.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6334117529691171547, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -968.96
+      value: -11.16
       objectReference: {fileID: 0}
     - target: {fileID: 6334117529691171547, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -537.25
+      value: -4.77
       objectReference: {fileID: 0}
     - target: {fileID: 6334117529691171547, guid: 8721d77fad103e64fb9746aba74e2dc0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4531,11 +4536,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!224 &1042394848 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5900504991478741654, guid: 11502bfce3c2b634ebe75be397813846, type: 3}
-  m_PrefabInstance: {fileID: 566438978}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1055298081
 GameObject:
   m_ObjectHideFlags: 0
@@ -4984,7 +4984,7 @@ Transform:
   m_GameObject: {fileID: 1123819892}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.089539, y: -4.059601, z: -10}
+  m_LocalPosition: {x: -10.089518, y: -4.0596013, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7701,11 +7701,11 @@ PrefabInstance:
       objectReference: {fileID: 1632932873}
     - target: {fileID: 6352163650412328852, guid: c1cd8b8197c070044a6bc75d35aafca6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -765.63104
+      value: -9.33101
       objectReference: {fileID: 0}
     - target: {fileID: 6352163650412328852, guid: c1cd8b8197c070044a6bc75d35aafca6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -334.36707
+      value: -3.58708
       objectReference: {fileID: 0}
     - target: {fileID: 9146265350708076855, guid: c1cd8b8197c070044a6bc75d35aafca6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9663,3 +9663,4 @@ SceneRoots:
   - {fileID: 1202066089}
   - {fileID: 56642893}
   - {fileID: 1415675678091518214}
+  - {fileID: 923451087}

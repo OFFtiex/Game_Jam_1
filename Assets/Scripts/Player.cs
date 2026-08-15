@@ -168,7 +168,7 @@ public class Player : MonoBehaviour
         if ((CurrentAge == AgeState.Ded)) // Umbrella_falling_and_Lever_activating
         {
             Player_body.mass = 1f;
-            if (Keyboard.current != null && Keyboard.current.tabKey.wasPressedThisFrame && isUmbrella == false)
+            if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame && isUmbrella == false)
             {
                 Player_body.gravityScale = 0.1f;
                 
@@ -179,7 +179,7 @@ public class Player : MonoBehaviour
             //{
             //    animator.Play("Ded_Umbrella_Animation");
             //}
-            else if ((Keyboard.current != null && Keyboard.current.tabKey.wasPressedThisFrame && isUmbrella == true))
+            else if ((Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame && isUmbrella == true))
             {
                 Player_body.gravityScale = 1f;
                 isUmbrella = false;
@@ -199,7 +199,11 @@ public class Player : MonoBehaviour
         if ((CurrentAge == AgeState.MidAge) || (CurrentAge == AgeState.Ded))
         {
             ExtraJump = 0;
-        }    
+        }
+        if ((CurrentAge == AgeState.Baby))
+        {
+            Player_body.mass = 1f;
+        }
         if (Is_Grounded)
         {
             ExtraJump = ExtraJumpValue;
@@ -214,6 +218,7 @@ public class Player : MonoBehaviour
             if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
             {
                 Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
+                PlaySFX(Jump_Clip);
                 ExtraJump -= 1;
             }
         }
