@@ -1,5 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class Background : MonoBehaviour
@@ -25,9 +25,9 @@ public class Background : MonoBehaviour
 
         if (activeTimers.TryGetValue(obj, out Coroutine timerCoroutine))
         {
-            if (gameObject.activeInHierarchy && timerCoroutine != null)
-            {
-                StopCoroutine(timerCoroutine);
+            if (gameObject.activeInHierarchy && timerCoroutine != null)     
+            { 
+                StopCoroutine(timerCoroutine); 
             }
             activeTimers.Remove(obj);
         }
@@ -43,10 +43,7 @@ public class Background : MonoBehaviour
             {
                 player.Kill("Fell beyond the boundaries of the world");
             }
-            else
-            {
-                Destroy(obj);
-            }
+            else  Destroy(obj);
         }
 
         activeTimers.Remove(obj);
