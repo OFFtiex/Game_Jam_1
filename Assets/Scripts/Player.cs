@@ -119,8 +119,6 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        
-        
         audio_source = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         F_Image = GameObject.FindWithTag("Fading_Screen").GetComponent<Image>();
@@ -145,8 +143,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         // Moving
-        
-
         targetInput = 0f;
         if (Keyboard.current != null)
         {
@@ -154,24 +150,16 @@ public class Player : MonoBehaviour
 
             {
                 targetInput = 1f;
-                //if (Is_Grounded)
-                //{
-                //    Spawn_Particles();
-                //}
             }
             else if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
             {
                 targetInput = -1f;
-                //if (Is_Grounded)
-                //{
-                //    Spawn_Particles();
-                //}
-                
             }
         }
         SetAnimation(targetInput);
         smoothedInput = Mathf.MoveTowards(smoothedInput, targetInput, smoothing * Time.deltaTime);
         Player_body.linearVelocity = new Vector2(maxSpeed * smoothedInput, Player_body.linearVelocity.y);
+
         // Fliping the sprite
         if (targetInput < 0f)
         {
@@ -184,8 +172,7 @@ public class Player : MonoBehaviour
         if ((CurrentAge == AgeState.Ded)  ) // Umbrella_falling_and_Lever_activating
         {
             if ((Is_Grounded == true))
-            {
-
+            { 
                 Player_body.gravityScale = 1f;
                 isUmbrella = false;
             }
@@ -193,16 +180,10 @@ public class Player : MonoBehaviour
             if (Keyboard.current != null && Keyboard.current.rKey.wasPressedThisFrame && isUmbrella == false && (Is_Grounded == false))
             {
                 Player_body.gravityScale = 0.1f;
-                //cachedCollider.offset = new Vector2(babyOffset.x, babyOffset.y - 0.5f);
-                //Ground_Check.transform.position = new Vector2(Ground_Check.transform.position.x, Ground_Check.transform.position.y - 0.4f);
                 Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, 0.3f);
                 isUmbrella = true;
             }
             
-            //if (isUmbrella == true)
-            //{
-            //    animator.Play("Ded_Umbrella_Animation");
-            //}
             else if ((Keyboard.current != null && Keyboard.current.rKey.wasPressedThisFrame && isUmbrella == true) && (Is_Grounded == false))
             {
                 Player_body.gravityScale = 1f;
@@ -294,14 +275,6 @@ public class Player : MonoBehaviour
         Is_near_to_Box = Physics2D.OverlapCircle(Box_Check.position, Box_radius, Box_Layer);
         Is_near_to_Lever = Physics2D.OverlapCircle(Lever_Check.position, Lever_radius, Lever_Layer);
 
-        //if (sceneName == "Lvl3")
-        //{
-        //    isFlip = true;
-        //}
-        //else 
-        //{
-        //    isFlip = false;
-        //}
         if (F_Image.color.a != 0 && isDead == false)
         {
             Current_Alpha_Value -=  Time.deltaTime;
@@ -312,36 +285,8 @@ public class Player : MonoBehaviour
             
             Current_Alpha_Value += Time.deltaTime *10f;
             F_Image.color = new Color(0, 0, 0, Current_Alpha_Value);
-            //Destroy(gameObject);
         }
-        
 
-        // Jumping
-        //if (Is_Grounded)
-        //{
-        //    ExtraJump = ExtraJumpValue;
-        //    if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
-        //    {
-        //        Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
-        //    }
-        //}
-        //if ((ExtraJump != 0) && (Is_Grounded == false))
-        //{
-        //    Debug.Log("fff");
-        //    if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
-        //    {
-        //        Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
-        //        ExtraJump -= 1;
-        //    }
-        //}
-
-        // Umbrella
-        
-        
-
-
-
-        
         if (transform.position.y < -20)
         {
             Kill("Fell Through the World");
@@ -363,7 +308,6 @@ public class Player : MonoBehaviour
         {
             PlaySFX(Watch_Clip);
         }
-
     }
 
     
@@ -371,12 +315,9 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Damage_Pike"))
         {
-
             DeathSound();
-            Kill();
-            //Death_particles_Instance = Instantiate(Death_particles, Ground_Check.transform.position, Quaternion.identity);
-            //Destroy(gameObject);
-        }//Kill("Was Pierced by Thorns");
+            Kill("Was Pierced by Thorns");
+        }
     }
 
 
@@ -400,8 +341,6 @@ public class Player : MonoBehaviour
             (false, _, false, false, false) => $"{age}_Fall_Animation",
             (false, _, false, true, false) => $"{age}_Umbrella_Animation",
             (true, _, false, false, true) => $"{age}_Int_Animation",
-            
-            
             _ => $"{age}_Idle0_Animation",
 
         };
@@ -440,10 +379,6 @@ public class Player : MonoBehaviour
         
     }
 
-    //public void TimeSound()
-    //{
-        
-    //}
     public void DeathSound()
     {
         if ((CurrentAge == AgeState.MidAge) || (CurrentAge == AgeState.Ded))
