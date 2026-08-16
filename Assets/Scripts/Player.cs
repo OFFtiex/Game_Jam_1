@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     float targetInput = 0f;
 
     [Header("Sprite_Render")]
-    public SpriteRenderer Player_model;
+    private SpriteRenderer Player_model;
     public Sprite babySprite;
     public Sprite midAgeSprite;
     public Sprite dedSprite;
@@ -286,11 +286,6 @@ public class Player : MonoBehaviour
             Current_Alpha_Value += Time.deltaTime *10f;
             F_Image.color = new Color(0, 0, 0, Current_Alpha_Value);
         }
-
-        if (transform.position.y < -20)
-        {
-            Kill("Fell Through the World");
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) // changes current "Main" box
@@ -315,7 +310,6 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Damage_Pike"))
         {
-            DeathSound();
             Kill("Was Pierced by Thorns");
         }
     }
@@ -402,7 +396,7 @@ public class Player : MonoBehaviour
     private void Die()
     {
         isDead = true;
-        
+        DeathSound();
         Death_particles_Instance = Instantiate(Death_particles, Ground_Check.transform.position, Quaternion.identity);
         
         Invoke("LoadSceneDelay", 1f);
