@@ -69,7 +69,6 @@ public class Player : MonoBehaviour
     private ParticleSystem Death_particles_Instance;
     [SerializeField] private ParticleSystem Death_particles;
 
-
     [Header("SFX")]
     private AudioSource audio_source;
     public AudioClip Jump_Clip;
@@ -84,7 +83,6 @@ public class Player : MonoBehaviour
     public Transform Lever_Check;
     public GameObject LL;
     public Transform[] children;
-    public bool e_pressed = false;
 
     [SerializeField] private AgeState ageState;
     public AgeState CurrentAge
@@ -111,6 +109,14 @@ public class Player : MonoBehaviour
 
 
     public GameObject PP;
+
+    [Header("PressedButtons")]
+    private bool jumpPressed;
+    private bool rKeyPressed;
+    private bool dKeyPressed;
+    private bool aKeyPressed;
+    private bool eKeyPressed;
+    private bool eKeyHeld;
 
     //                                              Unity functions
 
@@ -142,24 +148,9 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        // Moving
-        targetInput = 0f;
-        if (Keyboard.current != null)
-        {
-            if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
+        GatherInput();
 
-            {
-                targetInput = 1f;
-            }
-            else if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
-            {
-                targetInput = -1f;
-            }
-        }
-        SetAnimation(targetInput);
-        smoothedInput = Mathf.MoveTowards(smoothedInput, targetInput, smoothing * Time.deltaTime);
-        Player_body.linearVelocity = new Vector2(maxSpeed * smoothedInput, Player_body.linearVelocity.y);
-
+        // Непроверенное
         // Fliping the sprite
         if (targetInput < 0f)
         {
@@ -172,38 +163,36 @@ public class Player : MonoBehaviour
         if ((CurrentAge == AgeState.Ded)  ) // Umbrella_falling_and_Lever_activating
         {
             if ((Is_Grounded == true))
-            { 
+            {
                 Player_body.gravityScale = 1f;
                 isUmbrella = false;
             }
             Player_body.mass = 1f;
-            if (Keyboard.current != null && Keyboard.current.rKey.wasPressedThisFrame && isUmbrella == false && (Is_Grounded == false))
+            if (rKeyPressed && isUmbrella == false && (Is_Grounded == false))
             {
                 Player_body.gravityScale = 0.1f;
                 Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, 0.3f);
                 isUmbrella = true;
             }
             
-            else if ((Keyboard.current != null && Keyboard.current.rKey.wasPressedThisFrame && isUmbrella == true) && (Is_Grounded == false))
+            else if ((rKeyPressed && isUmbrella == true) && (Is_Grounded == false))
             {
                 Player_body.gravityScale = 1f;
                 isUmbrella = false;
             }
             if (Is_near_to_Lever == true && (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame))
             {
-                e_pressed = true;
-
+                eKeyPressed = true;
                 
                 if (children[2] != null)
                 {
                     Destroy(LL.GetComponent<Transform>().GetChild(1).gameObject);
-                    
                 }
                 
             }
             if (Is_near_to_Lever == false)
             {
-                e_pressed = false;
+                eKeyPressed = false;
                 Player_model.flipX = false;
             }
             
@@ -221,7 +210,7 @@ public class Player : MonoBehaviour
         {
             if (PP != null) { PP.SetActive(true); }
             ExtraJump = ExtraJumpValue;
-            if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+            if (jumpPressed)
             {
                 Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
                 PlaySFX(Jump_Clip);
@@ -233,7 +222,7 @@ public class Player : MonoBehaviour
         }
         if ((ExtraJump != 0) && (Is_Grounded == false))
         {
-            if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
+            if (jumpPressed)
             {
                 Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
                 PlaySFX(Jump_Clip);
@@ -247,12 +236,10 @@ public class Player : MonoBehaviour
             {
                 return;
             }
-            if ((Keyboard.current != null && Keyboard.current.eKey.isPressed))
+            if (eKeyHeld)
             {
-                
                 if (Box_Check.transform.position.x < BB.transform.position.x)
                 {
-
                     if (smoothedInput < 0)
                     {
                         BB.transform.position = new Vector2(Box_Check.transform.position.x + 1.5f, Box_Check.transform.position.y);
@@ -271,7 +258,17 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Moving
+        targetInput = 0f;
+        if (dKeyPressed) targetInput = 1f;
+        if (aKeyPressed) targetInput = -1f;
+
+        SetAnimation(targetInput);
+        smoothedInput = Mathf.MoveTowards(smoothedInput, targetInput, smoothing * Time.deltaTime);
+        Player_body.linearVelocity = new Vector2(maxSpeed * smoothedInput, Player_body.linearVelocity.y);
         Is_Grounded = Physics2D.OverlapCircle(Ground_Check.position, Ground_radius, Ground_Layer);
+
+        // Непроверенное
         Is_near_to_Box = Physics2D.OverlapCircle(Box_Check.position, Box_radius, Box_Layer);
         Is_near_to_Lever = Physics2D.OverlapCircle(Lever_Check.position, Lever_radius, Lever_Layer);
 
@@ -282,7 +279,6 @@ public class Player : MonoBehaviour
         }
         else if (isDead == true )
         {
-            
             Current_Alpha_Value += Time.deltaTime *10f;
             F_Image.color = new Color(0, 0, 0, Current_Alpha_Value);
         }
@@ -317,6 +313,17 @@ public class Player : MonoBehaviour
 
     //                                              Custom functions
 
+    private void GatherInput()
+    {
+        if (Keyboard.current == null) return;
+
+        jumpPressed = Keyboard.current.spaceKey.wasPressedThisFrame;
+        rKeyPressed = Keyboard.current.rKey.wasPressedThisFrame;
+        dKeyPressed = Keyboard.current.dKey.wasPressedThisFrame;
+        aKeyPressed = Keyboard.current.aKey.wasPressedThisFrame;
+        eKeyPressed = Keyboard.current.eKey.wasPressedThisFrame;
+        eKeyHeld = Keyboard.current.eKey.isPressed;
+    }
 
     private void SetAnimation(float targetInput)
     {
@@ -327,16 +334,15 @@ public class Player : MonoBehaviour
             _ => "Parent"
         };
 
-        string animName = (Is_Grounded, targetInput == 0, Player_body.linearVelocityY > 0, isUmbrella, e_pressed) switch
+        string animName = (Is_Grounded, targetInput == 0, Player_body.linearVelocityY > 0, isUmbrella, eKeyPressed) switch
         {
+            (false, _, false, false, false)  => $"{age}_Fall_Animation",
+            (false, _, false, true, false)   => $"{age}_Umbrella_Animation",
             (true, true, _, false, false )   => $"{age}_Idle0_Animation",
-            (false, _, true, false, false)  => $"{age}_Jump_Animation",
-            (true, false, _, false, false)  => $"{age}_Run_Animation",
-            (false, _, false, false, false) => $"{age}_Fall_Animation",
-            (false, _, false, true, false) => $"{age}_Umbrella_Animation",
-            (true, _, false, false, true) => $"{age}_Int_Animation",
-            _ => $"{age}_Idle0_Animation",
-
+            (false, _, true, false, false)   => $"{age}_Jump_Animation",
+            (true, false, _, false, false)   => $"{age}_Run_Animation",
+            (true, _, false, false, true)    => $"{age}_Int_Animation",
+            _                                => $"{age}_Idle0_Animation",
         };
 
         animator.Play(animName);
@@ -404,7 +410,6 @@ public class Player : MonoBehaviour
         Player_model.enabled = false;
         cachedCollider.enabled = false;
         if (TryGetComponent<Rigidbody2D>(out var rb)) rb.simulated = false;
-
     }
     private void LoadSceneDelay()
     {
@@ -451,9 +456,9 @@ public class Player : MonoBehaviour
         
         Player_model.sprite = ageState switch
         {
-            AgeState.Baby => babySprite,
+            AgeState.Baby   => babySprite,
             AgeState.MidAge => midAgeSprite,
-            AgeState.Ded => dedSprite,
+            AgeState.Ded    => dedSprite,
             _ => Player_model.sprite
         };
     }
