@@ -24,6 +24,11 @@ public class Player : MonoBehaviour
         AgeState.Ded => 3f,
         _ => 2.0f
     };
+    private int MaxExtraJumps => CurrentAge switch
+    {
+        AgeState.Baby => 1, 
+        _ => 0 
+    };
     public float smoothing => CurrentAge switch
     {
         AgeState.Baby => 2.0f,
@@ -31,6 +36,7 @@ public class Player : MonoBehaviour
         AgeState.Ded => 4f,
         _ => 2.0f
     };
+
     private float smoothedInput;
     float targetInput = 0f;
 
@@ -42,32 +48,33 @@ public class Player : MonoBehaviour
     
 
     [Header("Box")]
-    public float Box_radius = 1f;
+    private float Box_radius = 1f;
     public LayerMask Box_Layer;
-    public bool Is_near_to_Box;
+    private bool Is_near_to_Box;
     public Transform Box_Check;
     public GameObject BB;
 
     [Header("Ground")]
-    public float Ground_radius = 0.2f;
+    private float Ground_radius = 0.2f;
     public LayerMask Ground_Layer;
-    public bool Is_Grounded;
+    private bool Is_Grounded;
     public Transform Ground_Check;
 
     [Header("Player_characteristics")]
     private Animator animator;
-    public int ExtraJumpValue = 1;
     public int ExtraJump;
-    [SerializeField] private bool isDead = false;
-    public bool isFlip = false; 
+
+    private bool isDead;
+    public bool isFlip; 
     
-    public bool isUmbrella = false;
+    private bool isUmbrella;
 
     [Header("Player_additional")]
-    private ParticleSystem walking_particles_Instance;
     [SerializeField] private ParticleSystem walking_particles;
-    private ParticleSystem Death_particles_Instance;
     [SerializeField] private ParticleSystem Death_particles;
+    private ParticleSystem Death_particles_Instance;
+
+
 
     [Header("SFX")]
     private AudioSource audio_source;
@@ -107,16 +114,16 @@ public class Player : MonoBehaviour
     [SerializeField] private Image F_Image;
     [SerializeField] private float Current_Alpha_Value = 1;
 
-
     public GameObject PP;
 
-    [Header("PressedButtons")]
+    #region Pressed Buttons
     private bool jumpPressed;
     private bool rKeyPressed;
     private bool dKeyPressed;
     private bool aKeyPressed;
     private bool eKeyPressed;
     private bool eKeyHeld;
+    #endregion
 
     //                                              Unity functions
 
@@ -130,7 +137,6 @@ public class Player : MonoBehaviour
         F_Image = GameObject.FindWithTag("Fading_Screen").GetComponent<Image>();
         Player_body = GetComponent<Rigidbody2D>();
         Player_model = GetComponent<SpriteRenderer>();
-        ExtraJump = ExtraJumpValue;
         F_Image.color = new Color(0, 0, 0, 1);
         BB = GameObject.FindWithTag("Box");
         LL = GameObject.FindWithTag("Lever");
@@ -168,7 +174,7 @@ public class Player : MonoBehaviour
                 isUmbrella = false;
             }
             Player_body.mass = 1f;
-            if (rKeyPressed && isUmbrella == false && (Is_Grounded == false))
+            if (rKeyPressed && isUmbrella == false && Is_Grounded == false)
             {
                 Player_body.gravityScale = 0.1f;
                 Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, 0.3f);
@@ -180,7 +186,7 @@ public class Player : MonoBehaviour
                 Player_body.gravityScale = 1f;
                 isUmbrella = false;
             }
-            if (Is_near_to_Lever == true && (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame))
+            if (Is_near_to_Lever == true && eKeyPressed)
             {
                 eKeyPressed = true;
                 
@@ -188,7 +194,6 @@ public class Player : MonoBehaviour
                 {
                     Destroy(LL.GetComponent<Transform>().GetChild(1).gameObject);
                 }
-                
             }
             if (Is_near_to_Lever == false)
             {
@@ -209,7 +214,7 @@ public class Player : MonoBehaviour
         if (Is_Grounded)
         {
             if (PP != null) { PP.SetActive(true); }
-            ExtraJump = ExtraJumpValue;
+            ExtraJump = MaxExtraJumps;
             if (jumpPressed)
             {
                 Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
@@ -269,8 +274,8 @@ public class Player : MonoBehaviour
         Is_Grounded = Physics2D.OverlapCircle(Ground_Check.position, Ground_radius, Ground_Layer);
 
         // Непроверенное
-        Is_near_to_Box = Physics2D.OverlapCircle(Box_Check.position, Box_radius, Box_Layer);
         Is_near_to_Lever = Physics2D.OverlapCircle(Lever_Check.position, Lever_radius, Lever_Layer);
+        Is_near_to_Box = Physics2D.OverlapCircle(Box_Check.position, Box_radius, Box_Layer);
 
         if (F_Image.color.a != 0 && isDead == false)
         {
@@ -371,12 +376,6 @@ public class Player : MonoBehaviour
                 cachedCollider.offset = new Vector2(babyOffset.x, babyOffset.y - (dedHeight - babySize.y) / 2f);
                 break;
         }
-    }
-
-    private void Spawn_Particles()
-    {
-        walking_particles_Instance = Instantiate(walking_particles, Ground_Check.transform.position, Quaternion.identity);
-        
     }
 
     public void DeathSound()
