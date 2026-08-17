@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
         AgeState.Ded => 3f,
         _ => 2.0f
     };
-    private int MaxExtraJumps => CurrentAge switch
+    private int _jumpLimit => CurrentAge switch
     {
         AgeState.Baby => 1, 
         _ => 0 
@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
 
     [Header("Player_characteristics")]
     private Animator animator;
-    public int ExtraJump;
+    public int RemainingJumps;
 
     private bool isDead;
     public bool isFlip; 
@@ -204,7 +204,7 @@ public class Player : MonoBehaviour
         }
         if ((CurrentAge == AgeState.MidAge) || (CurrentAge == AgeState.Ded))
         {
-            ExtraJump = 0;
+            RemainingJumps = 0;
             
         }
         if ((CurrentAge == AgeState.Baby))
@@ -214,7 +214,7 @@ public class Player : MonoBehaviour
         if (Is_Grounded)
         {
             if (PP != null) { PP.SetActive(true); }
-            ExtraJump = MaxExtraJumps;
+            RemainingJumps = _jumpLimit;
             if (jumpPressed)
             {
                 Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
@@ -225,13 +225,13 @@ public class Player : MonoBehaviour
         {
             if (PP != null) { PP.SetActive(false); }
         }
-        if ((ExtraJump != 0) && (Is_Grounded == false))
+        if ((RemainingJumps != 0) && (Is_Grounded == false))
         {
             if (jumpPressed)
             {
                 Player_body.linearVelocity = new Vector2(Player_body.linearVelocity.x, jumpForce);
                 PlaySFX(Jump_Clip);
-                ExtraJump -= 1;
+                RemainingJumps -= 1;
             }
         }
         if (Is_near_to_Box  && CurrentAge == AgeState.MidAge) 
@@ -436,8 +436,6 @@ public class Player : MonoBehaviour
         audio_source.clip = audioClip;
         audio_source.Play();
     }
-
-
 
     public void Pause()
     {
