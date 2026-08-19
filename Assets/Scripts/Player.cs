@@ -339,7 +339,7 @@ public class Player : MonoBehaviour
 
         };
 
-        animator.Play(animName);
+        animator.Play(animName, 0);
     }
 
     private void UpdateColliderParameters() 
