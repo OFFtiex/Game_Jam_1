@@ -191,9 +191,7 @@ public class Player : MonoBehaviour
             }
             if (Is_near_to_Lever == true && (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame))
             {
-                e_pressed = true;
-
-                
+                e_pressed = true;             
                 if (children[2] != null)
                 {
                     Destroy(LL.GetComponent<Transform>().GetChild(1).gameObject);
