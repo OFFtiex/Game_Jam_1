@@ -318,6 +318,7 @@ public class Player : MonoBehaviour
 
     //                                              Custom functions
 
+
     private void GatherInput()
     {
         if (Keyboard.current == null) return;
