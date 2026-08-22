@@ -378,6 +378,17 @@ public class Player : MonoBehaviour
                 break;
         }
     }
+    private void UpdatePlayerVisual()
+    {
+
+        Player_model.sprite = ageState switch
+        {
+            AgeState.Baby => babySprite,
+            AgeState.MidAge => midAgeSprite,
+            AgeState.Ded => dedSprite,
+            _ => Player_model.sprite
+        };
+    }
 
     public void DeathSound()
     {
@@ -411,6 +422,7 @@ public class Player : MonoBehaviour
         cachedCollider.enabled = false;
         if (TryGetComponent<Rigidbody2D>(out var rb)) rb.simulated = false;
     }
+    // <<< Переделать корутинами
     private void LoadSceneDelay()
     {
         LoadScene("");
@@ -431,7 +443,7 @@ public class Player : MonoBehaviour
 
         SceneManager.LoadScene(sceneName);
     }
-
+    // >>>
     public void PlaySFX(AudioClip audioClip)
     {
         audio_source.clip = audioClip;
@@ -448,16 +460,5 @@ public class Player : MonoBehaviour
     {
         Time.timeScale = 1f;
         // Coming Soon: turn on sounds
-    }
-    private void UpdatePlayerVisual()
-    {
-        
-        Player_model.sprite = ageState switch
-        {
-            AgeState.Baby   => babySprite,
-            AgeState.MidAge => midAgeSprite,
-            AgeState.Ded    => dedSprite,
-            _ => Player_model.sprite
-        };
     }
 }
